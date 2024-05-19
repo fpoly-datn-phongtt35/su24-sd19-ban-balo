@@ -1,7 +1,10 @@
 package com.example.datntest.service.impl;
 
+import com.example.datntest.entity.NSX;
 import com.example.datntest.entity.Size;
+import com.example.datntest.repository.NSXRepository;
 import com.example.datntest.repository.SizeRepository;
+import com.example.datntest.service.NSXService;
 import com.example.datntest.service.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,27 +13,27 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SizeImpl implements SizeService {
+public class NSXImpl implements NSXService {
     @Autowired
-    private SizeRepository sizeRepository;
+    private NSXRepository nsxRepository;
     @Override
-    public Page<Size> getAll(int page) {
+    public Page<NSX> getAll(int page) {
         Pageable pageable = PageRequest.of(page,3);
-        return sizeRepository.findAll(pageable);
+        return nsxRepository.findAll(pageable);
     }
 
     @Override
-    public void add(Size size) {
-        sizeRepository.save(size);
+    public void add(NSX nsx) {
+        nsxRepository.save(nsx);
     }
 
     @Override
-    public Size detail(Integer id) {
+    public NSX detail(Integer id) {
         return null;
     }
 
     @Override
-    public Size delete(Integer id) {
+    public NSX delete(Integer id) {
         return null;
     }
 

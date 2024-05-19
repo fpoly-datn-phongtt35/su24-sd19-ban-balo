@@ -15,24 +15,24 @@
 
 <body>
 
-<h1>Danh sach Size</h1>
-<button class="btn btn-primary"><a class="btn btn-primary" href="/size/view-add">ADD</a></button>
+<h1>Danh sach mausac</h1>
+<button class="btn btn-primary"><a class="btn btn-primary" href="/mausac/view-add">ADD</a></button>
 <table class="table table-secondary">
     <tr>
-        <th>MaSize</th>
-        <th>TenSize</th>
+        <th>Mamausac</th>
+        <th>Tenmausac</th>
         <th>NgayTao</th>
         <th>NgaySua</th>
         <th>TrangThai</th>
     </tr>
     <tbody>
-    <c:forEach var="size" items="${list.content}">
+    <c:forEach var="mausac" items="${list.content}">
         <tr>
-            <td>${size.maSize}</td>
-            <td>${size.tenSize}</td>
-            <td>${size.ngayTao}</td>
-            <td>${size.ngaySua}</td>
-            <td>${size.trangThai}</td>
+            <td>${mausac.maMauSac}</td>
+            <td>${mausac.tenMauSac}</td>
+            <td>${mausac.ngayTao}</td>
+            <td>${mausac.ngaySua}</td>
+            <td>${mausac.trangThai}</td>
 <%--            <td>--%>
 <%--                <a href="/size/view-add">ADD</a>--%>
 <%--            </td>--%>
@@ -42,7 +42,7 @@
     <nav aria-label="Page navigation example" class="container">
         <ul class="pagination">
             <c:forEach begin="0" end="${nv.totalPages +1}" varStatus="loop">
-                <li class="page-item"><a class="page-link" href="/size/hien-thi?page=${loop.index}">${loop.index + 1}</a></li>
+                <li class="page-item"><a class="page-link" href="/mausac/hien-thi?page=${loop.index}">${loop.index + 1}</a></li>
             </c:forEach>
         </ul>
     </nav>

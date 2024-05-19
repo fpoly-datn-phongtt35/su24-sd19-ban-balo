@@ -1,6 +1,8 @@
 package com.example.datntest.controller;
 
+import com.example.datntest.entity.MauSac;
 import com.example.datntest.entity.Size;
+import com.example.datntest.service.MauSacService;
 import com.example.datntest.service.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,41 +13,40 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Date;
-import java.util.List;
 
 @Controller
-public class SizeController {
+public class MauSacController {
 
     @Autowired
-    private SizeService sizeService;
+    private MauSacService mauSacService;
 
 
-    @GetMapping("/size/hien-thi")
+    @GetMapping("/mausac/hien-thi")
     private String hienthi(Model model,
                            @RequestParam(value = "page", defaultValue = "0") int pages) {
-        Page<Size> page = sizeService.getAll(pages);
+        Page<MauSac> page = mauSacService.getAll(pages);
         model.addAttribute("list", page);
-        return "/size/get-all";
+        return "/mausac/get-all";
     }
-    @GetMapping("/size/view-add")
+    @GetMapping("/mausac/view-add")
     private String viewAdd() {
-        return "size/add";
+        return "mausac/add";
     }
-    @PostMapping("/size/add")
-    public String add(@RequestParam("maSize")String maSize,
-                      @RequestParam("tenSize") String tenSize,
+    @PostMapping("/mausac/add")
+    public String add(@RequestParam("maMauSac")String maMauSac,
+                      @RequestParam("tenMauSac") String tenMauSac,
                       @RequestParam("ngayTao") String ngayTao,
                       @RequestParam("ngaySua") String ngaySua,
                       @RequestParam("trangThai") Integer trangThai)
     {
-        Size size = Size.builder()
-                .maSize(maSize)
-                .tenSize(tenSize)
+        MauSac mauSac = MauSac.builder()
+                .maMauSac(maMauSac)
+                .tenMauSac(tenMauSac)
                 .ngayTao(Date.valueOf(ngayTao))
                 .ngaySua(Date.valueOf(ngaySua))
                 .trangThai(trangThai)
                 .build();
-        sizeService.add(size);
-        return "redirect:/size/hien-thi";
+        mauSacService.add(mauSac);
+        return "redirect:/mausac/hien-thi";
     }
 }

@@ -1,8 +1,9 @@
 package com.example.datntest.service.impl;
 
+import com.example.datntest.entity.SanPham;
 import com.example.datntest.entity.Size;
-import com.example.datntest.repository.SizeRepository;
-import com.example.datntest.service.SizeService;
+import com.example.datntest.repository.SanPhamRepository;
+import com.example.datntest.service.SanPhamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,27 +11,27 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SizeImpl implements SizeService {
+public class SanPhamImpl implements SanPhamService {
     @Autowired
-    private SizeRepository sizeRepository;
+    private SanPhamRepository sanPhamRepository;
     @Override
-    public Page<Size> getAll(int page) {
+    public Page<SanPham> getAll(int page) {
         Pageable pageable = PageRequest.of(page,3);
-        return sizeRepository.findAll(pageable);
+        return sanPhamRepository.findAll(pageable);
     }
 
     @Override
-    public void add(Size size) {
-        sizeRepository.save(size);
+    public void add(SanPham sanPham) {
+        sanPhamRepository.save(sanPham);
     }
 
     @Override
-    public Size detail(Integer id) {
+    public SanPham detail(Integer id) {
         return null;
     }
 
     @Override
-    public Size delete(Integer id) {
+    public SanPham delete(Integer id) {
         return null;
     }
 

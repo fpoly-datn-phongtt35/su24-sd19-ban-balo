@@ -1,7 +1,9 @@
 package com.example.datntest.controller;
 
-import com.example.datntest.entity.Size;
-import com.example.datntest.service.SizeService;
+import com.example.datntest.entity.DongSanPham;
+import com.example.datntest.entity.SanPham;
+import com.example.datntest.service.DongSanPhamService;
+import com.example.datntest.service.SanPhamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -11,41 +13,40 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Date;
-import java.util.List;
 
 @Controller
-public class SizeController {
+public class DongSanPhamController {
 
     @Autowired
-    private SizeService sizeService;
+    private DongSanPhamService dongSanPhamService;
 
 
-    @GetMapping("/size/hien-thi")
+    @GetMapping("/dongsanpham/hien-thi")
     private String hienthi(Model model,
                            @RequestParam(value = "page", defaultValue = "0") int pages) {
-        Page<Size> page = sizeService.getAll(pages);
+        Page<DongSanPham> page = dongSanPhamService.getAll(pages);
         model.addAttribute("list", page);
-        return "/size/get-all";
+        return "/dongsanpham/get-all";
     }
-    @GetMapping("/size/view-add")
+    @GetMapping("/dongsanpham/view-add")
     private String viewAdd() {
-        return "size/add";
+        return "dongsanpham/add";
     }
-    @PostMapping("/size/add")
-    public String add(@RequestParam("maSize")String maSize,
-                      @RequestParam("tenSize") String tenSize,
+    @PostMapping("/dongsanpham/add")
+    public String add(@RequestParam("maDongSanPham")String maDongSanPham,
+                      @RequestParam("tenDongSanPham") String tenDongSanPham,
                       @RequestParam("ngayTao") String ngayTao,
                       @RequestParam("ngaySua") String ngaySua,
                       @RequestParam("trangThai") Integer trangThai)
     {
-        Size size = Size.builder()
-                .maSize(maSize)
-                .tenSize(tenSize)
+        DongSanPham dongSanPham = DongSanPham.builder()
+                .maDongSanPham(maDongSanPham)
+                .tenDongSanPham(tenDongSanPham)
                 .ngayTao(Date.valueOf(ngayTao))
                 .ngaySua(Date.valueOf(ngaySua))
                 .trangThai(trangThai)
                 .build();
-        sizeService.add(size);
-        return "redirect:/size/hien-thi";
+        dongSanPhamService.add(dongSanPham);
+        return "redirect:/dongsanpham/hien-thi";
     }
 }

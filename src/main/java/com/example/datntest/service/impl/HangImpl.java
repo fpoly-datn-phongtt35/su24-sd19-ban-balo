@@ -1,7 +1,10 @@
 package com.example.datntest.service.impl;
 
+import com.example.datntest.entity.Hang;
 import com.example.datntest.entity.Size;
+import com.example.datntest.repository.HangRepository;
 import com.example.datntest.repository.SizeRepository;
+import com.example.datntest.service.HangService;
 import com.example.datntest.service.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,27 +13,27 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SizeImpl implements SizeService {
+public class HangImpl implements HangService {
     @Autowired
-    private SizeRepository sizeRepository;
+    private HangRepository hangRepository;
     @Override
-    public Page<Size> getAll(int page) {
+    public Page<Hang> getAll(int page) {
         Pageable pageable = PageRequest.of(page,3);
-        return sizeRepository.findAll(pageable);
+        return hangRepository.findAll(pageable);
     }
 
     @Override
-    public void add(Size size) {
-        sizeRepository.save(size);
+    public void add(Hang hang) {
+        hangRepository.save(hang);
     }
 
     @Override
-    public Size detail(Integer id) {
+    public Hang detail(Integer id) {
         return null;
     }
 
     @Override
-    public Size delete(Integer id) {
+    public Hang delete(Integer id) {
         return null;
     }
 

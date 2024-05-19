@@ -15,24 +15,24 @@
 
 <body>
 
-<h1>Danh sach Size</h1>
-<button class="btn btn-primary"><a class="btn btn-primary" href="/size/view-add">ADD</a></button>
+<h1>Danh sach SANpHAM</h1>
+<button class="btn btn-primary"><a class="btn btn-primary" href="/dongsanpham/view-add">ADD</a></button>
 <table class="table table-secondary">
     <tr>
-        <th>MaSize</th>
-        <th>TenSize</th>
+        <th>maDongSanPham</th>
+        <th>tenDongSanPham</th>
         <th>NgayTao</th>
         <th>NgaySua</th>
         <th>TrangThai</th>
     </tr>
     <tbody>
-    <c:forEach var="size" items="${list.content}">
+    <c:forEach var="dongsanpham" items="${list.content}">
         <tr>
-            <td>${size.maSize}</td>
-            <td>${size.tenSize}</td>
-            <td>${size.ngayTao}</td>
-            <td>${size.ngaySua}</td>
-            <td>${size.trangThai}</td>
+            <td>${dongsanpham.maDongSanPham}</td>
+            <td>${dongsanpham.tenDongSanPham}</td>
+            <td>${dongsanpham.ngayTao}</td>
+            <td>${dongsanpham.ngaySua}</td>
+            <td>${dongsanpham.trangThai}</td>
 <%--            <td>--%>
 <%--                <a href="/size/view-add">ADD</a>--%>
 <%--            </td>--%>
@@ -42,7 +42,7 @@
     <nav aria-label="Page navigation example" class="container">
         <ul class="pagination">
             <c:forEach begin="0" end="${nv.totalPages +1}" varStatus="loop">
-                <li class="page-item"><a class="page-link" href="/size/hien-thi?page=${loop.index}">${loop.index + 1}</a></li>
+                <li class="page-item"><a class="page-link" href="/dongsanpham/hien-thi?page=${loop.index}">${loop.index + 1}</a></li>
             </c:forEach>
         </ul>
     </nav>
