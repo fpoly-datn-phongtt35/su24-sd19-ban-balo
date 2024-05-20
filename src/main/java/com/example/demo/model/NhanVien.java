@@ -1,94 +1,82 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 public class NhanVien {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdNhanVien", nullable = false)
-    private int id;
+    private Long id;
 
     @Nationalized
-    @Column(name = "MaNhanVien", nullable = false, length = 20)
+    @Column(name = "MaNhanVien", length = 20)
     private String maNhanVien;
 
     @Nationalized
-    @Column(name = "TenNhanVien", nullable = false, length = 20)
+    @Column(name = "TenNhanVien", length = 20)
     private String tenNhanVien;
 
     @Nationalized
-    @Column(name = "HoNhanVien", nullable = false, length = 20)
+    @Column(name = "HoNhanVien", length = 20)
     private String hoNhanVien;
 
-    @Column(name = "NgaySinh", nullable = false)
-    private LocalDate ngaySinh;
+    @Column(name = "NgaySinh")
+    private Date ngaySinh;
 
-    @Column(name = "GioiTinh", nullable = false)
-    private int gioiTinh;
+    @Column(name = "GioiTinh")
+    private boolean gioiTinh;
 
     @Nationalized
-    @Column(name = "SDT", nullable = false, length = 15)
+    @Column(name = "SDT", length = 15)
     private String sdt;
 
     @Nationalized
-    @Column(name = "CCCD", nullable = false, length = 15)
+    @Column(name = "CCCD", length = 15)
     private String cccd;
 
     @Nationalized
-    @Column(name = "DiaChi", nullable = false, length = 40)
-    private String diaChi;
+    @Column(name = "SoNha", length = 10)
+    private String soNha;
 
     @Nationalized
-    @Column(name = "ThanhPho", nullable = false, length = 20)
-    private String thanhPho;
+    @Column(name = "PhuongXa", length = 50)
+    private String phuongXa;
 
     @Nationalized
-    @Column(name = "Quan", nullable = false, length = 20)
-    private String quan;
+    @Column(name = "QuanHuyen", length = 50)
+    private String quanHuyen;
 
     @Nationalized
-    @Column(name = "Xa", nullable = false, length = 20)
-    private String xa;
+    @Column(name = "TinhThanhPho", length = 50)
+    private String tinhThanhPho;
 
     @Nationalized
-    @Column(name = "QuocGia", nullable = false, length = 20)
-    private String quocGia;
-
-    git branch -d huy
-
-
-
-    @Nationalized
-    @Column(name = "MatKhau", nullable = false, length = 20)
+    @Column(name = "MatKhau", length = 20)
     private String matKhau;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IdChucVu")
-    private ChucVu idChucVu;
+    @Column(name = "NguoiTao")
+    private Integer nguoiTao;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IdCuaHang")
-    private CuaHang idCuaHang;
+    @Column(name = "NguoiSua")
+    private Integer nguoiSua;
 
-    @Column(name = "NgayTao", nullable = false)
-    private LocalDate ngayTao;
+    @Column(name = "NgayTao")
+    private Timestamp ngayTao;
 
-    @Column(name = "NgaySua", nullable = false)
-    private LocalDate ngaySua;
+    @Column(name = "NgaySua")
+    private Timestamp ngaySua;
 
-    @Column(name = "TrangThai", nullable = false)
-    private int trangThai;
+    @Column(name = "TrangThai")
+    private boolean trangThai;
 
 }
