@@ -11,17 +11,17 @@
     <title>Document</title>
 </head>
 <body>
-<h1 class="text-center" style="padding-bottom: 50px">Size</h1>
-<form action="/size/add" method="post" onsubmit="return kt()">
+<h1 class="text-center" style="padding-bottom: 50px">sanpham</h1>
+<form action="/sanpham/add" method="post" onsubmit="return kt()">
     <table>
         <div class="col-mt-3">
             <div class="col-6">
-                <label>maSize</label>
-                <input type="text" name="maSize" id="maSize" class="form-control">
+                <label>maSanPham</label>
+                <input type="text" name="maSanPham" id="maSanPham" class="form-control">
             </div>
             <div class="col-6">
-                <label>tenSize</label>
-                <input type="text" name="tenSize" id="tenSize" class="form-control">
+                <label>tenSanPham</label>
+                <input type="text" name="tenSanPham" id="tenSanPham" class="form-control">
             </div>
             <div class="col-6">
                 <label>ngayTao</label>

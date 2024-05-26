@@ -12,18 +12,18 @@ import java.util.Date;
 @Setter
 @ToString
 @Builder
-@Table(name = "Size")
-public class Size {
+@Table(name = "SanPham")
+public class SanPham {
     @Id
-    @Column(name = "IdSize")
+    @Column(name = "IdSanPham")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idSize;
+    private Integer idSanPham;
 
-    @Column(name = "MaSize")
-    private String maSize;
+    @Column(name = "MaSanPham")
+    private String maSanPham;
 
-    @Column(name = "TenSize")
-    private String tenSize;
+    @Column(name = "TenSanPham")
+    private String tenSanPham;
 
     @Column(name = "NgayTao")
     private Date ngayTao;
