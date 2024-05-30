@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.model.NhanVien;
 import com.example.demo.repository.NhanVienRepository;
 import com.example.demo.service.NhanVienService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -10,15 +11,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@RequiredArgsConstructor
 @Service
 public class NhanVienServiceImpl implements NhanVienService {
 
     private final NhanVienRepository nhanVienRepository;
 
-    public NhanVienServiceImpl(NhanVienRepository nhanVienRepository) {
-        this.nhanVienRepository = nhanVienRepository;
-    }
 
     @Override
     public Page<NhanVien> phanTrang(Integer pageNum, Integer pageNo) {
@@ -57,14 +55,14 @@ public class NhanVienServiceImpl implements NhanVienService {
             return o;
         }).orElse(null);
     }
-
-    @Override
-    public NhanVien getByMa(String ma) {
-        return null;
-    }
-
-    @Override
-    public boolean existByMa(String ma) {
-        return false;
-    }
+//
+//    @Override
+//    public NhanVien getByMa(String ma) {
+//        return null;
+//    }
+//
+//    @Override
+//    public boolean existByMa(String ma) {
+//        return false;
+//    }
 }

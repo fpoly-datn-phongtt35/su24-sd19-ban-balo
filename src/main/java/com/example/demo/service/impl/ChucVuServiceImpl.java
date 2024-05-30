@@ -4,7 +4,7 @@ import com.example.demo.model.ChucVu;
 import com.example.demo.repository.ChucVuRepository;
 import com.example.demo.service.ChucVuService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,28 +16,32 @@ public class ChucVuServiceImpl implements ChucVuService {
 
 
     @Override
+    public List<ChucVu> page(int a, int b){
+        return chucVuRepository.findAll(PageRequest.of(a,b)).stream().toList();
+    }
+
+    @Override
     public List<ChucVu> getAll() {
-        return chucVuRepository.findAll(Sort.by(Sort.Direction.DESC, "ngaySua"));
+        return chucVuRepository.findAll();
     }
 
     @Override
-    public boolean delete(Long id) {
-        ChucVu cv = chucVuRepository.findById(id).get();
-        if (cv.getId() != null) {
-            chucVuRepository.deleteById(cv.getId());
-            return true;
-        }
-        return false;
+    public ChucVu add(ChucVu cv) {
+        return chucVuRepository.save(cv);
     }
 
     @Override
-    public ChucVu getById(Long id) {
-        ChucVu chucVu = chucVuRepository.findById(id).get();
-        return chucVu;
+    public ChucVu update(ChucVu cv, Long id) {
+        return chucVuRepository.save(cv);
     }
 
     @Override
-    public ChucVu save(ChucVu chucVu) {
-        return chucVuRepository.save(chucVu);
+    public void delete(Long id) {
+        chucVuRepository.deleteById(id);
+    }
+
+    @Override
+    public ChucVu detail(Long id) {
+        return chucVuRepository.findById(id).get();
     }
 }

@@ -1,8 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Nationalized;
 
 import java.sql.Timestamp;
@@ -10,7 +9,10 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+@Builder
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Users")
 public class User {
     @Id
@@ -26,8 +28,16 @@ public class User {
     @Column(name = "PassWord", length = 50)
     private String passWord;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "IdChucVu")
+    private ChucVu idChucVu;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "IdNhanVien")
+    private NhanVien idNhanVien;
+
     @Column(name = "NgayThanhToan")
-    private LocalDate ngayThanhToan;
+    private Timestamp ngayThanhToan;
 
     @Nationalized
     @Column(name = "GhiChu", length = 50)

@@ -1,8 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Nationalized;
 
 import java.sql.Timestamp;
@@ -10,7 +9,10 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+@Builder
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class ChucVu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

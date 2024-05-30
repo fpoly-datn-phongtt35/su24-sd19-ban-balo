@@ -1,46 +1,102 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.NhanVien;
-import com.example.demo.service.ChucVuService;
 import com.example.demo.service.NhanVienService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.List;
-import java.util.UUID;
+
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/cms/nhan-vien/")
+@RequestMapping("/nhan-vien/")
 public class NhanVienController {
     private final NhanVienService nhanVienService;
+    private List<NhanVien> list;
 
-
-    @GetMapping("hienThi")
-    public ResponseEntity<List<NhanVien>> hienThiTatCa(){
-        List<NhanVien> nhanVienList = nhanVienService.getAll();
-        return new ResponseEntity<>(nhanVienList.stream().toList(), HttpStatus.OK);
-    }
-    @PutMapping("update/{ma}")
-    public ResponseEntity<NhanVien> update(@PathVariable("id") Long id, @RequestBody NhanVien nhanVien){
-        nhanVien.setId(id);
-        NhanVien nhanVien1 = nhanVienService.update(nhanVien,id);
-        return new ResponseEntity<>(nhanVien1, HttpStatus.OK);
+    @GetMapping("hien-thi")
+    public String hienThiNhanVien(Model model) {
+        list = nhanVienService.getAll();
+        model.addAttribute("list", list);
+        return "nhanviens";
     }
 
-    @DeleteMapping("delete/{id}")
-    public ResponseEntity<String> delete(@PathVariable("id")Long id){
+    @GetMapping("detail/{id}")
+    public String detailNhanVien(@PathVariable("id") Long id, Model model) {
+        NhanVien nv = nhanVienService.detail(id);
+        model.addAttribute("nv1", nv);
+        return "detail-nhan-vien";
+    }
+
+    @GetMapping("view-update/{id}")
+    public String updateNhanVien(@PathVariable("id") Long id, Model model) {
+        NhanVien nv = nhanVienService.detail(id);
+        model.addAttribute("nv1", nv);
+        return "update-nhan-vien";
+    }
+
+    @GetMapping("remove/{ma}")
+    public String xoaNhanVien(@PathVariable("id") Long id) {
         nhanVienService.delete(id);
-        return new ResponseEntity<>("Xoa thanh cong", HttpStatus.OK);
+        return "redirect:/nhan-vien/hien-thi";
     }
-    @PostMapping("create")
-    public ResponseEntity<NhanVien> add(@RequestBody NhanVien nhanVien){
-        NhanVien nhanVien1 = nhanVienService.add(nhanVien);
-        return new ResponseEntity<>(nhanVien1, HttpStatus.CREATED);
+    @GetMapping("view-add")
+    public String viewAdd(){
+        return "add-sinh-vien";
+    }
+
+
+
+    @PostMapping("add")
+    public String addSinhVien(@RequestParam("id") Long id,
+                              @RequestParam("maNhanVien") String maNhanVien,
+                              @RequestParam("tenNhanVien") String tenNhanVien,
+                              @RequestParam("hoNhanVien") String hoNhanVien,
+                              @RequestParam("ngaySinh") Date ngaySinh,
+                              @RequestParam("gioiTinh") Boolean gioiTinh,
+                              @RequestParam("sdt") String sdt,
+                              @RequestParam("cccd") String cccd,
+                              @RequestParam("soNha") String soNha,
+                              @RequestParam("phuongXa") String phuongXa,
+                              @RequestParam("quanHuyen") String quanHuyen,
+                              @RequestParam("tinhThanhPho") String tinhThanhPho,
+                              @RequestParam("matKhau") String matKhau,
+                              @RequestParam("nguoiTao") Integer nguoiTao,
+                              @RequestParam("nguoiSua") Integer nguoiSua,
+                              @RequestParam("ngayTao") Timestamp ngayTao,
+                              @RequestParam("ngaySua") Timestamp ngaySua,
+                              @RequestParam("trangThai" )Boolean trangThai){
+        //khoi tao doi tuong
+        NhanVien nv = NhanVien.builder()
+                .maNhanVien(maNhanVien)
+                .tenNhanVien(tenNhanVien)
+                .hoNhanVien(hoNhanVien)
+                .tenNhanVien(tenNhanVien)
+                .ngaySinh(Date.valueOf(ngaySinh.toLocalDate()))
+                .sdt(sdt)
+                .cccd(cccd)
+                .soNha(soNha)
+                .phuongXa(phuongXa)
+                .quanHuyen(quanHuyen)
+                .tinhThanhPho(tinhThanhPho)
+                .nguoiTao(nguoiTao)
+                .nguoiSua(nguoiSua)
+                .ngayTao(ngayTao)
+                .ngaySua(ngaySua)
+                .matKhau(matKhau)
+                .gioiTinh(gioiTinh)
+                .trangThai(trangThai)
+                .build();
+        //b2:goi add trong service
+        nhanVienService.add(nv);
+        //B3: Quay lai trang chu
+        return "redirect:/nhan-vien/hien-thi";
+
     }
 
 

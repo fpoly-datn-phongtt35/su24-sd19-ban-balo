@@ -6,11 +6,13 @@ import java.util.List;
 
 
 public interface ChucVuService {
+
+    List<ChucVu> page(int a, int b);
+
     List<ChucVu> getAll();
-    boolean delete(Long id);
-    ChucVu getById(Long id);
-    ChucVu save(ChucVu chucVu);
-//    ChucVu getByTen(String ten);
-//    boolean existsByTen(String ten);
+    ChucVu add(ChucVu cv);
+    ChucVu update(ChucVu cv, Long id);
+    void delete(Long id);
+    ChucVu detail(Long id);
 
 }

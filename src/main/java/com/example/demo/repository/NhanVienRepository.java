@@ -9,13 +9,13 @@ import java.util.Optional;
 @Repository
 public interface NhanVienRepository extends JpaRepository<NhanVien,Long> {
 
-    Optional<NhanVien> findByMaNhanVien(String maNhanVien);
-
-    boolean existsByMaNhanVien(String maNhanVien);
-
-    boolean existsByChucVu(ChucVu cv);
-
-    boolean existsBySdt(String sdt);
-
-    boolean existsByCccd(String cccd);
+//    Optional<NhanVien> findByMaNhanVien(String maNhanVien);
+//
+//    boolean existsByMaNhanVien(String maNhanVien);
+//
+//    boolean existsByChucVu(ChucVu cv);
+//
+//    boolean existsBySdt(String sdt);
+//
+//    boolean existsByCccd(String cccd);
 }

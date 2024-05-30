@@ -18,9 +18,9 @@ public interface NhanVienService {
 
     NhanVien update(NhanVien nhanVien, Long id);
 
-    NhanVien getByMa(String ma);
-
-    boolean existByMa(String ma);
+//    NhanVien getByMa(String ma);
+//
+//    boolean existByMa(String ma);
 //
 //    String generateEmployeeCode();
 //

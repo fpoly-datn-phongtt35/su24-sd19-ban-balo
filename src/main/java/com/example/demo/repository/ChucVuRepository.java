@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ChucVuRepository extends JpaRepository<ChucVu,Long> {
-    boolean existsByTen(String ten);
-    ChucVu getFirstByTen(String ten);
+//    boolean existsByTen(String tenChucVu);
+//    ChucVu getFirstByTen(String tenChucVu);
 
 
 }

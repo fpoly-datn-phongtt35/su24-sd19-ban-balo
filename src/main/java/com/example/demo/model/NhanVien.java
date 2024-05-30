@@ -1,8 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Nationalized;
 
 import java.sql.Date;
@@ -11,7 +10,10 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+@Builder
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class NhanVien {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,6 +65,10 @@ public class NhanVien {
     @Nationalized
     @Column(name = "MatKhau", length = 20)
     private String matKhau;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "IdChucVu")
+    private ChucVu idChucVu;
 
     @Column(name = "NguoiTao")
     private Integer nguoiTao;
