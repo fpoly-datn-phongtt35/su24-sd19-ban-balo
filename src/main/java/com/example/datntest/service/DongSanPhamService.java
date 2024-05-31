@@ -8,6 +8,6 @@ import org.springframework.data.domain.Page;
 public interface DongSanPhamService {
     Page<DongSanPham> getAll(int page);
     void add(DongSanPham dongSanPham);
-    DongSanPham detail(Integer id);
-    DongSanPham delete(Integer id);
+    DongSanPham detail(Integer idDongSanPham);
+    DongSanPham delete(Integer idDongSanPham);
 }

@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,18 +24,29 @@
         <th>NgayTao</th>
         <th>NgaySua</th>
         <th>TrangThai</th>
+        <th scope="col">Action</th>
     </tr>
     <tbody>
     <c:forEach var="nsx" items="${list.content}">
         <tr>
             <td>${nsx.maNSX}</td>
-            <td>${nsx.tenNSX}</td>
-            <td>${nsx.ngayTao}</td>
-            <td>${nsx.ngaySua}</td>
+            <td>
+                <c:set var="tenNSX" value="${nsx.tenNSX}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${tenNSX}" />
+            </td>
+            <td>
+                <c:set var="ngayTao" value="${nsx.ngayTao}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngayTao}" />
+            </td>
+            <td>
+                <c:set var="ngaySua" value="${nsx.ngaySua}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngaySua}" />
+            </td>
             <td>${nsx.trangThai}</td>
-<%--            <td>--%>
-<%--                <a href="/size/view-add">ADD</a>--%>
-<%--            </td>--%>
+            <td>
+                <button class="btn btn-light" ><a class="btn btn-light" href="/nsx/delete/${nsx.idNSX}">Delete</a></button>
+                <button class="btn btn-dark"><a class="btn btn-dark" href="/nsx/updateForm/${nsx.idNSX}">Detail</a></button>
+            </td>
         </tr>
     </c:forEach>
     </tbody>

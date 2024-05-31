@@ -12,13 +12,48 @@
 </head>
 <body>
 <h1 class="text-center" style="padding-bottom: 50px">anh</h1>
-<form action="/anh/add" method="post" onsubmit="return kt()">
+<form action="/ctsp/add" method="post" onsubmit="return kt()">
     <table>
         <div class="col-mt-3">
 
             <div class="col-6">
-                <label>url</label>
-                <input type="url" name="url" id="url" class="form-control">
+                <label>idSanPham</label>
+                <input type="text" name="idSanPham" id="idSanPham" class="form-control">
+            </div>
+
+            <div class="col-6">
+                <label>idMauSac</label>
+                <input type="text" name="idMauSac" id="idMauSac" class="form-control">
+            </div>
+
+            <div class="col-6">
+                <label>idDotGiamGia</label>
+                <input type="text" name="idDotGiamGia" id="idDotGiamGia" class="form-control">
+            </div>
+
+            <div class="col-6">
+                <label>anh</label>
+                <input type="text" name="anh" id="anh" class="form-control">
+            </div>
+
+            <div class="col-6">
+                <label>moTa</label>
+                <input type="text" name="moTa" id="moTa" class="form-control">
+            </div>
+
+            <div class="col-6">
+                <label>giaBan</label>
+                <input type="text" name="giaBan" id="giaBan" class="form-control">
+            </div>
+
+            <div class="col-6">
+                <label>nguoiTao</label>
+                <input type="text" name="nguoiTao" id="nguoiTao" class="form-control">
+            </div>
+
+            <div class="col-6">
+                <label>nguoiSua</label>
+                <input type="text" name="nguoiSua" id="nguoiSua" class="form-control">
             </div>
 
             <div class="col-6">
@@ -28,6 +63,10 @@
             <div class="col-6">
                 <label>ngaySua</label>
                 <input type="date" name="ngaySua" id="ngaySua" class="form-control" />
+            </div>
+            <div class="col-6">
+                <label>ghiChu</label>
+                <input type="text" name="ghiChu" id="ghiChu" class="form-control" />
             </div>
             <div class="col-6">
                 <label>trangThai</label>

@@ -1,7 +1,10 @@
 package com.example.datntest.service.impl;
 
+import com.example.datntest.entity.Anh;
 import com.example.datntest.entity.NSX;
+import com.example.datntest.repository.AnhRepository;
 import com.example.datntest.repository.NSXRepository;
+import com.example.datntest.service.AnhService;
 import com.example.datntest.service.NSXService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,28 +13,31 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class NSXImpl implements NSXService {
+public class Anhmpl implements AnhService {
     @Autowired
-    private NSXRepository nsxRepository;
+    private AnhRepository anhRepository;
     @Override
-    public Page<NSX> getAll(int page) {
+    public Page<Anh> getAll(int page) {
         Pageable pageable = PageRequest.of(page,3);
-        return nsxRepository.findAll(pageable);
+        return anhRepository.findAll(pageable);
     }
 
     @Override
-    public void add(NSX nsx) {
-        nsxRepository.save(nsx);
+    public void add(Anh anh) {
+        anhRepository.save(anh);
     }
 
     @Override
-    public NSX detail(Integer id) {
+    public Anh detail(Integer idAnh) {
+        return anhRepository.findById(idAnh).orElse(null);
+
+    }
+
+    @Override
+    public Anh delete(Integer id) {
+        anhRepository.deleteById(id);
         return null;
     }
 
-    @Override
-    public NSX delete(Integer id) {
-        return null;
-    }
 
 }

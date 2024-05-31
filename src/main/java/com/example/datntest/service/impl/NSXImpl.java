@@ -1,11 +1,8 @@
 package com.example.datntest.service.impl;
 
 import com.example.datntest.entity.NSX;
-import com.example.datntest.entity.Size;
 import com.example.datntest.repository.NSXRepository;
-import com.example.datntest.repository.SizeRepository;
 import com.example.datntest.service.NSXService;
-import com.example.datntest.service.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,12 +25,14 @@ public class NSXImpl implements NSXService {
     }
 
     @Override
-    public NSX detail(Integer id) {
-        return null;
+    public NSX detail(Integer idNSX) {
+        return nsxRepository.findById(idNSX).orElse(null);
+
     }
 
     @Override
-    public NSX delete(Integer id) {
+    public NSX delete(Integer idNSX) {
+        nsxRepository.deleteById(idNSX);
         return null;
     }
 

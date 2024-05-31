@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,23 +19,56 @@
 <button class="btn btn-primary"><a class="btn btn-primary" href="/sanpham/view-add">ADD</a></button>
 <table class="table table-secondary">
     <tr>
+        <th>idChatLieu</th>
+        <th>idDongSanPham</th>
+        <th>idNSX</th>
+        <th>idHang</th>
         <th>maSanPham</th>
         <th>tenSanPham</th>
+        <th>chieuDai</th>
+        <th>chieuRong</th>
+        <th>chieuCao</th>
+        <th>trongLuong</th>
+        <th>trongLuongToiDa</th>
+        <th>giaNhap</th>
+        <th>soLuongTon</th>
         <th>NgayTao</th>
         <th>NgaySua</th>
         <th>TrangThai</th>
+        <th scope="col">Action</th>
     </tr>
     <tbody>
     <c:forEach var="sanpham" items="${list.content}">
         <tr>
+            <td>${sanpham.idChatLieu.tenChatLieu}</td>
+            <td>${sanpham.idDongSanPham.tenDongSanPham}</td>
+            <td>
+                <c:set var="idNSX" value="${sanpham.idNSX.tenNSX}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${idNSX}" />
+            </td>
+            <td>${sanpham.idHang.tenHang}</td>
             <td>${sanpham.maSanPham}</td>
             <td>${sanpham.tenSanPham}</td>
-            <td>${sanpham.ngayTao}</td>
-            <td>${sanpham.ngaySua}</td>
+            <td>${sanpham.chieuDai}</td>
+            <td>${sanpham.chieuRong}</td>
+            <td>${sanpham.chieuCao}</td>
+            <td>${sanpham.trongLuong}</td>
+            <td>${sanpham.trongLuongToiDa}</td>
+            <td>${sanpham.giaNhap}</td>
+            <td>${sanpham.soLuongTon}</td>
+            <td>
+                <c:set var="ngayTao" value="${sanpham.ngayTao}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngayTao}" />
+            </td>
+            <td>
+                <c:set var="ngaySua" value="${sanpham.ngaySua}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngaySua}" />
+            </td>
             <td>${sanpham.trangThai}</td>
-<%--            <td>--%>
-<%--                <a href="/size/view-add">ADD</a>--%>
-<%--            </td>--%>
+            <td>
+                <button class="btn btn-light" ><a class="btn btn-light" href="/sanpham/delete/${sanpham.idSanPham}">Delete</a></button>
+                <button class="btn btn-dark"><a class="btn btn-dark" href="/sanpham/updateForm/${sanpham.idSanPham}">Detail</a></button>
+            </td>
         </tr>
     </c:forEach>
     </tbody>

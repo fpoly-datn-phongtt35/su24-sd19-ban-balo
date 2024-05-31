@@ -1,16 +1,15 @@
 package com.example.datntest.controller;
 
+import com.example.datntest.entity.DongSanPham;
 import com.example.datntest.entity.NSX;
-import com.example.datntest.entity.Size;
+import com.example.datntest.repository.DongSanPhamRepository;
+import com.example.datntest.repository.NSXRepository;
 import com.example.datntest.service.NSXService;
-import com.example.datntest.service.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 
@@ -19,6 +18,9 @@ public class NSXController {
 
     @Autowired
     private NSXService nsxService;
+    @Autowired
+    private NSXRepository nsxRepository;
+
 
 
     @GetMapping("/nsx/hien-thi")
@@ -49,4 +51,33 @@ public class NSXController {
         nsxService.add(nsx);
         return "redirect:/nsx/hien-thi";
     }
+    //xóa
+    @GetMapping("/nsx/delete/{idNSX}")
+    public String delete(@PathVariable("idNSX") Integer idNSX){
+        nsxService.delete(idNSX);
+        return "redirect:/nsx/hien-thi";
+    }
+
+    @GetMapping("/nsx/updateForm/{idNSX}")
+    public String view(@PathVariable("idNSX") Integer idNSX, Model model) {
+        NSX nsx = nsxService.detail(idNSX);
+        model.addAttribute("nsx", nsx);
+        return "nsx/updateForm";
+    }
+
+    @PostMapping("/nsx/update/{idNSX}")
+    public String update(@PathVariable("idNSX") Integer idNSX, @ModelAttribute("nsx") NSX updatedCustomer) {
+        NSX nsx = nsxRepository.findById(idNSX)
+                .orElseThrow(() -> new RuntimeException("Khong tim thay "));
+
+        nsx.setMaNSX(updatedCustomer.getMaNSX());
+        nsx.setTenNSX(updatedCustomer.getTenNSX());
+        nsx.setNgayTao(updatedCustomer.getNgayTao());
+        nsx.setNgaySua(updatedCustomer.getNgaySua());
+        nsx.setTrangThai(updatedCustomer.getTrangThai());
+
+        nsxRepository.save(nsx);
+        return "redirect:/nsx/hien-thi";
+    }
+
 }

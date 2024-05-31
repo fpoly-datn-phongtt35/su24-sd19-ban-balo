@@ -1,7 +1,6 @@
 package com.example.datntest.service.impl;
 
 import com.example.datntest.entity.SanPham;
-import com.example.datntest.entity.Size;
 import com.example.datntest.repository.SanPhamRepository;
 import com.example.datntest.service.SanPhamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +25,13 @@ public class SanPhamImpl implements SanPhamService {
     }
 
     @Override
-    public SanPham detail(Integer id) {
-        return null;
+    public SanPham detail(Integer idSanPham) {
+        return sanPhamRepository.findById(idSanPham).orElse(null);
     }
 
     @Override
-    public SanPham delete(Integer id) {
+    public SanPham delete(Integer idSanPham) {
+        sanPhamRepository.deleteById(idSanPham);
         return null;
     }
 

@@ -1,16 +1,14 @@
 package com.example.datntest.controller;
 
+import com.example.datntest.entity.ChatLieu;
 import com.example.datntest.entity.DongSanPham;
-import com.example.datntest.entity.SanPham;
+import com.example.datntest.repository.DongSanPhamRepository;
 import com.example.datntest.service.DongSanPhamService;
-import com.example.datntest.service.SanPhamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 
@@ -19,6 +17,8 @@ public class DongSanPhamController {
 
     @Autowired
     private DongSanPhamService dongSanPhamService;
+    @Autowired
+    private DongSanPhamRepository dongSanPhamRepository;
 
 
     @GetMapping("/dongsanpham/hien-thi")
@@ -49,4 +49,34 @@ public class DongSanPhamController {
         dongSanPhamService.add(dongSanPham);
         return "redirect:/dongsanpham/hien-thi";
     }
+
+    //xóa
+    @GetMapping("/dongsanpham/delete/{idDongSanPham}")
+    public String delete(@PathVariable("idDongSanPham") Integer id){
+        dongSanPhamService.delete(id);
+        return "redirect:/dongsanpham/hien-thi";
+    }
+
+    @GetMapping("/dongsanpham/updateForm/{idChatLieu}")
+    public String view(@PathVariable("idChatLieu") Integer idDongSanPham, Model model) {
+        DongSanPham dongSanPham = dongSanPhamService.detail(idDongSanPham);
+        model.addAttribute("dongsanpham", dongSanPham);
+        return "dongsanpham/updateForm";
+    }
+
+    @PostMapping("/dongsanpham/update/{idDongSanPham}")
+    public String update(@PathVariable("idDongSanPham") Integer idDongSanPham, @ModelAttribute("dongsanpham") DongSanPham updatedCustomer) {
+        DongSanPham dongSanPham = dongSanPhamRepository.findById(idDongSanPham)
+                .orElseThrow(() -> new RuntimeException("Khong tim thay "));
+
+        dongSanPham.setMaDongSanPham(updatedCustomer.getMaDongSanPham());
+        dongSanPham.setTenDongSanPham(updatedCustomer.getTenDongSanPham());
+        dongSanPham.setNgayTao(updatedCustomer.getNgayTao());
+        dongSanPham.setNgaySua(updatedCustomer.getNgaySua());
+        dongSanPham.setTrangThai(updatedCustomer.getTrangThai());
+
+        dongSanPhamRepository.save(dongSanPham);
+        return "redirect:/dongsanpham/hien-thi";
+    }
+
 }

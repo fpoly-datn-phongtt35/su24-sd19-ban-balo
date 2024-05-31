@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,19 +24,26 @@
         <th>NgayTao</th>
         <th>NgaySua</th>
         <th>TrangThai</th>
+        <th scope="col">Action</th>
     </tr>
     <tbody>
     <c:forEach var="mausac" items="${list.content}">
         <tr>
             <td>${mausac.maMauSac}</td>
             <td>${mausac.tenMauSac}</td>
-            <td>${mausac.ngayTao}</td>
-            <td>${mausac.ngaySua}</td>
+            <td>
+                <c:set var="ngayTao" value="${mausac.ngayTao}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngayTao}" />
+            </td>
+            <td>
+                <c:set var="ngaySua" value="${mausac.ngaySua}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngaySua}" />
+            </td>
             <td>${mausac.trangThai}</td>
-<%--            <td>--%>
-<%--                <a href="/size/view-add">ADD</a>--%>
-<%--            </td>--%>
-        </tr>
+            <td>
+                <button class="btn btn-light" ><a class="btn btn-light" href="/mausac/delete/${mausac.idMauSac}">Delete</a></button>
+                <button class="btn btn-dark"><a class="btn btn-dark" href="/mausac/updateForm/${mausac.idMauSac}">Detail</a></button>
+            </td>
     </c:forEach>
     </tbody>
     <nav aria-label="Page navigation example" class="container">

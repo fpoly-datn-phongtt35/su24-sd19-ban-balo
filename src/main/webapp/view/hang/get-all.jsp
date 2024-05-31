@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,18 +24,26 @@
         <th>NgayTao</th>
         <th>NgaySua</th>
         <th>TrangThai</th>
+        <th scope="col">Action</th>
     </tr>
     <tbody>
     <c:forEach var="hang" items="${list.content}">
         <tr>
             <td>${hang.maHang}</td>
             <td>${hang.tenHang}</td>
-            <td>${hang.ngayTao}</td>
-            <td>${hang.ngaySua}</td>
+            <td>
+                <c:set var="ngayTao" value="${hang.ngayTao}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngayTao}" />
+            </td>
+            <td>
+                <c:set var="ngaySua" value="${hang.ngaySua}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngaySua}" />
+            </td>
             <td>${hang.trangThai}</td>
-<%--            <td>--%>
-<%--                <a href="/size/view-add">ADD</a>--%>
-<%--            </td>--%>
+            <td>
+                <button class="btn btn-light" ><a class="btn btn-light" href="/hang/delete/${hang.idHang}">Delete</a></button>
+                <button class="btn btn-dark"><a class="btn btn-dark" href="/hang/updateForm/${hang.idHang}">Detail</a></button>
+            </td>
         </tr>
     </c:forEach>
     </tbody>

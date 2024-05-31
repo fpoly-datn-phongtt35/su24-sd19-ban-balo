@@ -1,16 +1,15 @@
 package com.example.datntest.controller;
 
+import com.example.datntest.entity.DongSanPham;
 import com.example.datntest.entity.Hang;
-import com.example.datntest.entity.Size;
+import com.example.datntest.repository.DongSanPhamRepository;
+import com.example.datntest.repository.HangRepository;
 import com.example.datntest.service.HangService;
-import com.example.datntest.service.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 
@@ -19,6 +18,8 @@ public class HangController {
 
     @Autowired
     private HangService hangService;
+    @Autowired
+    private HangRepository hangRepository;
 
 
     @GetMapping("/hang/hien-thi")
@@ -47,6 +48,34 @@ public class HangController {
                 .trangThai(trangThai)
                 .build();
         hangService.add(hang);
+        return "redirect:/hang/hien-thi";
+    }
+    //xóa
+    @GetMapping("/hang/delete/{idHang}")
+    public String delete(@PathVariable("idHang") Integer idHang){
+        hangService.delete(idHang);
+        return "redirect:/dongsanpham/hien-thi";
+    }
+
+    @GetMapping("/hang/updateForm/{idHang}")
+    public String view(@PathVariable("idHang") Integer idHang, Model model) {
+        Hang hang = hangService.detail(idHang);
+        model.addAttribute("hang", hang);
+        return "hang/updateForm";
+    }
+
+    @PostMapping("/hang/update/{idHang}")
+    public String update(@PathVariable("idHang") Integer idHang, @ModelAttribute("idHang") Hang updatedCustomer) {
+        Hang hang = hangRepository.findById(idHang)
+                .orElseThrow(() -> new RuntimeException("Khong tim thay "));
+
+        hang.setMaHang(updatedCustomer.getMaHang());
+        hang.setTenHang(updatedCustomer.getTenHang());
+        hang.setNgayTao(updatedCustomer.getNgayTao());
+        hang.setNgaySua(updatedCustomer.getNgaySua());
+        hang.setTrangThai(updatedCustomer.getTrangThai());
+
+        hangRepository.save(hang);
         return "redirect:/hang/hien-thi";
     }
 }

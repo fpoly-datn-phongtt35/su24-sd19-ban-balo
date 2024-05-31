@@ -1,50 +1,78 @@
 package com.example.datntest.controller;
 
-import com.example.datntest.entity.NSX;
-import com.example.datntest.service.NSXService;
+import com.example.datntest.entity.Anh;
+import com.example.datntest.repository.AnhRepository;
+import com.example.datntest.service.AnhService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 
+
 @Controller
-public class NSXController {
+public class AnhController {
 
     @Autowired
-    private NSXService nsxService;
+    private AnhService anhService;
+    @Autowired
+    private AnhRepository anhRepository;
 
 
-    @GetMapping("/nsx/hien-thi")
+    @GetMapping("/anh/hien-thi")
     private String hienthi(Model model,
                            @RequestParam(value = "page", defaultValue = "0") int pages) {
-        Page<NSX> page = nsxService.getAll(pages);
+        Page<Anh> page = anhService.getAll(pages);
         model.addAttribute("list", page);
-        return "/nsx/get-all";
+        return "/anh/get-all";
     }
-    @GetMapping("/nsx/view-add")
+    @GetMapping("/anh/view-add")
     private String viewAdd() {
-        return "nsx/add";
+        return "anh/add";
     }
-    @PostMapping("/nsx/add")
-    public String add(@RequestParam("maNSX")String maNSX,
-                      @RequestParam("tenNSX") String tenNSX,
+    @PostMapping("/anh/add")
+    public String add(
+                      @RequestParam("url") String url,
                       @RequestParam("ngayTao") String ngayTao,
                       @RequestParam("ngaySua") String ngaySua,
                       @RequestParam("trangThai") Integer trangThai)
     {
-        NSX nsx = NSX.builder()
-                .maNSX(maNSX)
-                .tenNSX(Date.valueOf(tenNSX))
+        Anh anh = Anh.builder()
+                .url(url)
                 .ngayTao(Date.valueOf(ngayTao))
                 .ngaySua(Date.valueOf(ngaySua))
                 .trangThai(trangThai)
                 .build();
-        nsxService.add(nsx);
-        return "redirect:/nsx/hien-thi";
+        anhService.add(anh);
+        return "redirect:/anh/hien-thi";
+    }
+    //xóa
+    @GetMapping("/anh/delete/{idAnh}")
+    public String delete(@PathVariable("idAnh") Integer id){
+        anhService.delete(id);
+        return "redirect:/anh/hien-thi";
+    }
+
+    @GetMapping("/anh/updateForm/{idAnh}")
+    public String view(@PathVariable("idAnh") Integer idAnh, Model model) {
+        Anh anh = anhService.detail(idAnh);
+        model.addAttribute("anh", anh);
+        return "anh/updateForm";
+    }
+
+    @PostMapping("/anh/update/{idAnh}")
+    public String update(@PathVariable("idAnh") Integer idAnh, @ModelAttribute("anh") Anh updatedCustomer) {
+        Anh anh = anhRepository.findById(idAnh)
+                .orElseThrow(() -> new RuntimeException("Khong tim thay "));
+
+        anh.setUrl(updatedCustomer.getUrl());
+        anh.setNgayTao(updatedCustomer.getNgayTao());
+        anh.setNgaySua(updatedCustomer.getNgaySua());
+        anh.setTrangThai(updatedCustomer.getTrangThai());
+
+        anhRepository.save(anh);
+        return "redirect:/anh/hien-thi";
     }
 }

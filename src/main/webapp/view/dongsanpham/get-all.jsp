@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,7 +15,7 @@
 
 <body>
 
-<h1>Danh sach SANpHAM</h1>
+<h1>Danh sach dongsanpham</h1>
 <button class="btn btn-primary"><a class="btn btn-primary" href="/dongsanpham/view-add">ADD</a></button>
 <table class="table table-secondary">
     <tr>
@@ -24,18 +24,26 @@
         <th>NgayTao</th>
         <th>NgaySua</th>
         <th>TrangThai</th>
+        <th scope="col">Action</th>
     </tr>
     <tbody>
     <c:forEach var="dongsanpham" items="${list.content}">
         <tr>
             <td>${dongsanpham.maDongSanPham}</td>
             <td>${dongsanpham.tenDongSanPham}</td>
-            <td>${dongsanpham.ngayTao}</td>
-            <td>${dongsanpham.ngaySua}</td>
+            <td>
+                <c:set var="ngayTao" value="${dongsanpham.ngayTao}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngayTao}" />
+            </td>
+            <td>
+                <c:set var="ngaySua" value="${dongsanpham.ngaySua}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngaySua}" />
+            </td>
             <td>${dongsanpham.trangThai}</td>
-<%--            <td>--%>
-<%--                <a href="/size/view-add">ADD</a>--%>
-<%--            </td>--%>
+            <td>
+                <button class="btn btn-light" ><a class="btn btn-light" href="/dongsanpham/delete/${dongsanpham.idDongSanPham}">Delete</a></button>
+                <button class="btn btn-dark"><a class="btn btn-dark" href="/dongsanpham/updateForm/${dongsanpham.idDongSanPham}">Detail</a></button>
+            </td>
         </tr>
     </c:forEach>
     </tbody>

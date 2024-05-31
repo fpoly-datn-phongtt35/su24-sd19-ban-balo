@@ -2,6 +2,10 @@ package com.example.datntest.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @AllArgsConstructor
@@ -19,68 +23,45 @@ public class CTSP {
     private Integer idCTSP;
 
     @ManyToOne
-    @JoinColumn(name = "IdChatLieu", referencedColumnName = "IdChatLieu")
-    private ChatLieu chatLieu;
-
-    @ManyToOne
     @JoinColumn(name = "IdSanPham", referencedColumnName = "IdSanPham")
-    private SanPham sanPham;
+    private SanPham idSanPham;
 
     @ManyToOne
     @JoinColumn(name = "IdMauSac", referencedColumnName = "IdMauSac")
-    private MauSac mauSac;
+    private MauSac idMauSac;
 
     @ManyToOne
-    @JoinColumn(name = "IdDongSanPham", referencedColumnName = "IdDongSanPham")
-    private DongSanPham dongSanPham;
+    @JoinColumn(name = "IdDotGiamGia", referencedColumnName = "IdDotGiamGia")
+    private DotGiamGia idDotGiamGia;
 
     @ManyToOne
-    @JoinColumn(name = "IdHang", referencedColumnName = "IdHang")
-    private Hang hang;
-
-    @ManyToOne
-    @JoinColumn(name = "IdNSX", referencedColumnName = "IdNSX")
-    private NSX nsx;
-
-    @ManyToOne
-    @JoinColumn(name = "IdSize", referencedColumnName = "IdSize")
-    private Size size;
-
-//  Thiếu đợt giảm giá
-
-
-    @Column(name = "Anh")
-    private String anh;
+    @JoinColumn(name = "Anh", referencedColumnName = "IdAnh")
+    private Anh anh;
 
     @Column(name = "Mota")
     private String moTa;
 
-    @Column(name = "SoLuongTon")
-    private Integer soLuongTon;
-
-    @Column(name = "GiaNhap")
-    private Double giaNhap;
-
     @Column(name = "GiaBan")
-    private Double giaBan;
+    private BigDecimal giaBan;
 
-    @Column(name = "NguoiTao")
-    private String nguoiTao;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "NguoiTao", insertable = true, updatable = true, referencedColumnName = "idUsers")
+    private Users nguoiTao;
 
-    @Column(name = "NguoiSua")
-    private String nguoiSua;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "NguoiSua", insertable = true, updatable = true, referencedColumnName = "idUsers")
+    private Users nguoiSua;
 
     @Column(name = "NgayTao")
-    private String NgayTao;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date ngayTao;
 
     @Column(name = "NgaySua")
-    private String ngaySua;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date ngaySua;
 
     @Column(name = "GhiChu")
     private String ghiChu;
-
-    @Column(name = "SoLuongTra")
-    private Integer soLuongTra;
 
     @Column(name = "TrangThai")
     private Integer trangThai;

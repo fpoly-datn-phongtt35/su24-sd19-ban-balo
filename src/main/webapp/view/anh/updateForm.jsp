@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,28 +14,29 @@
 </head>
 <body>
 <h1 class="text-center" style="padding-bottom: 50px">anh</h1>
-<form action="/anh/add" method="post" onsubmit="return kt()">
+<form action="/anh/update/${anh.idAnh}" class="container" method="post" onsubmit="return kt()">
     <table>
         <div class="col-mt-3">
-
             <div class="col-6">
                 <label>url</label>
-                <input type="url" name="url" id="url" class="form-control" />
+                <input type="url" name="url" id="url" class="form-control"  value="${anh.url}" >
             </div>
 
             <div class="col-6">
                 <label>ngayTao</label>
-                <input type="date" name="ngayTao" id="ngayTao" class="form-control" />
+                <input type="date" name="ngayTao" id="ngayTao" class="form-control"
+                       value="<fmt:formatDate pattern='yyyy-MM-dd' value='${anh.ngayTao}'/>">
             </div>
             <div class="col-6">
                 <label>ngaySua</label>
-                <input type="date" name="ngaySua" id="ngaySua" class="form-control" />
+                <input type="date" name="ngaySua" id="ngaySua" class="form-control"
+                       value="<fmt:formatDate pattern='yyyy-MM-dd' value='${anh.ngaySua}'/>">
             </div>
             <div class="col-6">
                 <label>trangThai</label>
-                <input type="text" name="trangThai" id="trangThai" class="form-control" />
+                <input type="text" name="trangThai" id="trangThai" class="form-control"   value="${anh.trangThai}" />
             </div>
-            <button class="btn btn-primary" type="submit" >ADD</button>
+            <button class="btn btn-primary" type="submit" >update</button>
         </div>
     </table>
 </form>

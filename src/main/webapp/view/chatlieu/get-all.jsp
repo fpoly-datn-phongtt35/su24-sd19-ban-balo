@@ -1,4 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!doctype html>
 <html lang="en">
@@ -15,27 +16,35 @@
 
 <body>
 
-<h1>Danh sach Size</h1>
+<h1>Danh sach ChatLieu</h1>
 <button class="btn btn-primary"><a class="btn btn-primary" href="/chatlieu/view-add">ADD</a></button>
 <table class="table table-secondary">
     <tr>
-        <th>machatLieu</th>
-        <th>tenchatLieu</th>
+        <th>maChatLieu</th>
+        <th>tenChatLieu</th>
         <th>NgayTao</th>
         <th>NgaySua</th>
         <th>TrangThai</th>
+        <th scope="col">Action</th>
     </tr>
     <tbody>
     <c:forEach var="chatlieu" items="${list.content}">
         <tr>
-            <td>${chatlieu.machatLieu}</td>
-            <td>${chatlieu.tenchatLieu}</td>
-            <td>${chatlieu.ngayTao}</td>
-            <td>${chatlieu.ngaySua}</td>
+            <td>${chatlieu.maChatLieu}</td>
+            <td>${chatlieu.tenChatLieu}</td>
+            <td>
+                <c:set var="ngayTao" value="${chatlieu.ngayTao}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngayTao}" />
+            </td>
+            <td>
+                <c:set var="ngaySua" value="${chatlieu.ngaySua}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngaySua}" />
+            </td>
             <td>${chatlieu.trangThai}</td>
-<%--            <td>--%>
-<%--                <a href="/size/view-add">ADD</a>--%>
-<%--            </td>--%>
+            <td>
+                <button class="btn btn-light" ><a class="btn btn-light" href="/chatlieu/delete/${chatlieu.idChatLieu}">Delete</a></button>
+                <button class="btn btn-dark"><a class="btn btn-dark" href="/chatlieu/updateForm/${chatlieu.idChatLieu}">Detail</a></button>
+            </td>
         </tr>
     </c:forEach>
     </tbody>

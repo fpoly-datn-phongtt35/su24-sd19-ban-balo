@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,33 +15,57 @@
 
 <body>
 
-<h1>Danh sach SANpHAM</h1>
-<button class="btn btn-primary"><a class="btn btn-primary" href="/anh/view-add">ADD</a></button>
+<h1>Danh sach ctsp</h1>
+<button class="btn btn-primary"><a class="btn btn-primary" href="/ctsp/view-add">ADD</a></button>
 <table class="table table-secondary">
     <tr>
-        <th>url</th>
+        <th>idSanPham</th>
+        <th>idMauSac</th>
+        <th>idDotGiamGia</th>
+        <th>anh</th>
+        <th>moTa</th>
+        <th>giaBan</th>
+        <th>nguoiTao</th>
+        <th>nguoiSua</th>
         <th>NgayTao</th>
         <th>NgaySua</th>
+        <th>ghiChu</th>
         <th>TrangThai</th>
+        <th scope="col">Action</th>
     </tr>
     <tbody>
-    <c:forEach var="anh" items="${list.content}">
+    <c:forEach var="ctsp" items="${list.content}">
         <tr>
-            <td>${anh.url}</td>
-            <td>${anh.ngayTao}</td>
-            <td>${anh.ngaySua}</td>
-            <td>${anh.trangThai}</td>
-<%--            <td>--%>
-<%--                <a href="/kichThuoc/view-add">ADD</a>--%>
-<%--            </td>--%>
+            <td>${ctsp.idSanPham.tenSanPham}</td>
+            <td>${ctsp.idMauSac.tenMauSac}</td>
+            <td>${ctsp.idDotGiamGia.tenDotGiamGia}</td>
+            <td>${ctsp.anh.idAnh}</td>
+            <td>${ctsp.moTa}</td>
+            <td>${ctsp.giaBan}</td>
+            <td>${ctsp.nguoiTao.email}</td>
+            <td>${ctsp.nguoiSua.email}</td>
+            <td>
+                <c:set var="ngayTao" value="${ctsp.ngayTao}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngayTao}" />
+            </td>
+            <td>
+                <c:set var="ngaySua" value="${ctsp.ngaySua}" />
+                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngaySua}" />
+            </td>
+            <td>${ctsp.ghiChu}</td>
+            <td>${ctsp.trangThai}</td>
+            <td>
+                <button class="btn btn-light" ><a class="btn btn-light" href="/ctsp/delete/${ctsp.idCTSP}">Delete</a></button>
+                <button class="btn btn-dark"><a class="btn btn-dark" href="/ctsp/updateForm/${ctsp.idCTSP}">Detail</a></button>
+            </td>
         </tr>
     </c:forEach>
     </tbody>
-    <nav aria-label="Page navigation example" class="container">
+    <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <c:forEach begin="0" end="${nv.totalPages +1}" varStatus="loop">
-                <li class="page-item"><a class="page-link" href="/anh/hien-thi?page=${loop.index}">${loop.index + 1}</a></li>
-            </c:forEach>
+            <li class="page-item"><a class="page-link" href="/ctsp/hien-thi?page=${list.number - 1}">Truoc</a></li>
+            <li class="page-item"><a class="page-link" href="#">${list.number}</a></li>
+            <li class="page-item"><a class="page-link" href="/ctsp/hien-thi?page=${list.number + 1}">Sau</a></li>
         </ul>
     </nav>
 </table>

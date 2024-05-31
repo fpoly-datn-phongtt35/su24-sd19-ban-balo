@@ -1,11 +1,8 @@
 package com.example.datntest.service.impl;
 
 import com.example.datntest.entity.ChatLieu;
-import com.example.datntest.entity.Size;
 import com.example.datntest.repository.ChatLieuRepository;
-import com.example.datntest.repository.SizeRepository;
 import com.example.datntest.service.ChatLieuService;
-import com.example.datntest.service.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,12 +25,13 @@ public class ChatLieuImpl implements ChatLieuService {
     }
 
     @Override
-    public ChatLieu detail(Integer id) {
-        return null;
+    public ChatLieu detail(Integer idChatLieu) {
+        return chatLieuRepository.findById(idChatLieu).orElse(null);
     }
 
     @Override
-    public ChatLieu delete(Integer id) {
+    public ChatLieu delete(Integer idChatLieu) {
+        chatLieuRepository.deleteById(idChatLieu);
         return null;
     }
 

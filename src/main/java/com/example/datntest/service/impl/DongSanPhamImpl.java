@@ -28,12 +28,14 @@ public class DongSanPhamImpl implements DongSanPhamService {
     }
 
     @Override
-    public DongSanPham detail(Integer id) {
-        return null;
+    public DongSanPham detail(Integer idDongSanPham) {
+        return dongSanPhamRepository.findById(idDongSanPham).orElse(null);
+
     }
 
     @Override
-    public DongSanPham delete(Integer id) {
+    public DongSanPham delete(Integer idDongSanPham) {
+        dongSanPhamRepository.deleteById(idDongSanPham);
         return null;
     }
 

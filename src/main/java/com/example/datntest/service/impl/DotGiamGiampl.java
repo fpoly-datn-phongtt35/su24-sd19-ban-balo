@@ -1,11 +1,11 @@
 package com.example.datntest.service.impl;
 
 import com.example.datntest.entity.Anh;
-import com.example.datntest.entity.NSX;
+import com.example.datntest.entity.DotGiamGia;
 import com.example.datntest.repository.AnhRepository;
-import com.example.datntest.repository.NSXRepository;
+import com.example.datntest.repository.DotGiamGiaRepository;
 import com.example.datntest.service.AnhService;
-import com.example.datntest.service.NSXService;
+import com.example.datntest.service.DotGiamGiaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,27 +13,29 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class Anhmpl implements AnhService {
+public class DotGiamGiampl implements DotGiamGiaService {
     @Autowired
-    private AnhRepository anhRepository;
+    private DotGiamGiaRepository dotGiamGiaRepository;
     @Override
-    public Page<Anh> getAll(int page) {
+    public Page<DotGiamGia> getAll(int page) {
         Pageable pageable = PageRequest.of(page,3);
-        return anhRepository.findAll(pageable);
+        return dotGiamGiaRepository.findAll(pageable);
     }
 
     @Override
-    public void add(Anh anh) {
-        anhRepository.save(anh);
+    public void add(DotGiamGia anh) {
+        dotGiamGiaRepository.save(anh);
     }
 
     @Override
-    public Anh detail(Integer id) {
-        return null;
+    public DotGiamGia detail(Integer idDotGiamGia) {
+        return dotGiamGiaRepository.findById(idDotGiamGia).orElse(null);
+
     }
 
     @Override
-    public Anh delete(Integer id) {
+    public DotGiamGia delete(Integer idDotGiamGia) {
+        dotGiamGiaRepository.deleteById(idDotGiamGia);
         return null;
     }
 

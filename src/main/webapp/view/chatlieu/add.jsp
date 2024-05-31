@@ -16,12 +16,12 @@
     <table>
         <div class="col-mt-3">
             <div class="col-6">
-                <label>machatLieu</label>
-                <input type="text" name="machatLieu" id="machatLieu" class="form-control">
+                <label>maChatLieu</label>
+                <input type="text" name="maChatLieu" id="maChatLieu" class="form-control">
             </div>
             <div class="col-6">
-                <label>tenchatLieu</label>
-                <input type="text" name="tenchatLieu" id="tenchatLieu" class="form-control">
+                <label>tenChatLieu</label>
+                <input type="text" name="tenChatLieu" id="tenChatLieu" class="form-control">
             </div>
             <div class="col-6">
                 <label>ngayTao</label>
