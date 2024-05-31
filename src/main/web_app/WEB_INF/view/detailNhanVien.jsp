@@ -21,19 +21,19 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">Mã:</label>
                     <div class="col-sm-10">
-                        <form:input class="form-control" id="email" path="ma"></form:input>
+                        <form:input class="form-control" id="email" path="maNhanVien"></form:input>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2">Tên:</label>
                     <div class="col-sm-10">
-                        <form:input path="ten" type="text" class="form-control"></form:input>
+                        <form:input path="tenNhanVien" type="text" class="form-control"></form:input>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2">Họ:</label>
                     <div class="col-sm-10">
-                        <form:input path="ho" type="text" class="form-control" id="pwd"></form:input>
+                        <form:input path="hoNhanVien" type="text" class="form-control" id="pwd"></form:input>
                     </div>
                 </div>
                 <div class="form-group">

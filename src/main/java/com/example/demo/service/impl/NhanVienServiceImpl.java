@@ -16,13 +16,19 @@ import java.util.Optional;
 public class NhanVienServiceImpl implements NhanVienService {
 
     private final NhanVienRepository nhanVienRepository;
+    public List<NhanVien> page(int a, int b){
+        //a laf so trang, b sz
 
+        return nhanVienRepository.findAll(PageRequest.of(a,b)).stream().toList();
 
-    @Override
-    public Page<NhanVien> phanTrang(Integer pageNum, Integer pageNo) {
-        Pageable pageable = PageRequest.of(pageNum , pageNo);
-        return nhanVienRepository.findAll(pageable);
     }
+
+
+//    @Override
+//    public Page<NhanVien> phanTrang(Integer pageNum, Integer pageNo) {
+//        Pageable pageable = PageRequest.of(pageNum , pageNo);
+//        return nhanVienRepository.findAll(pageable);
+//    }
 
     @Override
     public List<NhanVien> getAll() {

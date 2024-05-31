@@ -129,19 +129,19 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Mã:</label>
                             <div class="col-sm-10">
-                                <form:input class="form-control" id="email" path="ma"></form:input>
+                                <form:input class="form-control" id="email" path="maNhanVien"></form:input>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2">Tên:</label>
                             <div class="col-sm-10">
-                                <form:input path="ten" type="text" class="form-control"></form:input>
+                                <form:input path="tenNhanVien" type="text" class="form-control"></form:input>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2">Họ:</label>
                             <div class="col-sm-10">
-                                <form:input path="ho" type="text" class="form-control" id="pwd"></form:input>
+                                <form:input path="hoNhanVien" type="text" class="form-control" id="pwd"></form:input>
                             </div>
                         </div>
                         <div class="form-group">
@@ -267,7 +267,7 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col" hidden="true">Id</th>
+        <th scope="col" hidden="hidden">Id</th>
         <th scope="col">Mã</th>
         <th scope="col">Tên</th>
         <th scope="col">Họ</th>
@@ -290,8 +290,8 @@
     <tbody>
     <c:forEach var="sp" items="${listSP}">
         <tr>
-            <th scope="row" hidden="true">${sp.id}</th>
-            <td>${sp.ma}</td>
+            <th scope="row" hidden="hidden">${sp.id}</th>
+            <td>${sp.maNhanVien}</td>
             <td>${sp.tenNhanVien}</td>
             <td>${sp.hoNhanVien}</td>
             <td>${sp.gioiTinh}</td>
@@ -307,7 +307,6 @@
             <td>${sp.cv.ten}</td>
             <td>${sp.ngayTao}</td>
             <td>${sp.ngaySua}</td>
-
             <td>${sp.trangThai == 0?"Hoat Dong":"Ngưng Hoat Dong"}</td>
 
             <td>

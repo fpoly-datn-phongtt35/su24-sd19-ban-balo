@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.NhanVien;
+import com.example.demo.service.ChucVuService;
 import com.example.demo.service.NhanVienService;
+import com.example.demo.service.impl.NhanVienServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,43 +19,46 @@ import java.util.List;
 @RequestMapping("/nhan-vien/")
 public class NhanVienController {
     private final NhanVienService nhanVienService;
-    private List<NhanVien> list;
+    private final NhanVienServiceImpl nhanVienService1;
+    private final ChucVuService chucVuService;
 
     @GetMapping("hien-thi")
-    public String hienThiNhanVien(Model model) {
-        list = nhanVienService.getAll();
-        model.addAttribute("list", list);
-        return "nhanviens";
+    public String page(Model model, @ModelAttribute("sp") NhanVien sp,
+                                  @RequestParam(defaultValue = "0") int a) {
+         nhanVienService.getAll();
+        model.addAttribute("list", nhanVienService1.page(a,5));
+        model.addAttribute("sp",sp);
+        model.addAttribute("cv", chucVuService.getAll());
+        return "indexNhanVien";
     }
 
     @GetMapping("detail/{id}")
-    public String detailNhanVien(@PathVariable("id") Long id, Model model) {
-        NhanVien nv = nhanVienService.detail(id);
-        model.addAttribute("nv1", nv);
-        return "detail-nhan-vien";
+    public String detail(@PathVariable("id") Long id, Model model,
+                                 @ModelAttribute("sp") NhanVien sp) {
+        nhanVienService.detail(id);
+        model.addAttribute("sp", nhanVienService.detail(id));
+        model.addAttribute("ListSP", nhanVienService.getAll());
+        model.addAttribute("chucVu", chucVuService.getAll());
+        return "indexNhanVien";
     }
 
     @GetMapping("view-update/{id}")
-    public String updateNhanVien(@PathVariable("id") Long id, Model model) {
-        NhanVien nv = nhanVienService.detail(id);
-        model.addAttribute("nv1", nv);
-        return "update-nhan-vien";
+    public String viewUpdate(@PathVariable("id") Long id, Model model,@ModelAttribute("sp") NhanVien sp) {
+       nhanVienService.detail(id);
+        model.addAttribute("sp", nhanVienService.detail(id));
+        model.addAttribute("ListSP", nhanVienService.getAll());
+        model.addAttribute("chucVu", chucVuService.getAll());
+        return "detailNhanVien";
     }
 
-    @GetMapping("remove/{ma}")
-    public String xoaNhanVien(@PathVariable("id") Long id) {
+    @GetMapping("delete/{id}")
+    public String delete(@PathVariable Long id) {
         nhanVienService.delete(id);
         return "redirect:/nhan-vien/hien-thi";
     }
-    @GetMapping("view-add")
-    public String viewAdd(){
-        return "add-sinh-vien";
-    }
-
-
 
     @PostMapping("add")
-    public String addSinhVien(@RequestParam("id") Long id,
+    public String add(
                               @RequestParam("maNhanVien") String maNhanVien,
                               @RequestParam("tenNhanVien") String tenNhanVien,
                               @RequestParam("hoNhanVien") String hoNhanVien,
@@ -70,7 +75,7 @@ public class NhanVienController {
                               @RequestParam("nguoiSua") Integer nguoiSua,
                               @RequestParam("ngayTao") Timestamp ngayTao,
                               @RequestParam("ngaySua") Timestamp ngaySua,
-                              @RequestParam("trangThai" )Boolean trangThai){
+                              @RequestParam("trangThai" )Integer trangThai){
         //khoi tao doi tuong
         NhanVien nv = NhanVien.builder()
                 .maNhanVien(maNhanVien)
@@ -94,6 +99,52 @@ public class NhanVienController {
                 .build();
         //b2:goi add trong service
         nhanVienService.add(nv);
+        //B3: Quay lai trang chu
+        return "redirect:/nhan-vien/hien-thi";
+
+    }
+    @PostMapping("update/{id}")
+    public String update(@PathVariable("id") Long id,
+                              @RequestParam("maNhanVien") String maNhanVien,
+                              @RequestParam("tenNhanVien") String tenNhanVien,
+                              @RequestParam("hoNhanVien") String hoNhanVien,
+                              @RequestParam("ngaySinh") Date ngaySinh,
+                              @RequestParam("gioiTinh") Boolean gioiTinh,
+                              @RequestParam("sdt") String sdt,
+                              @RequestParam("cccd") String cccd,
+                              @RequestParam("soNha") String soNha,
+                              @RequestParam("phuongXa") String phuongXa,
+                              @RequestParam("quanHuyen") String quanHuyen,
+                              @RequestParam("tinhThanhPho") String tinhThanhPho,
+                              @RequestParam("matKhau") String matKhau,
+                              @RequestParam("nguoiTao") Integer nguoiTao,
+                              @RequestParam("nguoiSua") Integer nguoiSua,
+                              @RequestParam("ngayTao") Timestamp ngayTao,
+                              @RequestParam("ngaySua") Timestamp ngaySua,
+                              @RequestParam("trangThai" )Integer trangThai){
+        //khoi tao doi tuong
+        NhanVien nv = NhanVien.builder()
+                .maNhanVien(maNhanVien)
+                .tenNhanVien(tenNhanVien)
+                .hoNhanVien(hoNhanVien)
+                .tenNhanVien(tenNhanVien)
+                .ngaySinh(Date.valueOf(ngaySinh.toLocalDate()))
+                .sdt(sdt)
+                .cccd(cccd)
+                .soNha(soNha)
+                .phuongXa(phuongXa)
+                .quanHuyen(quanHuyen)
+                .tinhThanhPho(tinhThanhPho)
+                .nguoiTao(nguoiTao)
+                .nguoiSua(nguoiSua)
+                .ngayTao(ngayTao)
+                .ngaySua(ngaySua)
+                .matKhau(matKhau)
+                .gioiTinh(gioiTinh)
+                .trangThai(trangThai)
+                .build();
+        //b2:goi add trong service
+        nhanVienService.update(nv,id);
         //B3: Quay lai trang chu
         return "redirect:/nhan-vien/hien-thi";
 

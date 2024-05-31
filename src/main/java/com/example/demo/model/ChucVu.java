@@ -40,6 +40,6 @@ public class ChucVu {
     private Timestamp ngaySua;
 
     @Column(name = "TrangThai")
-    private boolean trangThai;
+    private int trangThai;
 
 }

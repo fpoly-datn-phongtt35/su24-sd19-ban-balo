@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 public interface NhanVienService {
-    Page<NhanVien> phanTrang(Integer pageNum, Integer pageNo);
+//    Page<NhanVien> phanTrang(Integer pageNum, Integer pageNo);
 
     List<NhanVien> getAll();
 

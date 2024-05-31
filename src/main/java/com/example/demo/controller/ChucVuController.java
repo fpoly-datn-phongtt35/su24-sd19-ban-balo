@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+
 @Controller
 @RequestMapping("/chuc-vu/")
 public class ChucVuController {
@@ -15,6 +17,7 @@ public class ChucVuController {
     ChucVuService chucVuService;
     @Autowired
     ChucVuServiceImpl chucVuService1;
+
     @GetMapping("/hien-thi")
     public String page(
             Model m,
@@ -22,7 +25,7 @@ public class ChucVuController {
             @RequestParam(defaultValue = "0") int a
     ) {
         chucVuService.getAll();
-        m.addAttribute("listSP", chucVuService.page(a,5));
+        m.addAttribute("listSP", chucVuService.page(a, 5));
         m.addAttribute("sp", sp);
         return "indexChucVu";
     }
@@ -41,7 +44,6 @@ public class ChucVuController {
     @GetMapping("/delete/{id}")
     public String delete(
             @PathVariable Long id,
-            Model m,
             @ModelAttribute ChucVu sp
     ) {
         chucVuService.delete(id);
@@ -50,7 +52,6 @@ public class ChucVuController {
 
     @PostMapping("/add")
     public String add(
-            Model m,
             @ModelAttribute ChucVu sp
     ) {
         chucVuService.add(sp);
@@ -60,10 +61,32 @@ public class ChucVuController {
     @PostMapping("/update/{id}")
     public String update(
             @PathVariable Long id,
-            Model m,
             @ModelAttribute ChucVu sp
     ) {
         chucVuService.update(sp, id);
         return "redirect:/chuc-vu/hien-thi";
     }
+//    @PostMapping("/add")
+//    public String add(
+//            @RequestParam("maChucVu") String maChucVu,
+//            @RequestParam("tenChucVu") String tenChucVu,
+//            @RequestParam("nguoiTao") Integer nguoiTao,
+//            @RequestParam("nguoiSua") Integer nguoiSua,
+//            @RequestParam("ngayTao") Timestamp ngayTao,
+//            @RequestParam("ngaySua") Timestamp ngaySua,
+//            @RequestParam("trangThai") Integer trangThai
+//
+//    ) {
+//        ChucVu sp = ChucVu.builder()
+//                .maChucVu(maChucVu)
+//                .tenChucVu(tenChucVu)
+//                .nguoiTao(nguoiTao)
+//                .nguoiSua(nguoiSua)
+//                .ngayTao(ngayTao)
+//                .ngaySua(ngaySua)
+//                .trangThai(trangThai)
+//                .build();
+//        chucVuService.add(sp);
+//        return "redirect:/chuc-vu/hien-thi";
+//    }
 }

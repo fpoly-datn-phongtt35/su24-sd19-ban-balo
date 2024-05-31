@@ -83,6 +83,6 @@ public class NhanVien {
     private Timestamp ngaySua;
 
     @Column(name = "TrangThai")
-    private boolean trangThai;
+    private Integer trangThai;
 
 }

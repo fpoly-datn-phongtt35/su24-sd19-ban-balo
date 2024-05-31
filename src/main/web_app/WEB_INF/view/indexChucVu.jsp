@@ -59,9 +59,6 @@
                         <a class="nav-link active" aria-current="page" href="/san-pham/hien-thi">Sản Phẩm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/cua-hang/hien-thi">Cửa hàng</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/chuc-vu/hien-thi">Chức Vụ</a>
                     </li>
                     <li class="nav-item">
@@ -142,10 +139,11 @@
                 <td>${sp.tenChucVu}</td>
                 <td>${sp.ngaySua}</td>
                 <td>${sp.ngayTao}</td>
-                <td>${sp.trangThai}</td>
+                <td>${sp.trangThai == 0?"Hoat Dong":"Ngưng Hoat Dong"}</td>
                 <td>
                     <a href="/chuc-vu/detail/${sp.id}" class="btn btn-primary" type="button">Detail</a>
                     <a href="/chuc-vu/delete/${sp.id}" class="btn btn-danger" type="button">Delete</a>
+                    <a href="/chuc-vu/view-update/${sp.id}" type="button" class="btn btn-success">Update</a>
 
                 </td>
             </tr>

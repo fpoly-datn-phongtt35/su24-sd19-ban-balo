@@ -21,7 +21,7 @@
     <div class="form-group">
         <label class="control-label col-sm-2" >Mã:</label>
         <div class="col-sm-10">
-            <form:input  class="form-control" id="email" path="ma"></form:input>
+            <form:input  class="form-control" id="email" path="maChucVu"></form:input>
         </div>
     </div>
     <div class="form-group">
