@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,6 +18,7 @@
 <table class="table table-secondary">
     <tr>
         <th>Ma Khach Hang</th>
+        <th>IdUser</th>
         <th>Ten Khach Hang</th>
         <th>Ho Khach Hang</th>
         <th>Ngay Sinh</th>
@@ -38,10 +40,11 @@
     <c:forEach var="kh" items="${list.content}">
         <tr>
             <td>${kh.maKhachHang}</td>
+            <td>${kh.user.idUserKH}</td>
             <td>${kh.tenKhachHang}</td>
             <td>${kh.hoKhachHang}</td>
-            <td>${kh.ngaySinh}</td>
-            <td>${kh.gioiTinh}</td>
+            <td><fmt:formatDate pattern='yyyy-MM-dd' value='${kh.ngaySinh}'/></td>
+            <td>${kh.gioiTinh } </td>
             <td>${kh.sdt}</td>
             <td>${kh.cccd}</td>
             <td>${kh.hangKhachHang.tenHangKhachHang}</td>
@@ -50,8 +53,8 @@
             <td>${kh.quanHuyen}</td>
             <td>${kh.tinhThanhPho}</td>
             <td>${kh.diemTichLuy}</td>
-            <td>${kh.ngayTao}</td>
-            <td>${kh.ngaySua}</td>
+            <td><fmt:formatDate pattern='yyyy-MM-dd' value='${kh.ngayTao}'/></td>
+            <td><fmt:formatDate pattern='yyyy-MM-dd' value='${kh.ngaySua}'/></td>
             <td>${kh.trangThai}</td>
             <td>
                 <a href="/khach-hang/view-add">ADD</a>
@@ -69,6 +72,7 @@
             </c:forEach>
         </ul>
     </nav>
+    <a href="/khach-hang/logout">LOGOUT</a>
 </table>
 </body>
 </html>

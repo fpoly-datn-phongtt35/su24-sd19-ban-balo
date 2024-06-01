@@ -3,15 +3,14 @@ package com.example.datntest.controller;
 
 import com.example.datntest.entity.HangKhachHang;
 import com.example.datntest.entity.KhachHang;
+import com.example.datntest.repository.KhachHangRepository;
 import com.example.datntest.service.KhachHangService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.UUID;
@@ -20,6 +19,8 @@ import java.util.UUID;
 public class KhachHangController {
     @Autowired
     private KhachHangService khachHangService;
+    @Autowired
+    private KhachHangRepository khachHangRepository;
 
     @GetMapping("/khach-hang/get-all")
     private String hienthi(Model model,
@@ -89,43 +90,43 @@ public class KhachHangController {
         model.addAttribute("kh", khachHang);
         return "/update";
     }
+    @GetMapping("/editCustomer/{id}")
+    public String showEditForm(@PathVariable("idKhachHang") Integer idKhachHang, Model model) {
+        KhachHang khachHang = khachHangRepository.findById(idKhachHang)
+                .orElseThrow(() -> new IllegalArgumentException("Ko tim dc Id:" + idKhachHang));
+        model.addAttribute("kh", khachHang);
+        return "/update";
+    }
+
     @PostMapping("/khach-hang/update/{idKhachHang}")
-    private String update(@PathVariable("idKhachHang") Integer idKhachHang,
-                        @RequestParam("maKhachHang") String maKhachHang,
-                       @RequestParam("tenKhachHang") String tenKhachHang,
-                       @RequestParam("hoKhachHang") String hoKhachHang,
-                       @RequestParam("ngaySinh") String ngaySinh,
-                       @RequestParam("gioiTinh") Integer gioiTinh,
-                       @RequestParam("sdt") String sdt,
-                       @RequestParam("cccd") String cccd,
-                       @RequestParam("idHangKhachHang") HangKhachHang idHangKhachHang,
-                       @RequestParam("soNha") String soNha,
-                       @RequestParam("phuongXa") String phuongXa,
-                       @RequestParam("quanHuyen") String quanHuyen,
-                       @RequestParam("tinhThanhPho") String tinhThanhPho,
-                       @RequestParam("diemTichLuy") Integer diemTichLuy,
-                       @RequestParam("ngayTao") String ngayTao,
-                       @RequestParam("ngaySua") String ngaySua,
-                       @RequestParam("trangThai") Integer trangThai) {
-        KhachHang khachHang = khachHangService.detail(idKhachHang);
-        khachHang.setMaKhachHang(maKhachHang);
-        khachHang.setTenKhachHang(tenKhachHang);
-        khachHang.setHoKhachHang(hoKhachHang);
-        khachHang.setNgaySinh(Date.valueOf(ngaySinh));
-        khachHang.setGioiTinh(gioiTinh);
-        khachHang.setSdt(sdt);
-        khachHang.setCccd(cccd);
-        khachHang.setHangKhachHang(idHangKhachHang);
-        khachHang.setSoNha(soNha);
-        khachHang.setPhuongXa(phuongXa);
-        khachHang.setQuanHuyen(quanHuyen);
-        khachHang.setTinhThanhPho(tinhThanhPho);
-        khachHang.setDiemTichLuy(diemTichLuy);
-        khachHang.setNgayTao(Date.valueOf(ngayTao));
-        khachHang.setNgaySua(Date.valueOf(ngaySua));
-        khachHang.setTrangThai(trangThai);
-        khachHangService.add(khachHang);
+    public String update1(@PathVariable("idKhachHang") Integer idKhachHang, @ModelAttribute("kh") KhachHang updatedCustomer) {
+        KhachHang khachHang = khachHangRepository.findById(idKhachHang)
+                .orElseThrow(() -> new RuntimeException("Khong tim thay "));
+
+        khachHang.setMaKhachHang(updatedCustomer.getMaKhachHang());
+        khachHang.setTenKhachHang(updatedCustomer.getTenKhachHang());
+        khachHang.setHoKhachHang(updatedCustomer.getHoKhachHang());
+        khachHang.setNgaySinh(updatedCustomer.getNgaySinh());
+        khachHang.setGioiTinh(updatedCustomer.getGioiTinh());
+        khachHang.setSdt(updatedCustomer.getSdt());
+        khachHang.setCccd(updatedCustomer.getCccd());
+        khachHang.setHangKhachHang(updatedCustomer.getHangKhachHang());
+        khachHang.setSoNha(updatedCustomer.getSoNha());
+        khachHang.setPhuongXa(updatedCustomer.getPhuongXa());
+        khachHang.setQuanHuyen(updatedCustomer.getQuanHuyen());
+        khachHang.setTinhThanhPho(updatedCustomer.getTinhThanhPho());
+        khachHang.setDiemTichLuy(updatedCustomer.getDiemTichLuy());
+        khachHang.setNgayTao(updatedCustomer.getNgayTao());
+        khachHang.setNgaySua(updatedCustomer.getNgaySua());
+        khachHang.setTrangThai(updatedCustomer.getTrangThai());
+
+        khachHangRepository.save(khachHang);
         return "redirect:/khach-hang/get-all";
+    }
+    @GetMapping("khach-hang/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
     }
 }
 

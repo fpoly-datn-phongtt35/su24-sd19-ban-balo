@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,7 +30,7 @@
             </div>
             <div class="col-3">
                 <label>Ngay Sinh</label>
-                <input type="text" name="ngaySinh" id="ngaySinh" class="form-control" value="${kh.ngaySinh}">
+                <input type="date" name="ngaySinh" id="ngaySinh" class="form-control" value="<fmt:formatDate pattern='yyyy-MM-dd' value='${kh.ngaySinh}'/>">
             </div>
             <div class="col-3">
                 <label>Gioi Tinh</label>
@@ -69,17 +70,17 @@
             </div>
             <div class="col-3">
                 <label>Ngay Tao</label>
-                <input type="text" name="ngayTao" id="ngayTao" class="form-control" value="${kh.ngayTao}">
+                <input type="date" name="ngayTao" id="ngayTao" class="form-control" value="<fmt:formatDate pattern='yyyy-MM-dd' value='${kh.ngayTao}'/>">
             </div>
             <div class="col-3">
                 <label>Ngay Sua</label>
-                <input type="text" name="ngaySua" id="ngaySua" class="form-control" value="${kh.ngaySua}">
+                <input type="date" name="ngaySua" id="ngaySua" class="form-control" value="<fmt:formatDate pattern='yyyy-MM-dd' value='${kh.ngaySua}'/>">
             </div>
             <div class="col-3">
                 <label>Trang Thai</label>
                 <input type="text" name="trangThai" id="trangThai" class="form-control"  value="${kh.trangThai}">
             </div>
-            <button type="submit">Xac Nhan</button>
+            <button type="submit">Update</button>
         </div>
     </table>
 </form>

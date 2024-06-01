@@ -2,6 +2,7 @@ package com.example.datntest.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -17,6 +18,9 @@ public class KhachHang {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdKhachHang")
     private Integer idKhachHang;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "IdUserKH", referencedColumnName = "IdUserKH")
+    private User user;
     @Column(name = "MaKhachHang")
     private String maKhachHang;
     @Column(name = "TenKhachHang")
@@ -24,6 +28,7 @@ public class KhachHang {
     @Column(name = "HoKhachHang")
     private String hoKhachHang;
     @Column(name = "NgaySinh")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date ngaySinh;
     @Column(name = "GioiTinh")
     private Integer gioiTinh;
@@ -45,8 +50,10 @@ public class KhachHang {
     @Column(name = "DiemTichLuy")
     private Integer diemTichLuy;
     @Column(name = "NgayTao")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date ngayTao;
     @Column(name = "NgaySua")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date ngaySua;
     @Column(name = "TrangThai")
     private Integer trangThai;
