@@ -12,28 +12,19 @@ import java.time.LocalDate;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Users")
-public class User {
+public class Hang {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdUsers", nullable = false)
+    @Column(name = "IdHang", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IdKhachHang")
-    private KhachHang idKhachHang;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IdNhanVien")
-    private NhanVien idNhanVien;
+    @Nationalized
+    @Column(name = "MaHang", length = 20)
+    private String maHang;
 
     @Nationalized
-    @Column(name = "Email", length = 50)
-    private String email;
-
-    @Nationalized
-    @Column(name = "PassWord", length = 50)
-    private String passWord;
+    @Column(name = "TenHang", length = 20)
+    private String tenHang;
 
     @Column(name = "NgayTao")
     private LocalDate ngayTao;
