@@ -1,14 +1,9 @@
 package com.example.maindatn.Model;
 
-import com.example.maindatn.Entity.User_Entity;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -17,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-public class FormPgg {
+public class FormDgg {
     private Integer id;
 
     private String ma;
@@ -28,9 +23,9 @@ public class FormPgg {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endday;
 
+    private Double giaTriDotGiamGia;
     private Double giamToiDa;
     private Double dieuKien;
-    private Integer soLuong;
 
     private Integer nguoiTao;
     private Integer nguoiSua;
@@ -42,6 +37,4 @@ public class FormPgg {
     private Date ngaySua;
 
     private Integer trangthai;
-
-
 }

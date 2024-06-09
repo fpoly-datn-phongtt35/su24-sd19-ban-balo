@@ -22,7 +22,7 @@ import java.util.Optional;
 @RequestMapping("pgg")
 public class PhieuGiamGia_Controller {
     @Autowired
-    private PhieuGiamGia_Repository msRepo;
+    private PhieuGiamGia_Repository pggRepo;
 
     PhieuGiamGia_Controller() {
     }
@@ -32,14 +32,14 @@ public class PhieuGiamGia_Controller {
     private String getAll(Model model,@RequestParam("page") Optional<Integer> pageP){
         int page = pageP.orElse(0);
         Pageable pageable = PageRequest.of(page,1);
-        model.addAttribute("page",msRepo.findBytrangthai(msRepo.ACTIVE,pageable));
+        model.addAttribute("page",pggRepo.findBytrangthai(pggRepo.ACTIVE,pageable));
         return "pgg/index";
     }
 
 
     @GetMapping("create")
     public String create(Model model) {
-
+        model.addAttribute("lstNT", pggRepo.getme());
         model.addAttribute("data", new FormPgg());
         return "pgg/create";
     }
@@ -53,18 +53,18 @@ public class PhieuGiamGia_Controller {
         }
 
         User_Entity user = new User_Entity();
-        user.setId(formPgg.getNguoiTao());
+        user.setIdUsers(formPgg.getNguoiTao());
         User_Entity user1 = new User_Entity();
-        user1.setId(formPgg.getNguoiSua());
+        user1.setIdUsers(formPgg.getNguoiSua());
 
         PhieuGiamGia_Entity phieuGiamGiaEntity = new PhieuGiamGia_Entity(
                 formPgg.getId(),
                 formPgg.getMa(),
                 formPgg.getTen(),
-                formPgg.getLoai(),
+
                 formPgg.getBeginday(),
                 formPgg.getEndday(),
-                formPgg.getMucDo(),
+
                 formPgg.getGiamToiDa(),
                 formPgg.getDieuKien(),
                 formPgg.getSoLuong(),
@@ -74,13 +74,14 @@ public class PhieuGiamGia_Controller {
                 formPgg.getNgaySua(),
                 formPgg.getTrangthai()
         );
-        this.msRepo.save(phieuGiamGiaEntity);
+        this.pggRepo.save(phieuGiamGiaEntity);
         return "redirect:/pgg/index";
     }
 
     @GetMapping("edit/{id}")
     public String Edit(@PathVariable("id") PhieuGiamGia_Entity phieuGiamGiaEntity, Model model) {
-        System.out.printf(phieuGiamGiaEntity.getNguoiSua().getId().toString());
+        model.addAttribute("lstNT", pggRepo.getme());
+
         model.addAttribute("data", phieuGiamGiaEntity);
         return "pgg/edit";
     }
@@ -93,17 +94,17 @@ public class PhieuGiamGia_Controller {
             return "pgg/edit";
         }
         User_Entity user = new User_Entity();
-        user.setId(formPgg.getNguoiTao());
+        user.setIdUsers(formPgg.getNguoiTao());
 
         User_Entity user1 = new User_Entity();
-        user1.setId(formPgg.getNguoiSua());
+        user1.setIdUsers(formPgg.getNguoiSua());
 
         phieuGiamGiaEntity.setMa(formPgg.getMa());
         phieuGiamGiaEntity.setTen(formPgg.getTen());
-        phieuGiamGiaEntity.setLoai(formPgg.getLoai());
+
         phieuGiamGiaEntity.setBeginday(formPgg.getBeginday());
         phieuGiamGiaEntity.setEndday(formPgg.getEndday());
-        phieuGiamGiaEntity.setMucDo(formPgg.getMucDo());
+
         phieuGiamGiaEntity.setGiamToiDa(formPgg.getGiamToiDa());
         phieuGiamGiaEntity.setDieuKien(formPgg.getDieuKien());
         phieuGiamGiaEntity.setSoLuong(formPgg.getSoLuong());
@@ -114,7 +115,7 @@ public class PhieuGiamGia_Controller {
 
         phieuGiamGiaEntity.setTrangthai(formPgg.getTrangthai());
 
-        this.msRepo.save(phieuGiamGiaEntity);
+        this.pggRepo.save(phieuGiamGiaEntity);
 
         return "redirect:/pgg/index";
     }
@@ -123,7 +124,7 @@ public class PhieuGiamGia_Controller {
     @GetMapping("delete/{id}")
     public String deleteDone(@PathVariable("id") int id) {
 
-        this.msRepo.deleteById(id);
+        this.pggRepo.deleteById(id);
         return "redirect:/pgg/index";
     }
 

@@ -8,36 +8,38 @@ import lombok.Setter;
 
 import java.util.Date;
 
-@Entity
-@Table(name = "ChucVu")
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChucVu_Entitty {
+@Entity
+@Table(name = "ChucVu")
+public class ChucVu_Entity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "IdChucVu")
+    @Column(name = "IdChucVu", nullable = false)
     private Integer id;
-    @Column(name = "MaChucVu")
+
+    @Column(name = "MaChucVu", length = 20)
     private String maChucVu;
-    @Column(name = "TenChucVu")
+
+    @Column(name = "TenChucVu", length = 20)
     private String tenChucVu;
 
-    @Column(name = "NguoiTao")
-    private Integer nguoiTao;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "NguoiTao", referencedColumnName = "IdUsers")
+    private User_Entity nguoiTao;
 
-    @Column(name = "NguoiSua")
-    private Integer nguoiSua;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "NguoiSua", referencedColumnName = "IdUsers")
+    private User_Entity nguoiSua;
 
     @Column(name = "NgayTao")
     private Date ngayTao;
+
     @Column(name = "NgaySua")
     private Date ngaySua;
 
     @Column(name = "TrangThai")
-    private Integer trangThai;
-
-
-
+    private int trangThai;
 }

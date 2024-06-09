@@ -10,20 +10,27 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Entity
-@Table(name = "PhieuGiamGia")
-@Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
-public class PhieuGiamGia_Entity {
+@Table(name = "DotGiamGia")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class DotGiamGia_Entity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdPhieuGiamGia")
+    @Column(name = "IdDotGiamGia")
     private Integer id;
 
-    @Column(name = "MaPhieuGiamGia")
+    @Column(name = "MaDotGiamGia")
     private String ma;
 
-    @Column(name = "TenPhieuGiamGia")
+    @Column(name = "TenDotGiamGia")
     private String ten;
+
+    @Column(name = "GiaTriDotGiamGia")
+    private Double giaTriDotGiamGia;
+
+
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "NgayBatDau")
@@ -39,8 +46,7 @@ public class PhieuGiamGia_Entity {
     @Column(name = "DieuKien")
     private Double dieuKien;
 
-    @Column(name = "SoLuong")
-    private Integer soLuong;
+
 
     @ManyToOne
     @JoinColumn(name = "NguoiTao",referencedColumnName = "IdUsers")
@@ -60,5 +66,4 @@ public class PhieuGiamGia_Entity {
 
     @Column(name = "TrangThai")
     private Integer trangthai;
-
 }

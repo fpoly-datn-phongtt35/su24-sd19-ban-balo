@@ -21,11 +21,6 @@
         <sf:errors path="ten" cssStyle="color: red"/>
     </div>
 
-    <div>
-        <label>Loai</label>
-        <sf:input name="loai" type="text" path="loai"/>
-        <sf:errors path="loai" cssStyle="color: red"/>
-    </div>
 
     <div>
         <label>NgayBatDau</label>
@@ -38,14 +33,6 @@
         <sf:input name="endday" type="date" path="endday"/>
         <sf:errors path="endday" cssStyle="color: red"/>
     </div>
-
-    <div>
-        <label>MucDo</label>
-        <sf:input name="mucDo" type="text" path="mucDo"/>
-        <sf:errors path="mucDo" cssStyle="color: red"/>
-    </div>
-
-
     <div>
         <label>giamToiDa</label>
         <sf:input name="giamToiDa" type="text" path="giamToiDa"/>
@@ -69,14 +56,23 @@
 
     <div>
         <label>nguoiTao</label>
-        <sf:input name="nguoiTao" type="text" path="nguoiTao.id"/>
+
+        <sf:select path="nguoiTao" cssClass="form-select">
+            <c:forEach items="${lstNT}" var="i">
+                <sf:option value="${i.idUsers}">${i.idUsers}</sf:option>
+            </c:forEach>
+        </sf:select>
         <sf:errors path="nguoiTao" cssStyle="color: red"/>
     </div>
 
 
     <div>
         <label>nguoiSua</label>
-        <sf:input name="nguoiSua" type="text" path="nguoiSua.id"/>
+        <sf:select path="nguoiSua" cssClass="form-select">
+            <c:forEach items="${lstNT}" var="i">
+                <sf:option value="${i.idUsers}">${i.idUsers}</sf:option>
+            </c:forEach>
+        </sf:select>
         <sf:errors path="nguoiSua" cssStyle="color: red"/>
     </div>
 
