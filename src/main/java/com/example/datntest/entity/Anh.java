@@ -24,7 +24,6 @@ public class Anh {
     @Column(name = "Url")
     private String url;
 
-
     @Column(name = "NgayTao")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date ngayTao;

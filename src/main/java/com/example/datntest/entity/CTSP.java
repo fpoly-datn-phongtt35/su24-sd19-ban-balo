@@ -31,12 +31,8 @@ public class CTSP {
     private MauSac idMauSac;
 
     @ManyToOne
-    @JoinColumn(name = "IdDotGiamGia", referencedColumnName = "IdDotGiamGia")
-    private DotGiamGia idDotGiamGia;
-
-    @ManyToOne
-    @JoinColumn(name = "Anh", referencedColumnName = "IdAnh")
-    private Anh anh;
+    @JoinColumn(name = "IdAnh", referencedColumnName = "IdAnh")
+    private Anh idAnh;
 
     @Column(name = "Mota")
     private String moTa;
@@ -45,11 +41,11 @@ public class CTSP {
     private BigDecimal giaBan;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "NguoiTao", insertable = true, updatable = true, referencedColumnName = "idUsers")
+    @JoinColumn(name = "NguoiTao", insertable = true, updatable = true, referencedColumnName = "IdUsers")
     private Users nguoiTao;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "NguoiSua", insertable = true, updatable = true, referencedColumnName = "idUsers")
+    @JoinColumn(name = "NguoiSua", insertable = true, updatable = true, referencedColumnName = "IdUsers")
     private Users nguoiSua;
 
     @Column(name = "NgayTao")

@@ -13,18 +13,18 @@
     <title>Document</title>
 </head>
 <body>
-<h1 class="text-center" style="padding-bottom: 50px">chatlieu</h1>
+<h1 class="text-center" style="padding-bottom: 50px">sanpham</h1>
 <form action="/sanpham/update/${sanpham.idSanPham}" class="container" method="post" onsubmit="return kt()">
     <table>
         <div class="col-mt-3">
 
             <div class="col-6">
                 <label>idChatLieu</label>
-                <input type="text" name="idChatLieu" id="idChatLieu" class="form-control"  value="${sanpham.idChatLieu.tenChatLieu}" >
+                <input type="text" name="idChatLieu" id="idChatLieu" class="form-control"  value="${sanpham.idChatLieu.idChatLieu}" >
             </div>
             <div class="col-6">
                 <label>idDongSanPham</label>
-                <input type="text" name="idDongSanPham" id="idDongSanPham" class="form-control"  value="${sanpham.idDongSanPham.tenDongSanPham}" >
+                <input type="text" name="idDongSanPham" id="idDongSanPham" class="form-control"  value="${sanpham.idDongSanPham.idDongSanPham}" >
             </div>
             <div class="col-6">
                 <label>idNSX</label>
@@ -33,7 +33,7 @@
 
             <div class="col-6">
                 <label>idHang</label>
-                <input type="text" name="idHang" id="idHang" class="form-control"  value="${sanpham.idHang.tenHang}" >
+                <input type="text" name="idHang" id="idHang" class="form-control"  value="${sanpham.idHang.idHang}" >
             </div>
 
             <div class="col-6">

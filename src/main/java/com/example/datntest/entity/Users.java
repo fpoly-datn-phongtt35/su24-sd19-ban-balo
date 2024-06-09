@@ -27,21 +27,6 @@ public class Users {
     @Column(name = "PassWord")
     private String passWord;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IdChucVu", insertable = false, updatable = false, referencedColumnName = "IdChucVu")
-    private ChucVu idChucVu;
-
-    @Column(name = "GhiChu")
-    private String ghiChu;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "NguoiTao", insertable = false, updatable = false, referencedColumnName = "IdUsers")
-    private Users nguoiTao;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "NguoiSua", insertable = false, updatable = false, referencedColumnName = "IdUsers")
-    private Users nguoiSua;
-
     @Column(name = "NgayTao")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date NgayTao;

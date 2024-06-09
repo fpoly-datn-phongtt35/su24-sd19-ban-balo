@@ -19,19 +19,16 @@
         <div class="col-mt-3">
             <div class="col-6">
                 <label>idSanPham</label>
-                <input type="text" name="idSanPham" id="idSanPham" class="form-control"  value="${ctsp.idSanPham.tenSanPham}" >
+                <input type="text" name="idSanPham" id="idSanPham" class="form-control"  value="${ctsp.idSanPham.idSanPham}" >
             </div>
             <div class="col-6">
                 <label>idMauSac</label>
-                <input type="text" name="idMauSac" id="idMauSac" class="form-control"  value="${ctsp.idMauSac.tenMauSac}" >
+                <input type="text" name="idMauSac" id="idMauSac" class="form-control"  value="${ctsp.idMauSac.idMauSac}" >
             </div>
-            <div class="col-6">
-                <label>idDotGiamGia</label>
-                <input type="text" name="idDotGiamGia" id="idDotGiamGia" class="form-control"  value="${ctsp.idDotGiamGia.tenDotGiamGia}" >
-            </div>
+
             <div class="col-6">
                 <label>anh</label>
-                <input type="text" name="anh" id="anh" class="form-control"  value="${ctsp.anh.idAnh}" >
+                <input type="text" name="idAnh" id="idAnh" class="form-control"  value="${ctsp.idAnh.idAnh}" >
             </div>
             <div class="col-6">
                 <label>moTa</label>

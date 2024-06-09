@@ -1,10 +1,9 @@
 package com.example.datntest.repository;
 
-import com.example.datntest.entity.Anh;
-import com.example.datntest.entity.DotGiamGia;
+import com.example.datntest.entity.PhieuGiamGia;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DotGiamGiaRepository extends JpaRepository<DotGiamGia,Integer> {
+public interface PhieuGiamGiaRepository extends JpaRepository<PhieuGiamGia,Integer> {
 }

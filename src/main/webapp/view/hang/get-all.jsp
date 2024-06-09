@@ -47,11 +47,11 @@
         </tr>
     </c:forEach>
     </tbody>
-    <nav aria-label="Page navigation example" class="container">
+    <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <c:forEach begin="0" end="${nv.totalPages +1}" varStatus="loop">
-                <li class="page-item"><a class="page-link" href="/hang/hien-thi?page=${loop.index}">${loop.index + 1}</a></li>
-            </c:forEach>
+            <li class="page-item"><a class="page-link" href="/hang/hien-thi?page=${list.number - 1}">Truoc</a></li>
+            <li class="page-item"><a class="page-link" href="#">${list.number}</a></li>
+            <li class="page-item"><a class="page-link" href="/hang/hien-thi?page=${list.number + 1}">Sau</a></li>
         </ul>
     </nav>
 </table>

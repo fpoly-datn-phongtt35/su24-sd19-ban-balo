@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 <body>
-<h1 class="text-center" style="padding-bottom: 50px">anh</h1>
+<h1 class="text-center" style="padding-bottom: 50px">CTSP</h1>
 <form action="/ctsp/add" method="post" onsubmit="return kt()">
     <table>
         <div class="col-mt-3">
@@ -27,13 +27,8 @@
             </div>
 
             <div class="col-6">
-                <label>idDotGiamGia</label>
-                <input type="text" name="idDotGiamGia" id="idDotGiamGia" class="form-control">
-            </div>
-
-            <div class="col-6">
                 <label>anh</label>
-                <input type="text" name="anh" id="anh" class="form-control">
+                <input type="text" name="idAnh" id="idAnh" class="form-control">
             </div>
 
             <div class="col-6">
@@ -72,7 +67,7 @@
                 <label>trangThai</label>
                 <input type="text" name="trangThai" id="trangThai" class="form-control" />
             </div>
-            <button class="btn btn-primary" type="submit" >ADD</button>
+            <button class="btn btn-primary" type="submit" onclick="return confirm('Bạn có muốn thêm không ???')">ADD</button>
         </div>
     </table>
 </form>

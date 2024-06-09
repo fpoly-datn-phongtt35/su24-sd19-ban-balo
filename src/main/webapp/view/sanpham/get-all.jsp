@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -66,8 +68,9 @@
             </td>
             <td>${sanpham.trangThai}</td>
             <td>
-                <button class="btn btn-light" ><a class="btn btn-light" href="/sanpham/delete/${sanpham.idSanPham}">Delete</a></button>
-                <button class="btn btn-dark"><a class="btn btn-dark" href="/sanpham/updateForm/${sanpham.idSanPham}">Detail</a></button>
+                <button class="btn btn-light" onclick="return confirm('Bạn có muốn xóa không?')" ><a class="btn btn-light" href="/sanpham/delete/${sanpham.idSanPham}">Delete</a></button>
+
+                <button class="btn btn-dark" ><a class="btn btn-dark" href="/sanpham/updateForm/${sanpham.idSanPham}">Detail</a></button>
             </td>
         </tr>
     </c:forEach>

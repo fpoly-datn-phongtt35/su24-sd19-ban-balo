@@ -14,24 +14,18 @@ import java.sql.Date;
 @Setter
 @ToString
 @Builder
-@Table(name = "DotGiamGia")
-public class DotGiamGia {
+@Table(name = "PhieuGiamGia")
+public class PhieuGiamGia {
     @Id
-    @Column(name = "IdDotGiamGia")
+    @Column(name = "IdPhieuGiamGia")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idDotGiamGia;
+    private Integer idPhieuGiamGia;
 
-    @Column(name = "MaDotGiamGia")
-    private String maDotGiamGia;
+    @Column(name = "MaPhieuGiamGia")
+    private String maPhieuGiamGia;
 
-    @Column(name = "TenDotGiamGia")
-    private String tenDotGiamGia;
-
-    @Column(name = "GiaTriDotGiamGia")
-    private BigDecimal giaTriDotGiamGia;
-
-    @Column(name = "Loai")
-    private String loai;
+    @Column(name = "TenPhieuGiamGia")
+    private String tenPhieuGiamGia;
 
     @Column(name = "NgayBatDau")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -44,13 +38,16 @@ public class DotGiamGia {
     @Column(name = "GiamToiDa")
     private BigDecimal giamToiDa;
 
-    @ManyToOne
-    @JoinColumn(name = "NguoiTao", insertable = false, updatable = false, referencedColumnName = "IdUsers")
-    private Users nguoiTao;
-
-    @ManyToOne
-    @JoinColumn(name = "NguoiSua", insertable = false, updatable = false, referencedColumnName = "IdUsers")
-    private Users nguoiSua;
+    @Column(name = "DieuKien")
+    private BigDecimal dieuKien;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "NguoiTao", insertable = true, updatable = true, referencedColumnName = "IdUsers")
+//    private Users nguoiTao;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "NguoiSua", insertable = true, updatable = true, referencedColumnName = "IdUsers")
+//    private Users nguoiSua;
 
     @Column(name = "NgayTao")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
