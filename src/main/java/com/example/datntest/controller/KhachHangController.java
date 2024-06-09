@@ -8,11 +8,14 @@ import com.example.datntest.service.KhachHangService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -127,6 +130,28 @@ public class KhachHangController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/login";
+    }
+
+    @GetMapping("/khach-hang/search")
+    public String showSearchForm() {
+        return "get-all";
+    }
+//
+//    @GetMapping("/khach-hang/searchForm")
+//    public String searchProducts(@RequestParam String tenKhachHang, Model model) {
+//        List<KhachHang> khachHang = khachHangService.search(tenKhachHang);
+//        model.addAttribute("list", khachHang);
+//        return "redirect:/khach-hang/get-all";
+//    }
+    @GetMapping("/khach-hang/searchForm")
+    public String searchByTenSanPham(@RequestParam("tenKhachHang") String tenKhachHang,
+                                     @RequestParam(value = "page", defaultValue = "0") int page,
+                                     @RequestParam(value = "size", defaultValue = "10") int size,
+                                     Model model) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<KhachHang> list = khachHangService.searchByTenKhachHang(tenKhachHang, pageable);
+        model.addAttribute("list", list);
+        return "/search";
     }
 }
 

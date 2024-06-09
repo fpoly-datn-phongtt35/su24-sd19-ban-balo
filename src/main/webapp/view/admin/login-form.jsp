@@ -11,8 +11,8 @@
 </head>
 <body>
 <form  action="/login" method="post">
-    Tài khoản: <input type="text" name="taiKhoan">
-    Mật khẩu: <input type="password" name="matKhau">
+    Tài khoản: <input type="text" name="email">
+    Mật khẩu: <input type="password" name="passWord">
     <button type="submit" value="Login">Dang Nhap</button>
 </form>
 

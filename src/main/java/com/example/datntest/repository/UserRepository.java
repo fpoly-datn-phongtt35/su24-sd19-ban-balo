@@ -1,11 +1,11 @@
 package com.example.datntest.repository;
 
 
-import com.example.datntest.entity.User;
+import com.example.datntest.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User,Integer> {
-    User findByTaiKhoanAndMatKhau(String taiKhoan, String matKhau);
+public interface UserRepository extends JpaRepository<Users,Integer> {
+    Users findByEmailAndPassWord(String email, String passWord);
 
-    User findAccountBysdt(String sdt);
+    Users findAccountByEmail(String email);
 }

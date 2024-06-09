@@ -18,9 +18,6 @@ public class KhachHang {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdKhachHang")
     private Integer idKhachHang;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IdUserKH", referencedColumnName = "IdUserKH")
-    private User user;
     @Column(name = "MaKhachHang")
     private String maKhachHang;
     @Column(name = "TenKhachHang")
@@ -58,7 +55,4 @@ public class KhachHang {
     @Column(name = "TrangThai")
     private Integer trangThai;
 
-    public void setHangKhachHang(HangKhachHang hangKhachHang) {
-        this.hangKhachHang = hangKhachHang;
-    }
 }

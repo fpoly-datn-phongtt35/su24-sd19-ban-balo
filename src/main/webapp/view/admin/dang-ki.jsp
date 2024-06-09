@@ -10,8 +10,8 @@
 </head>
 <body>
 <form action="/tai-khoan/dang-ki/add" method="post">
-    Tài khoản: <input type="text" value="" name="taiKhoan">
-    Mật khẩu: <input type="password" name="matKhau" value="" >
+    Tài khoản: <input type="text" value="" name="email">
+    Mật khẩu: <input type="password" name="passWord" value="" >
     Số điện thoại: <input type="text" value="" name="sdt">
     <button type="submit"value="update">Dang ki</button>
 </form>

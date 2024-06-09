@@ -1,6 +1,6 @@
 package com.example.datntest.controller;
 
-import com.example.datntest.entity.User;
+import com.example.datntest.entity.Users;
 import com.example.datntest.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +23,10 @@ public class LoginController {
         return "/login-form";
     }
     @PostMapping
-    public String login(@RequestParam("taiKhoan") String taiKhoan, @RequestParam("matKhau") String matKhau) {
-        User user = userService.findBytaiKhoanAndmatKhau(taiKhoan, matKhau);
-        if (user != null) {
-            session.setAttribute("user", user);
+    public String login(@RequestParam("email") String email, @RequestParam("passWord") String passWord) {
+        Users users = userService.findByEmailAndPassword(email, passWord);
+        if (users != null) {
+            session.setAttribute("user", users);
             return "redirect:/khach-hang/get-all";
         } else {
             return "redirect:/login";

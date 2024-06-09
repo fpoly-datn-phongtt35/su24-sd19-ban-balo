@@ -1,6 +1,6 @@
 package com.example.datntest.service.impl;
 
-import com.example.datntest.entity.User;
+import com.example.datntest.entity.Users;
 import com.example.datntest.repository.UserRepository;
 import com.example.datntest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,23 +14,25 @@ public class UserImpl implements UserService {
     UserRepository userRepository;
 
     @Override
-    public Optional<User> getAccount(Integer idKhachHang) {
+    public Optional<Users> getAccount(Integer idKhachHang) {
         return this.userRepository.findById(idKhachHang);
     }
 
-    @Override
-    public User findBytaiKhoanAndmatKhau(String taiKhoan, String matKhau) {
-        return this.userRepository.findByTaiKhoanAndMatKhau(taiKhoan, matKhau);
-    }
-
 
     @Override
-    public User addAccount(User user) {
-        return this.userRepository.save(user);
+    public Users addAccount(Users users) {
+        return this.userRepository.save(users);
     }
 
     @Override
-    public User findAccountBysdt(String sdt) {
-        return this.userRepository.findAccountBysdt(sdt);
+    public Users findAccountByEmail(String email) {
+        return this.userRepository.findAccountByEmail(email);
     }
+
+    @Override
+    public Users findByEmailAndPassword(String email, String passWord) {
+        return this.userRepository.findByEmailAndPassWord(email, passWord);
+    }
+
+
 }
