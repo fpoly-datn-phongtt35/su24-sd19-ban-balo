@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,16 +20,41 @@
         <div class="col-mt-3">
             <div class="col-6">
                 <label>idSanPham</label>
-                <input type="text" name="idSanPham" id="idSanPham" class="form-control"  value="${ctsp.idSanPham.idSanPham}" >
+
+                <select name="idSanPham">
+                    <c:forEach items="${lstSP}" var="i">
+                        <option value="${i.idSanPham}"
+                                <c:if test="${i.idSanPham == ctsp.idSanPham.idSanPham}" >selected</c:if> >
+                                ${i.tenSanPham}
+                        </option>
+                    </c:forEach>
+                </select>
             </div>
+
+
+
             <div class="col-6">
                 <label>idMauSac</label>
-                <input type="text" name="idMauSac" id="idMauSac" class="form-control"  value="${ctsp.idMauSac.idMauSac}" >
+                <select name="idMauSac">
+                    <c:forEach items="${lstMS}" var="i">
+                        <option value="${i.idMauSac}"
+                                <c:if test="${i.idMauSac == ctsp.idMauSac.idMauSac}" >selected</c:if> >
+                                ${i.idMauSac}
+                        </option>
+                    </c:forEach>
+                </select>
             </div>
 
             <div class="col-6">
                 <label>anh</label>
-                <input type="text" name="idAnh" id="idAnh" class="form-control"  value="${ctsp.idAnh.idAnh}" >
+                <select name="idAnh">
+                    <c:forEach items="${lstA}" var="i">
+                        <option value="${i.idAnh}"
+                                <c:if test="${i.idAnh == ctsp.idAnh.idAnh}" >selected</c:if> >
+                                ${i.idAnh}
+                        </option>
+                    </c:forEach>
+                </select>
             </div>
             <div class="col-6">
                 <label>moTa</label>
@@ -40,12 +66,26 @@
             </div>
             <div class="col-6">
                 <label>nguoiTao</label>
-                <input type="text" name="nguoiTao" id="nguoiTao" class="form-control"  value="${ctsp.nguoiTao.idUsers}" >
+                <select name="nguoiTao">
+                    <c:forEach items="${lstUS}" var="i">
+                        <option value="${i.idUsers}"
+                                <c:if test="${i.idUsers == ctsp.nguoiTao.idUsers}" >selected</c:if> >
+                                ${i.idUsers}
+                        </option>
+                    </c:forEach>
+                </select>
             </div>
 
             <div class="col-6">
                 <label>nguoiSua</label>
-                <input type="text" name="nguoiSua" id="nguoiSua" class="form-control"  value="${ctsp.nguoiSua.idUsers}" >
+                <select name="nguoiSua">
+                    <c:forEach items="${lstUS}" var="i">
+                        <option value="${i.idUsers}"
+                                <c:if test="${i.idUsers == ctsp.nguoiSua.idUsers}" >selected</c:if> >
+                                ${i.idUsers}
+                        </option>
+                    </c:forEach>
+                </select>
             </div>
 
             <div class="col-6">
@@ -62,10 +102,22 @@
                 <label>ghiChu</label>
                 <input type="text" name="ghiChu" id="ghiChu" class="form-control"   value="${ctsp.ghiChu}" />
             </div>
+<%--            <div class="col-6">--%>
+<%--                <label>trangThai</label>--%>
+<%--                <input type="text" name="trangThai" id="trangThai" class="form-control"   value="${ctsp.trangThai}" />--%>
+<%--            </div>--%>
             <div class="col-6">
-                <label>trangThai</label>
-                <input type="text" name="trangThai" id="trangThai" class="form-control"   value="${ctsp.trangThai}" />
-            </div>
+                <label>Con</label>
+                <input type="radio" name="trangThai" value=1
+                <c:if test="${ctsp.trangThai==1}">checked</c:if>
+                >
+                <%--                <sf:errors path="trangthai" cssStyle="color: red" />--%>
+                <label>Het</label>
+                <input type="radio" name="trangThai" value=0
+                <c:if test="${ctsp.trangThai==0}">checked</c:if>
+                >
+                <%--                <sf:errors path="trangthai" cssStyle="color: red" />--%>
+
             <button class="btn btn-primary" type="submit" >update</button>
         </div>
     </table>

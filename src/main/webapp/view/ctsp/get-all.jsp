@@ -50,6 +50,14 @@
         <div class="col-md-3">
             <input type="number" name="maxGiaBan" class="form-control" placeholder="Giá bán đến" value="${ctsp.maxGiaBan}">
         </div>
+        <div class="col-md-12 mt-2">
+            <div>
+                <label><input type="radio" name="giaBanRange" value="0-5"> 5 trở xuống</label>
+                <label><input type="radio" name="giaBanRange" value="5-10"> 5 - 10</label>
+                <label><input type="radio" name="giaBanRange" value="10-50"> 10 - 50</label>
+                <label><input type="radio" name="giaBanRange" value="50-99999999"> 50 trở lên</label>
+            </div>
+        </div>
         <div class="col-md-2">
             <button type="submit" class="btn btn-primary">Tìm kiếm</button>
         </div>
@@ -92,7 +100,11 @@
                 <fmt:formatDate pattern="yyyy-MM-dd" value="${ngaySua}" />
             </td>
             <td>${ctsp.ghiChu}</td>
-            <td>${ctsp.trangThai}</td>
+            <td>
+                <c:if test="${ctsp.trangThai==1}" >Con hang</c:if>
+                <c:if test="${ctsp.trangThai==0}" >Het hang</c:if>
+            </td>
+
             <td>
                 <button class="btn btn-light" onclick="return confirm('Bạn có muốn xóa không?')" ><a class="btn btn-light" href="/ctsp/delete/${ctsp.idCTSP}">Delete</a></button>
                 <button class="btn btn-dark"><a class="btn btn-dark" href="/ctsp/updateForm/${ctsp.idCTSP}">Detail</a></button>

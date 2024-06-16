@@ -9,4 +9,5 @@ public interface SanPhamService {
     void add(SanPham sanPham);
     SanPham detail(Integer idSanPham);
     SanPham delete(Integer idSanPham);
+
 }

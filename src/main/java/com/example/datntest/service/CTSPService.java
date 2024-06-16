@@ -9,7 +9,8 @@ import java.math.BigDecimal;
 
 
 public interface CTSPService {
-    Page<CTSP> getAll(int page);
+//    Page<CTSP> getAll(int page);
+//
     void add(CTSP ctsp);
     CTSP detail(Integer idCTSP);
     CTSP delete(Integer idCTSP);

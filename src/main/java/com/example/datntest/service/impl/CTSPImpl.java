@@ -16,11 +16,6 @@ import java.util.List;
 public class CTSPImpl implements CTSPService {
     @Autowired
     private CTSPRepository ctspRepository;
-    @Override
-    public Page<CTSP> getAll(int page) {
-        Pageable pageable = PageRequest.of(page,3);
-        return ctspRepository.findAll(pageable);
-    }
 
 
     @Override
