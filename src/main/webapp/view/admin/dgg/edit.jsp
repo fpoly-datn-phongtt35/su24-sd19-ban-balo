@@ -2,7 +2,6 @@
 <%@ taglib prefix = "f" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-
 <html>
 <head>
 
@@ -103,11 +102,15 @@
 
 
     <div>
-        <label><sf:radiobutton path="trangthai" value="1" /> Con</label>
+        <label>Con</label>
+        <input type="radio" name="trangthai" value=1>
         <sf:errors path="trangthai" cssStyle="color: red"/>
 
-        <label><sf:radiobutton path="trangthai" value="2" /> Het</label>
+        <label>Het</label>
+        <input type="radio" name="trangthai" value=2>
         <sf:errors path="trangthai" cssStyle="color: red"/>
+
+
     </div>
 
     <div>

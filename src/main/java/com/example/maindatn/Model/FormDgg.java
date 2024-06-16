@@ -17,13 +17,15 @@ public class FormDgg {
 
     private String ma;
     private String ten;
+
+    private Double giaTriDotGiamGia;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date beginday;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endday;
 
-    private Double giaTriDotGiamGia;
     private Double giamToiDa;
     private Double dieuKien;
 

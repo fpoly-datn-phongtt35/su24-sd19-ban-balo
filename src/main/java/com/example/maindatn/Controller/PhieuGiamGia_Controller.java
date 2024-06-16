@@ -31,8 +31,8 @@ public class PhieuGiamGia_Controller {
     @GetMapping("index")
     private String getAll(Model model,@RequestParam("page") Optional<Integer> pageP){
         int page = pageP.orElse(0);
-        Pageable pageable = PageRequest.of(page,1);
-        model.addAttribute("page",pggRepo.findBytrangthai(pggRepo.ACTIVE,pageable));
+        Pageable pageable = PageRequest.of(page,6);
+        model.addAttribute("page",pggRepo.getPhieuGG(pageable));
         return "pgg/index";
     }
 
@@ -123,10 +123,10 @@ public class PhieuGiamGia_Controller {
 
     @GetMapping("delete/{id}")
     public String deleteDone(@PathVariable("id") int id) {
-
-        this.pggRepo.deleteById(id);
+        this.pggRepo.updateTrangthai_0(id);
         return "redirect:/pgg/index";
     }
+
 
 
 }

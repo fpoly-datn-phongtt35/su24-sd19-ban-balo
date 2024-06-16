@@ -30,8 +30,6 @@ public class DotGiamGia_Entity {
     @Column(name = "GiaTriDotGiamGia")
     private Double giaTriDotGiamGia;
 
-
-
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "NgayBatDau")
     private Date beginday;

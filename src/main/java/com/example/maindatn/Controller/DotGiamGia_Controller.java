@@ -21,7 +21,6 @@ import java.util.Optional;
 @Controller
 @RequestMapping("dgg")
 public class DotGiamGia_Controller {
-
     @Autowired
     private DotGiamGia_Repository dggRepo;
 
@@ -33,14 +32,13 @@ public class DotGiamGia_Controller {
     private String getAll(Model model, @RequestParam("page") Optional<Integer> pageP){
         int page = pageP.orElse(0);
         Pageable pageable = PageRequest.of(page,1);
-        model.addAttribute("page",dggRepo.findBytrangthai(dggRepo.ACTIVE,pageable));
+        model.addAttribute("page",dggRepo.getDotGG(pageable));
         return "dgg/index";
     }
 
 
     @GetMapping("create")
     public String create(Model model) {
-
         model.addAttribute("data", new FormDgg());
         return "dgg/create";
     }
@@ -56,7 +54,6 @@ public class DotGiamGia_Controller {
         User_Entity user = new User_Entity();
 //        user.setId(formDgg.getNguoiTao());
         User_Entity user1 = new User_Entity();
-//        user1.setId(formDgg.getNguoiSua());
 
         DotGiamGia_Entity dotGiamGiaEntity = new DotGiamGia_Entity(
                 formDgg.getId(),
@@ -91,10 +88,10 @@ public class DotGiamGia_Controller {
             return "dgg/edit";
         }
         User_Entity user = new User_Entity();
-//        user.setId(formDgg.getNguoiTao());
+        user.setIdUsers(formDgg.getNguoiTao());
 
         User_Entity user1 = new User_Entity();
-//        user1.setId(formDgg.getNguoiSua());
+        user1.setIdUsers(formDgg.getNguoiSua());
 
         dotGiamGiaEntity.setMa(formDgg.getMa());
         dotGiamGiaEntity.setTen(formDgg.getTen());

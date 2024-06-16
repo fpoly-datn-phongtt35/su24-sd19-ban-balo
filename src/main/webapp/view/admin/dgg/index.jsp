@@ -20,11 +20,10 @@
     <td>ID</td>
     <td>Ma</td>
     <td>Ten</td>
-    <td>Ngay bat dau</td>
-    <td>Ngay ket thuc</td>
-
-
-
+    <td>Gia tri giam</td>
+    <td>Gia tri giam toi da</td>
+    <td>Dieu kien</td>
+    <td>Ngay tao</td>
     <td>Nguoi Tao</td>
     <td>Trang Thai</td>
     <td>Action</td>
@@ -34,17 +33,15 @@
             <td>${i.id}</td>
             <td>${i.ma}</td>
             <td>${i.ten}</td>
+            <td>${i.giaTriDotGiamGia}</td>
+            <td>${i.giamToiDa}</td>
+            <td>${i.dieuKien}</td>
 
 
 
             <td>
                 <c:set var="beginday" value="${i.beginday}" />
                 <fmt:formatDate pattern="yyyy-MM-dd" value="${i.beginday}" />
-            </td>
-
-            <td>
-                <c:set var="endday" value="${i.endday}" />
-                <fmt:formatDate pattern="yyyy-MM-dd" value="${i.endday}" />
             </td>
 
             <td>${i.nguoiTao.idUsers}</td>
@@ -54,10 +51,10 @@
             </td>
 
             <td>
-                <a href="/pgg/edit/${i.id}">
+                <a href="/dgg/edit/${i.id}">
                     <button>Edit</button>
                 </a>
-                <a href="/pgg/delete/${i.id}">
+                <a href="/dgg/delete/${i.id}">
                     <button>delete</button>
                 </a>
             </td>
@@ -85,7 +82,7 @@
 
             <%--            </c:if>--%>
             <li class="page-item"><a class="page-link disabled" href="#">${page.number}</a></li>
-            <li class="page-item"><a class="page-link" href="/pgg/index?page=${page.number + 1}">Next</a></li>
+            <li class="page-item"><a class="page-link" href="/dgg/index?page=${page.number + 1}">Next</a></li>
         </ul>
     </nav>
 
