@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 983px;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.kv-banner {
+    img {
+        width: 983px;
+        margin-top: 10px;
+
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+@font-face {
+    font-family: UTM Duepuntozero;
+    src: url(font/UTM\ Duepuntozero.ttf);
+    font-weight: normal
+}
+
+@font-face {
+    font-family: UTM Duepuntozero;
+    src: url(font/UTM\ DuepuntozeroBold.ttf);
+    font-weight: bold;
+}
+
+* {
+    font-family: UTM Duepuntozero;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+body {
+    background-color: white;
+}
+
+header {
+    height: 55px;
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+
+    .logo {
+        background-color: pink;
+        height: 25px;
+        width: 50px;
+        padding-left: 8px;
+        border: 2px solid blue;
+        border-radius: 4px;
+    }
+
+    .kv-menu {
+        ul {
+            display: flex;
+
+            li {
+                padding-left: 10px;
+                padding-right: 10px;
+                border-right: 1px solid white;
+
+                a {
+                    color: white;
+
+                }
+
+                &:last-child {
+                    border-right: 0;
+                    padding-right: 0;
+                }
+
+                .active {
+                    color: blue;
+                }
+            }
+
+        }
+    }
+}
+
+footer {
+    height: 50px;
+    background-color: black;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    padding: 0 20px;
+
+    .kv-dang-ky {
+        input {
+
+            border: 1px solid orange;
+            border-radius: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
+            color: white;
+        }
+
+        button {
+            border: 1px solid orange;
+            border-radius: 4px;
+
+            color: black;
+        }
+    }
+}
+
+.kv-san-pham {
+    .tieu-de {
+        font-size: 32px;
+        color: rgb(17, 106, 222);
+        text-align: center;
+        font-weight: bold;
+    }
+
+
+    .ds-san-pham {
+        overflow: hidden;
+
+        .san-pham {
+            width: calc((100% - 60px) / 4);
+            float: left;
+            border: 1px solid lightgray;
+            padding: 10px;
+            margin: 10px;
+
+            &:nth-child(4n) {
+                margin-right: 0;
+            }
+
+            &:nth-child(4n +1) {
+                margin-left: 0;
+            }
+
+            .kv-anh {
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    transition-duration: 3s;
+
+                    &:hover {
+                        transform: scale(2);
+                    }
+                }
+
+            }
+
+            .kv-ten {
+                text-align: center;
+            }
+
+            .kv-gia {
+                text-align: center;
+
+                .gia-ban {
+                    color: red;
+                }
+
+                .gia-niem-yet {
+                    text-decoration: line-through;
+                }
+            }
+        }
+    }
+}

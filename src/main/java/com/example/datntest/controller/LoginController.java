@@ -20,14 +20,22 @@ public class LoginController {
 
     @GetMapping
     public String hienThiFormLogin() {
-        return "/login-form";
+        return "/test";
     }
+
     @PostMapping
     public String login(@RequestParam("email") String email, @RequestParam("passWord") String passWord) {
         Users users = userService.findByEmailAndPassword(email, passWord);
         if (users != null) {
             session.setAttribute("user", users);
-            return "redirect:/khach-hang/get-all";
+            if (users.getTrangThai() == 1) {
+                //  chuyen den trang voi quyen khach hang
+                return "redirect:/khach-hang/get-all";
+            } else {
+                // chuyen den trang voi quyen nhan vien
+                return "redirect:/index";
+            }
+
         } else {
             return "redirect:/login";
         }
