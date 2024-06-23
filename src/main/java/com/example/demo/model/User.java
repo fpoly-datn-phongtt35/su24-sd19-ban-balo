@@ -3,8 +3,14 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Nationalized;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
@@ -13,35 +19,73 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Users")
-public class User {
+public class User implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdUsers", nullable = false)
-    private Integer id;
+    private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IdKhachHang")
-    private KhachHang idKhachHang;
+    @Column(unique = true)
+    String email;
+    String passWord;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IdNhanVien")
-    private NhanVien idNhanVien;
+    @OneToOne
+    @JoinColumn(name = "idKhachHang")
+    KhachHang khachHang;
 
-    @Nationalized
-    @Column(name = "Email", length = 50)
-    private String email;
+    @OneToOne
+    @JoinColumn(name = "idNhanVien")
+    NhanVien nhanVien;
 
-    @Nationalized
-    @Column(name = "PassWord", length = 50)
-    private String passWord;
+    @Enumerated(EnumType.STRING)
+    Role role;
+    String avatar;
+    Timestamp ngayTao;
+    Timestamp ngaySua;
 
-    @Column(name = "NgayTao")
-    private LocalDate ngayTao;
+    @OneToOne
+    @JoinColumn(name = "nguoiTao", referencedColumnName = "idUsers")
+    User nguoiTao;
 
-    @Column(name = "NgaySua")
-    private LocalDate ngaySua;
+    @OneToOne
+    @JoinColumn(name = "nguoiSua", referencedColumnName = "idUsers")
+    User nguoiSua;
 
-    @Column(name = "TrangThai")
-    private Integer trangThai;
+    int trangThai;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return this.passWord;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
 }

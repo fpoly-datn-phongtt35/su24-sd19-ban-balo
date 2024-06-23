@@ -37,7 +37,7 @@ public class UserController {
                 .trangThai(trangThai)
                 .build();
 
-        this.userService.addAccount(user);
+        this.userService.createNewUser(user);
         // quay vè trang dang nhap
         return "redirect:/login";
     }

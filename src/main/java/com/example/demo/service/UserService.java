@@ -5,11 +5,17 @@ import com.example.demo.model.User;
 import java.util.Optional;
 
 public interface UserService {
-    Optional<User> getAccount(Integer idUsers);
+    User getByUsername(String email);
 
-    User addAccount(User users);
+    boolean existByUsername(String email);
 
-    User findAccountByEmail(String email);
+    User createNewUser(User user);
 
-    User findByEmailAndPassword(String email, String passWord);
+    User findByKhachHang_Id(Integer id);
+
+    User findByNhanVien_Id(Integer id);
+
+    User update(User user);
+
+    boolean existsByEmail(String email);
 }
