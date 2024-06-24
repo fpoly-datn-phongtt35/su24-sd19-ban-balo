@@ -149,33 +149,33 @@ public class CTSPController {
 //        return "/ctsp/search";
 //    }
 
-    @GetMapping("/ctsp/search")
-    public String search(@RequestParam(value = "tenSanPham", required = false) String tenSanPham,
-                         @RequestParam(value = "minGiaBan", required = false) BigDecimal minGiaBan,
-                         @RequestParam(value = "maxGiaBan", required = false) BigDecimal maxGiaBan,
-                         @RequestParam(value = "giaBanRange", required = false) String giaBanRange,
-                         @RequestParam(value = "page", defaultValue = "0") int page,
-                         Model model) {
-        Pageable pageable = PageRequest.of(page, 10);
-        Page<CTSP> productsPage;
-
-        if (giaBanRange != null && !giaBanRange.isEmpty()) {
-            String[] priceRange = giaBanRange.split("-");
-            minGiaBan = new BigDecimal(priceRange[0]);
-            maxGiaBan = new BigDecimal(priceRange[1]);
-        }
-        if ((tenSanPham != null && !tenSanPham.isEmpty()) && (minGiaBan != null && maxGiaBan != null)) {
-            productsPage = ctspService.searchByTenSanPhamAndPriceRange(tenSanPham, minGiaBan, maxGiaBan, pageable);
-        } else if (tenSanPham != null && !tenSanPham.isEmpty()) {
-            productsPage = ctspService.searchByTenSanPham(tenSanPham, pageable);
-        } else if (minGiaBan != null && maxGiaBan != null) {
-            productsPage = ctspService.searchByPriceRange(minGiaBan, maxGiaBan, pageable);
-        } else {
-            productsPage = ctspRepository.findBytrangThai(ctspRepository.ACTIVE,pageable);
-        }
-
-        model.addAttribute("list", productsPage);
-        return "/ctsp/search";
-    }
+//    @GetMapping("/ctsp/search")
+//    public String search(@RequestParam(value = "tenSanPham", required = false) String tenSanPham,
+//                         @RequestParam(value = "minGiaBan", required = false) BigDecimal minGiaBan,
+//                         @RequestParam(value = "maxGiaBan", required = false) BigDecimal maxGiaBan,
+//                         @RequestParam(value = "giaBanRange", required = false) String giaBanRange,
+//                         @RequestParam(value = "page", defaultValue = "0") int page,
+//                         Model model) {
+//        Pageable pageable = PageRequest.of(page, 10);
+//        Page<CTSP> productsPage;
+//
+//        if (giaBanRange != null && !giaBanRange.isEmpty()) {
+//            String[] priceRange = giaBanRange.split("-");
+//            minGiaBan = new BigDecimal(priceRange[0]);
+//            maxGiaBan = new BigDecimal(priceRange[1]);
+//        }
+//        if ((tenSanPham != null && !tenSanPham.isEmpty()) && (minGiaBan != null && maxGiaBan != null)) {
+//            productsPage = ctspService.searchByTenSanPhamAndPriceRange(tenSanPham, minGiaBan, maxGiaBan, pageable);
+//        } else if (tenSanPham != null && !tenSanPham.isEmpty()) {
+//            productsPage = ctspService.searchByTenSanPham(tenSanPham, pageable);
+//        } else if (minGiaBan != null && maxGiaBan != null) {
+//            productsPage = ctspService.searchByPriceRange(minGiaBan, maxGiaBan, pageable);
+//        } else {
+//            productsPage = ctspRepository.findBytrangThai(ctspRepository.ACTIVE,pageable);
+//        }
+//
+//        model.addAttribute("list", productsPage);
+//        return "/ctsp/search";
+//    }
 
 }

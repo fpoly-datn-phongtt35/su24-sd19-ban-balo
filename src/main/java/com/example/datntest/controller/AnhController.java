@@ -3,6 +3,9 @@ package com.example.datntest.controller;
 import com.example.datntest.entity.Anh;
 import com.example.datntest.repository.AnhRepository;
 import com.example.datntest.service.AnhService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -34,13 +37,17 @@ public class AnhController {
     }
     @PostMapping("/anh/add")
     public String add(
+                      @RequestParam("danhMuc") String danhmuc,
                       @RequestParam("url") String url,
                       @RequestParam("ngayTao") String ngayTao,
                       @RequestParam("ngaySua") String ngaySua,
                       @RequestParam("trangThai") Integer trangThai)
+
+
     {
+//        System.out.println(danhmuc);
         Anh anh = Anh.builder()
-                .url(url)
+                .url(danhmuc+url)
                 .ngayTao(Date.valueOf(ngayTao))
                 .ngaySua(Date.valueOf(ngaySua))
                 .trangThai(trangThai)
@@ -63,15 +70,17 @@ public class AnhController {
     }
 
     @PostMapping("/anh/update/{idAnh}")
-    public String update(@PathVariable("idAnh") Integer idAnh, @ModelAttribute("anh") Anh updatedCustomer) {
+    public String update(@RequestParam("danhMuc") String danhmuc,
+            @PathVariable("idAnh") Integer idAnh, @ModelAttribute("anh") Anh updatedCustomer) {
         Anh anh = anhRepository.findById(idAnh)
                 .orElseThrow(() -> new RuntimeException("Khong tim thay "));
 
-        anh.setUrl(updatedCustomer.getUrl());
+        anh.setUrl(danhmuc+updatedCustomer.getUrl());
         anh.setNgayTao(updatedCustomer.getNgayTao());
         anh.setNgaySua(updatedCustomer.getNgaySua());
         anh.setTrangThai(updatedCustomer.getTrangThai());
 
+        System.out.println(danhmuc);
         anhRepository.save(anh);
         return "redirect:/anh/hien-thi";
     }
