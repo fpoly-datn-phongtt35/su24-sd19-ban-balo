@@ -1,92 +1,76 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.ChucVu;
-import com.example.demo.service.ChucVuService;
-import com.example.demo.service.impl.ChucVuServiceImpl;
+import com.example.demo.sevice.ChucVuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 @RequestMapping("/chuc-vu/")
 public class ChucVuController {
-    @Autowired
-    ChucVuService chucVuService;
-    @Autowired
-    ChucVuServiceImpl chucVuService1;
 
-    @GetMapping("/hien-thi")
-    public String page(
-            Model m,
-            @ModelAttribute("sp") ChucVu sp,
-            @RequestParam(defaultValue = "0") int a
-    ) {
-        chucVuService.getAll();
-        m.addAttribute("listSP", chucVuService.page(a, 5));
-        m.addAttribute("sp", sp);
-        return "indexChucVu";
+    @Autowired
+    private ChucVuService chucVuService;
+
+
+    @GetMapping("hien-thi")
+    public String hienThi(Model model){
+        List<ChucVu> chucVus = chucVuService.getAll();
+        model.addAttribute("ListCV",chucVus);
+        return "ChucVu/indexCV";
     }
 
-    @GetMapping("/detail/{id}")
-    public String detail(@PathVariable Long id,
-                         Model m,
-                         @ModelAttribute ChucVu sp
-    ) {
-        chucVuService.detail(id);
-        m.addAttribute("listSP", chucVuService.getAll());
-        m.addAttribute("sp", chucVuService.detail(id));
-        return "detailChucVu";
-    }
 
-    @GetMapping("/delete/{id}")
-    public String delete(
-            @PathVariable Long id,
-            @ModelAttribute ChucVu sp
-    ) {
+    @GetMapping("remove/{id}")
+    public String remove(@PathVariable(name = "id") int id){
         chucVuService.delete(id);
         return "redirect:/chuc-vu/hien-thi";
     }
 
-    @PostMapping("/add")
-    public String add(
-            @ModelAttribute ChucVu sp
-    ) {
-        chucVuService.add(sp);
+    @PostMapping("add")
+    public String add(@RequestParam(name = "maChucVu") String maChucVu,
+                      @RequestParam(name = "tenChucVu") String tenChucVu,
+                      @RequestParam(name = "ngayTao") LocalDate ngayTao,
+                      @RequestParam(name = "ngaySua") LocalDate ngaySua,
+                      @RequestParam(name = "trangThai") Integer trangThai){
+        ChucVu chucVu = ChucVu.builder()
+                .maChucVu(maChucVu)
+                .tenChucVu(tenChucVu)
+                .ngayTao(ngayTao)
+                .ngaySua(ngaySua)
+                .trangThai(Integer.valueOf(trangThai))
+                .build();
+        chucVuService.add(chucVu);
         return "redirect:/chuc-vu/hien-thi";
     }
 
-    @PostMapping("/update/{id}")
-    public String update(
-            @PathVariable Long id,
-            @ModelAttribute ChucVu sp
-    ) {
-        chucVuService.update(sp, id);
+    @GetMapping("view-update/{id}")
+    public String viewUpdate(@PathVariable("id") int id, Model model){
+        ChucVu chucVu = chucVuService.getOne(id);
+        model.addAttribute("cv",chucVu);
+        return "ChucVu/update-CV";
+    }
+    @PostMapping("update/{id}")
+    public String update (@RequestParam(name = "maChucVu") String maChucVu,
+                          @RequestParam(name = "tenChucVu") String tenChucVu,
+                          @RequestParam(name = "ngayTao") LocalDate ngayTao,
+                          @RequestParam(name = "ngaySua") LocalDate ngaySua,
+                          @RequestParam(name = "trangThai") Integer trangThai,
+                          @PathVariable(name = "id") int id){
+        ChucVu chucVu = ChucVu.builder()
+                .maChucVu(maChucVu)
+                .tenChucVu(tenChucVu)
+                .ngayTao(ngayTao)
+                .ngaySua(ngaySua)
+                .trangThai(trangThai)
+                .build();
+        chucVuService.update(chucVu,id);
         return "redirect:/chuc-vu/hien-thi";
     }
-//    @PostMapping("/add")
-//    public String add(
-//            @RequestParam("maChucVu") String maChucVu,
-//            @RequestParam("tenChucVu") String tenChucVu,
-//            @RequestParam("nguoiTao") Integer nguoiTao,
-//            @RequestParam("nguoiSua") Integer nguoiSua,
-//            @RequestParam("ngayTao") Timestamp ngayTao,
-//            @RequestParam("ngaySua") Timestamp ngaySua,
-//            @RequestParam("trangThai") Integer trangThai
-//
-//    ) {
-//        ChucVu sp = ChucVu.builder()
-//                .maChucVu(maChucVu)
-//                .tenChucVu(tenChucVu)
-//                .nguoiTao(nguoiTao)
-//                .nguoiSua(nguoiSua)
-//                .ngayTao(ngayTao)
-//                .ngaySua(ngaySua)
-//                .trangThai(trangThai)
-//                .build();
-//        chucVuService.add(sp);
-//        return "redirect:/chuc-vu/hien-thi";
-//    }
+
 }
