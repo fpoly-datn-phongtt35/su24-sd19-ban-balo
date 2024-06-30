@@ -1,5 +1,7 @@
 package com.example.maindatn.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +10,6 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-
 @Entity
 @Table(name = "PhieuGiamGia")
 @Getter @Setter
@@ -36,16 +37,12 @@ public class PhieuGiamGia_Entity {
     @Column(name = "GiamToiDa")
     private Double giamToiDa;
 
-    @Column(name = "DieuKien")
-    private Double dieuKien;
-
-    @Column(name = "SoLuong")
-    private Integer soLuong;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "NguoiTao",referencedColumnName = "IdUsers")
     private User_Entity nguoiTao;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "NguoiSua",referencedColumnName = "IdUsers")
     private User_Entity nguoiSua;

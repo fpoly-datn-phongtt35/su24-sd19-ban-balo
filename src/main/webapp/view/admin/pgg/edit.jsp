@@ -40,21 +40,6 @@
         <sf:errors path="giamToiDa" cssStyle="color: red"/>
     </div>
 
-
-    <div>
-        <label>dieuKien</label>
-        <sf:input name="dieuKien" type="text" path="dieuKien"/>
-        <sf:errors path="dieuKien" cssStyle="color: red"/>
-    </div>
-
-
-    <div>
-        <label>soLuong</label>
-        <sf:input name="soLuong" type="text" path="soLuong"/>
-        <sf:errors path="soLuong" cssStyle="color: red"/>
-    </div>
-
-
     <div>
         <label>nguoiTao</label>
 
@@ -103,11 +88,13 @@
 
 
     <div>
+
         <label><sf:radiobutton path="trangthai" value="1" /> Con</label>
         <sf:errors path="trangthai" cssStyle="color: red"/>
 
         <label><sf:radiobutton path="trangthai" value="2" /> Het</label>
         <sf:errors path="trangthai" cssStyle="color: red"/>
+
     </div>
 
     <div>

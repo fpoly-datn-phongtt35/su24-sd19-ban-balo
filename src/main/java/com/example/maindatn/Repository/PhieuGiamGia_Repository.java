@@ -16,6 +16,7 @@ import java.util.List;
 
 @Repository
 public interface PhieuGiamGia_Repository extends JpaRepository<PhieuGiamGia_Entity,Integer> {
+
     public static final int NoNACTIVE =0;
     public static final int ACTIVE =1;
     public static final int INACTIVE =2;
@@ -24,6 +25,10 @@ public interface PhieuGiamGia_Repository extends JpaRepository<PhieuGiamGia_Enti
     //GetSanPham
     @Query("SELECT c from PhieuGiamGia_Entity c where c.trangthai!=0")
     public Page<PhieuGiamGia_Entity> getPhieuGG( Pageable pageable);
+
+    //getTheoList
+    @Query("SELECT c from PhieuGiamGia_Entity c where c.trangthai!=0")
+     List<PhieuGiamGia_Entity> getPhieuGG();
 
     //GetNguoiSua vsChucVuQuanLy
     @Query("SELECT c from User_Entity c join NhanVien_Entity b on c.nhanVien = b " +
@@ -37,6 +42,10 @@ public interface PhieuGiamGia_Repository extends JpaRepository<PhieuGiamGia_Enti
     @Query("update PhieuGiamGia_Entity c set c.trangthai=0 where c.id=:ID")
     void updateTrangthai_0(@Param("ID") Integer id);
 
+    @Query("SELECT c from PhieuGiamGia_Entity c where c.trangthai!=0 and c.ten=:query")
+    Page<PhieuGiamGia_Entity> PagetimTheoTen( Pageable pageable, String query);
 
+    @Query("SELECT c from PhieuGiamGia_Entity c where c.trangthai!=0 and c.ten=:query or c.ma=:query")
+    List<PhieuGiamGia_Entity> ListtimTheoTen(String query);
 
 }

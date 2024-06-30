@@ -40,19 +40,6 @@
     </div>
 
 
-    <div>
-        <label>dieuKien</label>
-        <sf:input name="dieuKien" type="text" path="dieuKien" />
-        <sf:errors path="dieuKien" cssStyle="color: red" />
-    </div>
-
-
-    <div>
-        <label>soLuong</label>
-        <sf:input name="soLuong" type="text" path="soLuong" />
-        <sf:errors path="soLuong" cssStyle="color: red" />
-    </div>
-
 
     <div>
         <label>nguoiTao</label>

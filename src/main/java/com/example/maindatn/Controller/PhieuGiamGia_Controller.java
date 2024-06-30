@@ -6,6 +6,7 @@ import com.example.maindatn.Entity.User_Entity;
 import com.example.maindatn.Model.FormPgg;
 import com.example.maindatn.Repository.PhieuGiamGia_Repository;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,8 +17,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-
 @Controller
 @RequestMapping("pgg")
 public class PhieuGiamGia_Controller {
@@ -27,15 +29,58 @@ public class PhieuGiamGia_Controller {
     PhieuGiamGia_Controller() {
     }
 
-
     @GetMapping("index")
-    private String getAll(Model model,@RequestParam("page") Optional<Integer> pageP){
+    private String getHTMLtable(Model model,@RequestParam("page") Optional<Integer> pageP
+    ){
         int page = pageP.orElse(0);
-        Pageable pageable = PageRequest.of(page,6);
-        model.addAttribute("page",pggRepo.getPhieuGG(pageable));
+        model.addAttribute("dataList",pggRepo.getPhieuGG());
         return "pgg/index";
     }
 
+    @GetMapping("table1")
+    @ResponseBody
+    public List<PhieuGiamGia_Entity> originTable() {
+        // Xử lý tìm kiếm dữ liệu dựa trên query
+        List<PhieuGiamGia_Entity> searchData = pggRepo.getPhieuGG();
+        // Hàm searchData là để giả lập việc tìm kiếm
+        return searchData;
+    }
+
+    @GetMapping("search")
+    @ResponseBody
+    public List<PhieuGiamGia_Entity> searchTable(@RequestParam("query") String query) {
+        // Xử lý tìm kiếm dữ liệu dựa trên query
+        List<PhieuGiamGia_Entity> searchData = pggRepo.ListtimTheoTen(query);
+      // Hàm searchData là để giả lập việc tìm kiếm
+        return searchData;
+    }
+
+//    private List<PhieuGiamGia_Entity> searchData(String query) {
+//        // Giả lập hàm tìm kiếm dữ liệu
+//        List<PhieuGiamGia_Entity> result = new ArrayList<>();
+//        for (PhieuGiamGia_Entity data : pggRepo.getPhieuGG()) {
+//            // Kiểm tra xem dữ liệu có chứa query không (tùy vào yêu cầu của bạn)
+//            if (data.getTen().toLowerCase().contains(query.toLowerCase()) ||
+//                    data.getMa().toLowerCase().contains(query.toLowerCase())) {
+//                result.add(data);
+//            }
+//        }
+//        return result;
+//    }
+
+//
+//
+//
+//    @GetMapping("index/getByName")
+//    private String getByTen(Model model,@RequestParam("page") Optional<Integer> pageP,
+////                            @RequestParam("ten") String ten,//
+//                            @RequestParam("query") String query
+//                           ){
+//        int page = pageP.orElse(0);
+//        Pageable pageable = PageRequest.of(page,1);
+//        model.addAttribute("page",pggRepo.PagetimTheoTen(pageable,query));
+//        return  "data_table";
+//    }
 
     @GetMapping("create")
     public String create(Model model) {
@@ -66,8 +111,6 @@ public class PhieuGiamGia_Controller {
                 formPgg.getEndday(),
 
                 formPgg.getGiamToiDa(),
-                formPgg.getDieuKien(),
-                formPgg.getSoLuong(),
                 user,
                 user1,
                 formPgg.getNgayTao(),
@@ -106,8 +149,7 @@ public class PhieuGiamGia_Controller {
         phieuGiamGiaEntity.setEndday(formPgg.getEndday());
 
         phieuGiamGiaEntity.setGiamToiDa(formPgg.getGiamToiDa());
-        phieuGiamGiaEntity.setDieuKien(formPgg.getDieuKien());
-        phieuGiamGiaEntity.setSoLuong(formPgg.getSoLuong());
+
         phieuGiamGiaEntity.setNgayTao(formPgg.getNgayTao());
         phieuGiamGiaEntity.setNgaySua(formPgg.getNgaySua());
         phieuGiamGiaEntity.setNguoiSua(user1);
@@ -120,13 +162,11 @@ public class PhieuGiamGia_Controller {
         return "redirect:/pgg/index";
     }
 
-
     @GetMapping("delete/{id}")
     public String deleteDone(@PathVariable("id") int id) {
         this.pggRepo.updateTrangthai_0(id);
         return "redirect:/pgg/index";
     }
-
 
 
 }

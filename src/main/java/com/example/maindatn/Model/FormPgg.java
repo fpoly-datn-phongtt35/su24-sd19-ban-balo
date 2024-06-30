@@ -29,8 +29,7 @@ public class FormPgg {
     private Date endday;
 
     private Double giamToiDa;
-    private Double dieuKien;
-    private Integer soLuong;
+
 
     private Integer nguoiTao;
     private Integer nguoiSua;
