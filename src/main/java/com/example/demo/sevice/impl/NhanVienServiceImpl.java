@@ -6,7 +6,6 @@ import com.example.demo.repsitory.NhanVienRepository;
 import com.example.demo.sevice.NhanVienService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -23,30 +22,34 @@ public class NhanVienServiceImpl implements NhanVienService {
     }
 
     @Override
-    public NhanVien getOne(int id) {
+    public NhanVien getOne(Long id) {
         return nhanVienRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void add(NhanVien nhanVien) {
-        nhanVienRepository.save(nhanVien);
+    public NhanVien add(NhanVien nhanVien) {
+        return nhanVienRepository.save(nhanVien);
     }
 
     @Override
-    public void update(NhanVien nhanVien, int id) {
+    public NhanVien update(NhanVien nhanVien, Long id) {
         nhanVien.setId(id);
-        nhanVienRepository.save(nhanVien);
+        return nhanVienRepository.save(nhanVien);
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         nhanVienRepository.deleteById(id);
 
     }
 
     @Override
-    public Page<NhanVien> getData(int page) {
-        Pageable pageable = PageRequest.of(page,5);
+    public Page<NhanVien> getData(Pageable pageable) {
         return nhanVienRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<NhanVien> searchByKey(String key, Pageable pageable) {
+        return nhanVienRepository.searchByKey(key, pageable);
     }
 }

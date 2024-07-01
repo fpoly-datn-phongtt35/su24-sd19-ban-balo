@@ -17,7 +17,7 @@ public class ChucVu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdChucVu", nullable = false)
-    private int id;
+    private Long id;
 
     @Size(max = 20)
     @Nationalized

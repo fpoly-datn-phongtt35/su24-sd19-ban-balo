@@ -7,10 +7,12 @@ import java.util.List;
 
 public interface ChucVuService {
     List<ChucVu> getAll();
-    ChucVu getOne(int id);
+    ChucVu getOne(Long id);
     void add(ChucVu chucVu);
-    void delete(int id);
-    void update(ChucVu chucVu, int id);
+    void delete(Long id);
+    void update(ChucVu chucVu, Long id);
+    ChucVu getByTenChucVu(String tenChucVu);
+    boolean existsByTenBoolean(String tenChucVu);
 
 
 

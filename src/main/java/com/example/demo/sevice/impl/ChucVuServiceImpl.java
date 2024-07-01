@@ -4,7 +4,6 @@ package com.example.demo.sevice.impl;
 import com.example.demo.model.ChucVu;
 import com.example.demo.repsitory.ChucVuRepository;
 import com.example.demo.sevice.ChucVuService;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +23,7 @@ public class ChucVuServiceImpl implements ChucVuService {
     }
 
     @Override
-    public ChucVu getOne(int id) {
+    public ChucVu getOne(Long id) {
         return chucVuRepository.findById(id).orElse(null);
     }
 
@@ -35,15 +34,26 @@ public class ChucVuServiceImpl implements ChucVuService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         chucVuRepository.deleteById(id);
 
     }
 
     @Override
-    public void update(ChucVu chucVu, int id) {
+    public void update(ChucVu chucVu, Long id) {
        chucVu.setId(id);
        chucVuRepository.save(chucVu);
     }
+
+    @Override
+    public ChucVu getByTenChucVu(String tenChucVu) {
+        return chucVuRepository.getFirstByTenChucVu(tenChucVu);
+    }
+
+    @Override
+    public boolean existsByTenBoolean(String tenChucVu) {
+        return chucVuRepository.existsByTenChucVu(tenChucVu);
+    }
+
 
 }

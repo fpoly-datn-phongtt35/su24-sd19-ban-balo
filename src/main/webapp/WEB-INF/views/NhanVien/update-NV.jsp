@@ -18,8 +18,9 @@
 <main>
     <header><h2>View</h2></header>
     <form action="/nhan-vien/update/${nv.id}" method="post" class="all-classes-container">
-        Ma <input type="text" name="maNhanVien" value="${nv.maNhanVien}"/><br>
+        Mã <input type="text" name="maNhanVien" value="${nv.maNhanVien}"/><br>
         Tên <input type="text" name="tenNhanVien" value="${nv.tenNhanVien}"/><br>
+        Tên Đệm <input type="text" name="tenDemNhanVien" value="${nv.tenDemNhanVien}"/><br>
         Họ <input type="text" name="hoNhanVien" value="${nv.hoNhanVien}"/><br>
         Ngay Tao <input type="date" name="ngayTao" value="${nv.ngayTao}"/><br>
         Ngay Sửa <input type="date" name="ngaySua" value="${nv.ngaySua}"/><br>
@@ -32,7 +33,7 @@
         Thành Phố<input type="text" name="tinhThanhPho" value="${nv.tinhThanhPho}"/><br>
         Chức Vụ <select name="chucVu">
         <c:forEach items="${chucVus}" var="cv">
-            <option value="${cv.id}"  ${nv.chucVu.id==cv.id?"selected":""} >${cv.tenChucVu}</option>
+            <option value="${cv.id}" ${nv.chucVu.id == cv.id ? "selected" : ""}>${cv.tenChucVu}</option>
         </c:forEach>
     </select>
         <br>
@@ -47,5 +48,6 @@
         <a href="/nhan-vien/hien-thi" type="button" class="btn btn-danger">Hiển Thị</a>
 
     </form>
+</main>
 </body>
 </html>

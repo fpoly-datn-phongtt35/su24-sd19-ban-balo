@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.ChucVu;
 import com.example.demo.sevice.ChucVuService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +28,7 @@ public class ChucVuController {
 
 
     @GetMapping("remove/{id}")
-    public String remove(@PathVariable(name = "id") int id){
+    public String remove(@PathVariable(name = "id") Long id){
         chucVuService.delete(id);
         return "redirect:/chuc-vu/hien-thi";
     }
@@ -50,7 +51,7 @@ public class ChucVuController {
     }
 
     @GetMapping("view-update/{id}")
-    public String viewUpdate(@PathVariable("id") int id, Model model){
+    public String viewUpdate(@PathVariable("id") Long id, Model model){
         ChucVu chucVu = chucVuService.getOne(id);
         model.addAttribute("cv",chucVu);
         return "ChucVu/update-CV";
@@ -61,7 +62,7 @@ public class ChucVuController {
                           @RequestParam(name = "ngayTao") LocalDate ngayTao,
                           @RequestParam(name = "ngaySua") LocalDate ngaySua,
                           @RequestParam(name = "trangThai") Integer trangThai,
-                          @PathVariable(name = "id") int id){
+                          @PathVariable(name = "id") Long id){
         ChucVu chucVu = ChucVu.builder()
                 .maChucVu(maChucVu)
                 .tenChucVu(tenChucVu)

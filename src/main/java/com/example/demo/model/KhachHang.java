@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Nationalized;
 
 import java.time.LocalDate;
@@ -13,31 +14,26 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class NhanVien {
+public class KhachHang {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdNhanVien", nullable = false)
+    @Column(name = "IdKhachHang", nullable = false)
     private Long id;
 
     @Size(max = 20)
     @Nationalized
-    @Column(name = "MaNhanVien", length = 20)
-    private String maNhanVien;
+    @Column(name = "MaKhachHang", length = 20)
+    private String maKhachHang;
 
     @Size(max = 20)
     @Nationalized
-    @Column(name = "TenNhanVien", length = 20)
-    private String tenNhanVien;
+    @Column(name = "TenKhachHang", length = 20)
+    private String tenKhachHang;
 
     @Size(max = 20)
     @Nationalized
-    @Column(name = "TenDemNhanVien", length = 20)
-    private String tenDemNhanVien;
-
-    @Size(max = 20)
-    @Nationalized
-    @Column(name = "HoNhanVien", length = 20)
-    private String hoNhanVien;
+    @Column(name = "HoKhachHang", length = 20)
+    private String hoKhachHang;
 
     @Column(name = "NgaySinh")
     private LocalDate ngaySinh;
@@ -45,9 +41,9 @@ public class NhanVien {
     @Column(name = "GioiTinh")
     private Integer gioiTinh;
 
-    @Size(max = 15)
+    @Size(max = 10)
     @Nationalized
-    @Column(name = "SDT", length = 15)
+    @Column(name = "SDT", length = 10)
     private String sdt;
 
     @Size(max = 15)
@@ -55,9 +51,13 @@ public class NhanVien {
     @Column(name = "CCCD", length = 15)
     private String cccd;
 
-    @Size(max = 30)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "HangKhachHang")
+    private HangKhachHang hangKhachHang;
+
+    @Size(max = 10)
     @Nationalized
-    @Column(name = "SoNha", length = 30)
+    @Column(name = "SoNha", length = 10)
     private String soNha;
 
     @Size(max = 50)
@@ -75,9 +75,9 @@ public class NhanVien {
     @Column(name = "TinhThanhPho", length = 50)
     private String tinhThanhPho;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IdChucVu")
-    private ChucVu chucVu;
+    @ColumnDefault("0")
+    @Column(name = "DiemTichLuy")
+    private Integer diemTichLuy;
 
     @Column(name = "NgayTao")
     private LocalDate ngayTao;

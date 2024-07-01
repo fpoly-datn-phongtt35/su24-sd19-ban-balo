@@ -12,18 +12,31 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <style>
-
-    </style>
-
 </head>
 <body>
 <main>
-    <header><h2>Nhân Viên</h2></header>
-    <form action="/nhan-vien-vien/add" method="post" class="all-classes-container">
+    <div class="text-center">
+        <div class="mb-3">
+            <h3>Nhân Viên</h3>
+        </div>
+    </div>
+    <div style="padding: 20px"  class="card">
+        <form action="/nhan-vien/search" method="get">
+            <div class="row">
+                <div class="d-flex">
+                    <label>Search:</label>
+                    <input type="text" name="key" class="form-control" style="margin-left: 20px">
+                    <button class="btn btn-warning">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <form action="/nhan-vien/add" method="post" class="all-classes-container">
         Ma <input type="text" name="maNhanVien" value="${nv.maNhanVien}"/><br>
-        Tên <input type="text" name="tenNhanVien" value="${nv.tenNhanVien}"/><br>
         Họ <input type="text" name="hoNhanVien" value="${nv.hoNhanVien}"/><br>
+        Tên Đệm <input type="text" name="tenDemNhanVien" value="${nv.tenDemNhanVien}"/><br>
+        Tên <input type="text" name="tenNhanVien" value="${nv.tenNhanVien}"/><br>
         Ngay Tao <input type="date" name="ngayTao" value="${nv.ngayTao}"/><br>
         Ngay Sửa <input type="date" name="ngaySua" value="${nv.ngaySua}"/><br>
         Ngay Sinh <input type="date" name="ngaySinh" value="${nv.ngaySinh}"/><br>
@@ -57,8 +70,7 @@
             <tr>
                 <th scope="col" type="hidden">Id</th>
                 <th scope="col">Mã</th>
-                <th scope="col">Tên</th>
-                <th scope="col">Họ</th>
+                <th scope="col">Họ và tên</th>
                 <th scope="col">Ngày Sinh</th>
                 <th scope="col">Số điện thoại</th>
                 <th scope="col">CCCD</th>
@@ -76,8 +88,7 @@
                 <tr>
                     <th scope="row" type="hidden">${nv.id}</th>
                     <td>${nv.maNhanVien}</td>
-                    <td>${nv.tenNhanVien}</td>
-                    <td>${nv.hoNhanVien}</td>
+                    <td>${nv.hoNhanVien} ${nv.tenDemNhanVien} ${nv.tenNhanVien}</td>
                     <td>${nv.ngaySinh}</td>
                     <td>${nv.sdt}</td>
                     <td>${nv.cccd}</td>
@@ -96,14 +107,16 @@
             </c:forEach>
             </tbody>
         </table>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <c:forEach begin="0" end="${nhanViens.totalPages -1}" varStatus="loop">
-                    <li class="page-item"><a class="page-link" href="/nhan-vien/hien-thi?page=${loop.index}">${loop.index +1}</a></li>
-                </c:forEach>
-
-            </ul>
-        </nav>
+        <div class="text-center">
+            <a href="/nhan-vien/hien-thi?page=0" class="btn btn-secondary">First</a>
+            <a href="/nhan-vien/hien-thi?page=${nhanViens.first?0:nhanViens.number-1}" class="btn btn-secondary">Prev</a>
+            <c:forEach var="pageNumber" begin="0" end="${nhanViens.totalPages>0?nhanViens.totalPages-1:0}">
+                <a href="/nhan-vien/hien-thi?page=${pageNumber}" class="btn btn-secondary">${pageNumber+1}</a>
+            </c:forEach>
+            <a href="/nhan-vien/hien-thi?page=${nhanViens.last?nhanViens.totalPages-1:nhanViens.number+1}"
+               class="btn btn-secondary">Next</a>
+            <a href="/nhan-vien/hien-thi?page=${nhanViens.totalPages-1}" class="btn btn-secondary">Last</a>
+        </div>
     </div>
 
 </main>
