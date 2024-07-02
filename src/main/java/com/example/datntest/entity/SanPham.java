@@ -1,5 +1,6 @@
 package com.example.datntest.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -21,19 +22,22 @@ public class SanPham {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idSanPham;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "IdChatLieu", referencedColumnName = "IdChatLieu")
     private ChatLieu idChatLieu;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "IdDongSanPham", referencedColumnName = "IdDongSanPham")
     private DongSanPham idDongSanPham;
 
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "IdNSX", referencedColumnName = "IdNSX")
     private NSX idNSX;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "IdHang", referencedColumnName = "IdHang")
     private Hang idHang;
@@ -61,9 +65,9 @@ public class SanPham {
 
     @Column(name = "GiaNhap")
     private BigDecimal giaNhap;
-
-    @Column(name = "SoLuongTon")
-    private Integer soLuongTon;
+//
+//    @Column(name = "SoLuongTon")
+//    private Integer soLuongTon;
 
     @Column(name = "NgayTao")
     @DateTimeFormat(pattern = "yyyy-MM-dd")

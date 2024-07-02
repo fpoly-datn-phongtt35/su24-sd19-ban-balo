@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
@@ -20,7 +22,6 @@
 
             <div class="col-6">
                 <label>idSanPham</label>
-
                 <select name="idSanPham">
                     <c:forEach items="${lstSP}" var="i">
                         <option value="${i.idSanPham}">
@@ -61,6 +62,13 @@
                 <label>giaBan</label>
                 <input type="text" name="giaBan" id="giaBan" class="form-control">
             </div>
+
+
+            <div class="col-6">
+                <label>soLuongTon</label>
+                <input type="text" name="soLuongTon" id="soLuongTon" class="form-control">
+            </div>
+
 
             <div class="col-6">
                 <label>nguoiTao</label>

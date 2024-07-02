@@ -40,6 +40,10 @@ public class CTSP {
     @Column(name = "GiaBan")
     private BigDecimal giaBan;
 
+    @Column(name = "SoLuongTon")
+    private Integer soLuongTon;
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "NguoiTao", insertable = true, updatable = true, referencedColumnName = "IdUsers")
     private Users nguoiTao;

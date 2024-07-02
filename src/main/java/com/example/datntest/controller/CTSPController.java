@@ -60,6 +60,7 @@ public class CTSPController {
                       @RequestParam("idAnh") Anh idAnh,
                       @RequestParam("moTa") String moTa,
                       @RequestParam("giaBan") BigDecimal giaBan,
+                      @RequestParam("soLuongTon")Integer soLuongTon,
                       @RequestParam("nguoiTao") Users nguoiTao,
                       @RequestParam("nguoiSua") Users nguoiSua,
                       @RequestParam("ngayTao") String ngayTao,
@@ -75,6 +76,7 @@ public class CTSPController {
                 .idAnh(idAnh)
                 .moTa(moTa)
                 .giaBan(giaBan)
+                .soLuongTon(soLuongTon)
                 .nguoiTao(nguoiTao)
                 .nguoiSua(nguoiSua)
                 .ngayTao(Date.valueOf(ngayTao))
@@ -115,6 +117,7 @@ public class CTSPController {
         ctsp.setIdAnh(updatedCustomer.getIdAnh());
         ctsp.setMoTa(updatedCustomer.getMoTa());
         ctsp.setGiaBan(updatedCustomer.getGiaBan());
+        ctsp.setSoLuongTon(updatedCustomer.getSoLuongTon());
         ctsp.setNguoiTao(updatedCustomer.getNguoiTao());
         ctsp.setNguoiSua(updatedCustomer.getNguoiSua());
         ctsp.setNgayTao(updatedCustomer.getNgayTao());

@@ -70,7 +70,7 @@ public class AnhController {
     }
 
     @PostMapping("/anh/update/{idAnh}")
-    public String update(@RequestParam("danhMuc") String danhmuc,
+    public String update(@ModelAttribute("danhMuc") String danhmuc,
             @PathVariable("idAnh") Integer idAnh, @ModelAttribute("anh") Anh updatedCustomer) {
         Anh anh = anhRepository.findById(idAnh)
                 .orElseThrow(() -> new RuntimeException("Khong tim thay "));
@@ -80,7 +80,7 @@ public class AnhController {
         anh.setNgaySua(updatedCustomer.getNgaySua());
         anh.setTrangThai(updatedCustomer.getTrangThai());
 
-        System.out.println(danhmuc);
+//        System.out.println(danhmuc);
         anhRepository.save(anh);
         return "redirect:/anh/hien-thi";
     }

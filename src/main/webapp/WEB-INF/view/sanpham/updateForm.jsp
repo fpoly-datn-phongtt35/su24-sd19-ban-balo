@@ -18,23 +18,57 @@
     <table>
         <div class="col-mt-3">
 
+<%--            <div class="col-6">--%>
+<%--                <label>idChatLieu</label>--%>
+<%--                <input type="text" name="idChatLieu" id="idChatLieu" class="form-control"  value="${sanpham.idChatLieu.idChatLieu}" >--%>
+<%--            </div>--%>
             <div class="col-6">
                 <label>idChatLieu</label>
-                <input type="text" name="idChatLieu" id="idChatLieu" class="form-control"  value="${sanpham.idChatLieu.idChatLieu}" >
-            </div>
-            <div class="col-6">
-                <label>idDongSanPham</label>
-                <input type="text" name="idDongSanPham" id="idDongSanPham" class="form-control"  value="${sanpham.idDongSanPham.idDongSanPham}" >
-            </div>
-            <div class="col-6">
-                <label>idNSX</label>
-                <input type="text" name="idNSX" id="idNSX" class="form-control"  value="${sanpham.idNSX.idNSX}" >
+                <select name="idChatLieu">
+                    <c:forEach items="${lstCL}" var="i">
+                        <option value="${i.idChatLieu}"
+                                <c:if test="${i.idChatLieu == sanpham.idChatLieu.idChatLieu}" >selected</c:if> >
+                                ${i.idChatLieu}
+                        </option>
+                    </c:forEach>
+                </select>
             </div>
 
-            <div class="col-6">
-                <label>idHang</label>
-                <input type="text" name="idHang" id="idHang" class="form-control"  value="${sanpham.idHang.idHang}" >
-            </div>
+    <div class="col-6">
+        <label>idDongSanPham</label>
+        <select name="idDongSanPham">
+            <c:forEach items="${lstDSP}" var="i">
+                <option value="${i.idDongSanPham}"
+                        <c:if test="${i.idDongSanPham == sanpham.idDongSanPham.idDongSanPham}" >selected</c:if> >
+                        ${i.idDongSanPham}
+                </option>
+            </c:forEach>
+        </select>
+    </div>
+
+    <div class="col-6">
+        <label>idNSX</label>
+        <select name="idNSX">
+            <c:forEach items="${lstNSX}" var="i">
+                <option value="${i.idNSX}"
+                        <c:if test="${i.idNSX == sanpham.idNSX.idNSX}" >selected</c:if> >
+                        ${i.idNSX}
+                </option>
+            </c:forEach>
+        </select>
+    </div>
+    
+    <div class="col-6">
+        <label>idHang</label>
+        <select name="idHang">
+            <c:forEach items="${lstH}" var="i">
+                <option value="${i.idHang}"
+                        <c:if test="${i.idHang == sanpham.idHang.idHang}" >selected</c:if> >
+                        ${i.idHang}
+                </option>
+            </c:forEach>
+        </select>
+    </div>
 
             <div class="col-6">
                 <label>maSanPham</label>
@@ -71,10 +105,10 @@
                 <label>giaNhap</label>
                 <input type="text" name="giaNhap" id="giaNhap" class="form-control"  value="${sanpham.giaNhap}" >
             </div>
-            <div class="col-6">
-                <label>soLuongTon</label>
-                <input type="text" name="soLuongTon" id="soLuongTon" class="form-control"  value="${sanpham.soLuongTon}" >
-            </div>
+<%--            <div class="col-6">--%>
+<%--                <label>soLuongTon</label>--%>
+<%--                <input type="text" name="soLuongTon" id="soLuongTon" class="form-control"  value="${sanpham.soLuongTon}" >--%>
+<%--            </div>--%>
 
             <div class="col-6">
                 <label>ngayTao</label>

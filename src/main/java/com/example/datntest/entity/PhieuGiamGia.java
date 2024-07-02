@@ -31,23 +31,8 @@ public class PhieuGiamGia {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date ngayBatDau;
 
-    @Column(name = "NgayKetThuc")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date ngayKetThuc;
-
     @Column(name = "GiamToiDa")
     private BigDecimal giamToiDa;
-
-    @Column(name = "DieuKien")
-    private BigDecimal dieuKien;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "NguoiTao", insertable = true, updatable = true, referencedColumnName = "IdUsers")
-//    private Users nguoiTao;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "NguoiSua", insertable = true, updatable = true, referencedColumnName = "IdUsers")
-//    private Users nguoiSua;
 
     @Column(name = "NgayTao")
     @DateTimeFormat(pattern = "yyyy-MM-dd")

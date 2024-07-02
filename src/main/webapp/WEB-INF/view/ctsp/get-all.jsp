@@ -50,6 +50,7 @@
         <th>anh</th>
         <th>moTa</th>
         <th>giaBan</th>
+        <th>soLuongTon</th>
         <th>nguoiTao</th>
         <th>nguoiSua</th>
         <th>NgayTao</th>
@@ -68,6 +69,7 @@
         <%--            <td><img src="${ctsp.idAnh.url}" alt="Anh" width="50"></td>--%>
             <td>${ctsp.moTa}</td>
             <td>${ctsp.giaBan}</td>
+            <td>${ctsp.soLuongTon}</td>
             <td>${ctsp.nguoiTao.email}</td>
             <td>${ctsp.nguoiSua.email}</td>
             <td>
@@ -91,16 +93,22 @@
         </tr>
     </c:forEach>
     </tbody>
-
+    <nav aria-label="Page navigation example" class="container">
+        <ul class="pagination">
+            <c:forEach begin="0" end="${nv.totalPages +1}" varStatus="loop">
+                <li class="page-item"><a class="page-link" href="/ctsp/hien-thi?page=${loop.index}">${loop.index + 1}</a></li>
+            </c:forEach>
+        </ul>
+    </nav>
 </table>
 
 <footer>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="/ctsp/hien-thi?page=${list.number - 1}">Trước</a></li>
-            <li class="page-item"><a class="page-link" href="#">${list.number}</a></li>
-            <li class="page-item"><a class="page-link" href="/ctsp/hien-thi?page=${list.number + 1}">Sau</a></li>
-        </ul>
-    </nav>
+<%--    <nav aria-label="Page navigation example">--%>
+<%--        <ul class="pagination">--%>
+<%--            <li class="page-item"><a class="page-link" href="/ctsp/hien-thi?page=${list.number - 1}">Trước</a></li>--%>
+<%--            <li class="page-item"><a class="page-link" href="#">${list.number}</a></li>--%>
+<%--            <li class="page-item"><a class="page-link" href="/ctsp/hien-thi?page=${list.number + 1}">Sau</a></li>--%>
+<%--        </ul>--%>
+<%--    </nav>--%>
 </footer>
 </body>

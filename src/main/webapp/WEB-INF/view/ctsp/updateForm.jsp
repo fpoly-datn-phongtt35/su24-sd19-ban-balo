@@ -65,6 +65,11 @@
                 <input type="text" name="giaBan" id="giaBan" class="form-control"  value="${ctsp.giaBan}" >
             </div>
             <div class="col-6">
+                <label>soLuongTon</label>
+                <input type="text" name="soLuongTon" id="soLuongTon" class="form-control"  value="${ctsp.soLuongTon}" >
+            </div>
+
+            <div class="col-6">
                 <label>nguoiTao</label>
                 <select name="nguoiTao">
                     <c:forEach items="${lstUS}" var="i">

@@ -1,7 +1,10 @@
+<%@ page import="com.example.datntest.entity.SanPham" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page import="java.util.List" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,78 +15,72 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="/js/checkbox.js"></script>
+
     <title>Document</title>
 </head>
 
 <body>
+<div class="container">
+    <div id="sanpham-list">
+        <div class="row">
 
-<h1>Danh sach SANpHAM</h1>
-<button class="btn btn-primary"><a class="btn btn-primary" href="/sanpham/view-add">ADD</a></button>
-<table class="table table-secondary">
-    <tr>
-        <th>idChatLieu</th>
-        <th>idDongSanPham</th>
-        <th>idNSX</th>
-        <th>idHang</th>
-        <th>maSanPham</th>
-        <th>tenSanPham</th>
-        <th>chieuDai</th>
-        <th>chieuRong</th>
-        <th>chieuCao</th>
-        <th>trongLuong</th>
-        <th>trongLuongToiDa</th>
-        <th>giaNhap</th>
-        <th>soLuongTon</th>
-        <th>NgayTao</th>
-        <th>NgaySua</th>
-        <th>TrangThai</th>
-        <th scope="col">Action</th>
-    </tr>
-    <tbody>
-    <c:forEach var="sanpham" items="${list.content}">
-        <tr>
-            <td>${sanpham.idChatLieu.tenChatLieu}</td>
-            <td>${sanpham.idDongSanPham.tenDongSanPham}</td>
-            <td>
-                <c:set var="idNSX" value="${sanpham.idNSX.tenNSX}" />
-                <fmt:formatDate pattern="yyyy-MM-dd" value="${idNSX}" />
-            </td>
-            <td>${sanpham.idHang.tenHang}</td>
-            <td>${sanpham.maSanPham}</td>
-            <td>${sanpham.tenSanPham}</td>
-            <td>${sanpham.chieuDai}</td>
-            <td>${sanpham.chieuRong}</td>
-            <td>${sanpham.chieuCao}</td>
-            <td>${sanpham.trongLuong}</td>
-            <td>${sanpham.trongLuongToiDa}</td>
-            <td>${sanpham.giaNhap}</td>
-            <td>${sanpham.soLuongTon}</td>
-            <td>
-                <c:set var="ngayTao" value="${sanpham.ngayTao}" />
-                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngayTao}" />
-            </td>
-            <td>
-                <c:set var="ngaySua" value="${sanpham.ngaySua}" />
-                <fmt:formatDate pattern="yyyy-MM-dd" value="${ngaySua}" />
-            </td>
-            <td>${sanpham.trangThai}</td>
-            <td>
-                <button class="btn btn-light" onclick="return confirm('Bạn có muốn xóa không?')" ><a class="btn btn-light" href="/sanpham/delete/${sanpham.idSanPham}">Delete</a></button>
+            <form class="col-lg-3"  id="checkboxForm" action="/sanpham/hien-thi" method="get">
 
-                <button class="btn btn-dark" ><a class="btn btn-dark" href="/sanpham/updateForm/${sanpham.idSanPham}">Detail</a></button>
-            </td>
-        </tr>
-    </c:forEach>
-    </tbody>
-    <nav aria-label="Page navigation example" class="container">
-        <ul class="pagination">
-            <c:forEach begin="0" end="${nv.totalPages +1}" varStatus="loop">
-                <li class="page-item"><a class="page-link" href="/sanpham/hien-thi?page=${loop.index}">${loop.index + 1}</a></li>
-            </c:forEach>
-        </ul>
-    </nav>
-</table>
-<footer>
+                <h5 class="m-3 mt-5">Tên Sản Phẩm</h5>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="tenSanPham">
+                    <button class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
+                </div>
+                <br>
+                <h5 class="m-3 mt-5">Giá Sản Phẩm</h5>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Giá từ" name="giaTu">
+                    <input type="text" class="form-control" placeholder="Giá đến" name="giaDen">
+                    <button class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
+                </div>
+                <br>
+                <h5 class="m-3 mt-5">Chất Liệu Sản Phẩm</h5>
+                <c:forEach var="chatLieu" items="${lstCL}">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="tenChatLieu" value="${chatLieu.tenChatLieu}">
+                        <label class="form-check-label">${chatLieu.tenChatLieu}</label>
+                    </div>
+                </c:forEach>
+                <button class="btn btn-primary"><a class="btn btn-primary" href="/sanpham/view-add">ADD</a></button>
+            </form>
 
-</footer>
+            <div class="col-lg-9">
+                <h2 class="mt-5">Danh Sách Sản Phẩm</h2>
+                <div class="row">
+                    <c:forEach var="sanpham" items="${list.content}">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                                <a href="#"><img class="card-img-top" src="/img/banner/banner-3.jpg" alt=""></a>
+
+                            <%--                                <img src="${product.imageUrl}" class="card-img-top" alt="${product.name}">--%>
+                                <div class="card-body">
+                                    <h5 class="card-title">${sanpham.tenSanPham}</h5>
+                                    <p class="card-text">${sanpham.trangThai}</p>
+                                    <p class="card-text">$${sanpham.giaNhap}</p>
+                                    <a href="/sanpham/updateForm/${sanpham.idSanPham}" class="btn btn-primary">Xem Chi Tiết</a>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
+
+        </div>
+<%--        div row tổng--%>
+    </div>
+<%--    div sanpham-list--%>
+</div>
+<%--div container--%>
 </body>

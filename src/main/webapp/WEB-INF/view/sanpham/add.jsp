@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,25 +20,65 @@
     <table>
         <div class="col-mt-3">
 
+<%--            <div class="col-6">--%>
+<%--                <label>idChatLieu</label>--%>
+<%--                <input type="text" name="idChatLieu" id="idChatLieu" class="form-control">--%>
+<%--            </div>--%>
             <div class="col-6">
                 <label>idChatLieu</label>
-                <input type="text" name="idChatLieu" id="idChatLieu" class="form-control">
+                <select name="idChatLieu">
+                    <c:forEach items="${lstCL}" var="i">
+                        <option value="${i.idChatLieu}">
+                                ${i.idChatLieu}
+                        </option>
+                    </c:forEach>
+                </select>
             </div>
 
-            <div class="col-6">
-                <label>idDongSanPham</label>
-                <input type="text" name="idDongSanPham" id="idDongSanPham" class="form-control">
-            </div>
+<%--            <div class="col-6">--%>
+<%--                <label>idDongSanPham</label>--%>
+<%--                <input type="text" name="idDongSanPham" id="idDongSanPham" class="form-control">--%>
+<%--            </div>--%>
+    <div class="col-6">
+        <label>idDongSanPham</label>
+        <select name="idDongSanPham">
+            <c:forEach items="${lstDSP}" var="i">
+                <option value="${i.idDongSanPham}">
+                        ${i.idDongSanPham}
+                </option>
+            </c:forEach>
+        </select>
+    </div>
 
-            <div class="col-6">
-                <label>idNSX</label>
-                <input type="text" name="idNSX" id="idNSX" class="form-control">
-            </div>
+<%--            <div class="col-6">--%>
+<%--                <label>idNSX</label>--%>
+<%--                <input type="text" name="idNSX" id="idNSX" class="form-control">--%>
+<%--            </div>--%>
+    <div class="col-6">
+        <label>idNSX</label>
+        <select name="idNSX">
+            <c:forEach items="${lstNSX}" var="i">
+                <option value="${i.idNSX}">
+                        ${i.idNSX}
+                </option>
+            </c:forEach>
+        </select>
+    </div>
 
-            <div class="col-6">
-                <label>idHang</label>
-                <input type="text" name="idHang" id="idHang" class="form-control">
-            </div>
+<%--            <div class="col-6">--%>
+<%--                <label>idHang</label>--%>
+<%--                <input type="text" name="idHang" id="idHang" class="form-control">--%>
+<%--            </div>--%>
+    <div class="col-6">
+        <label>idHang</label>
+        <select name="idHang">
+            <c:forEach items="${lstH}" var="i">
+                <option value="${i.idHang}">
+                        ${i.idHang}
+                </option>
+            </c:forEach>
+        </select>
+    </div>
 
 
             <div class="col-6">
@@ -79,10 +121,10 @@
                 <input type="text" name="giaNhap" id="giaNhap" class="form-control">
             </div>
 
-            <div class="col-6">
-                <label>soLuongTon</label>
-                <input type="text" name="soLuongTon" id="soLuongTon" class="form-control">
-            </div>
+<%--            <div class="col-6">--%>
+<%--                <label>soLuongTon</label>--%>
+<%--                <input type="text" name="soLuongTon" id="soLuongTon" class="form-control">--%>
+<%--            </div>--%>
 
 
             <div class="col-6">
