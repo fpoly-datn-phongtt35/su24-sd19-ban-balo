@@ -44,10 +44,6 @@
         <th>SDT</th>
         <th>CCCD</th>
         <th>Hang Khach Hang</th>
-        <th>So Nha</th>
-        <th>Phuong Xa</th>
-        <th>Quan Huyen</th>
-        <th>Tinh Thanh Pho</th>
         <th>Diem Tich Luy</th>
         <th>Ngay Tao</th>
         <th>Ngay Sua</th>
@@ -65,10 +61,6 @@
             <td>${kh.sdt}</td>
             <td>${kh.cccd}</td>
             <td>${kh.hangKhachHang.tenHangKhachHang}</td>
-            <td>${kh.soNha}</td>
-            <td>${kh.phuongXa}</td>
-            <td>${kh.quanHuyen}</td>
-            <td>${kh.tinhThanhPho}</td>
             <td>${kh.diemTichLuy}</td>
             <td><fmt:formatDate pattern='yyyy-MM-dd' value='${kh.ngayTao}'/></td>
             <td><fmt:formatDate pattern='yyyy-MM-dd' value='${kh.ngaySua}'/></td>

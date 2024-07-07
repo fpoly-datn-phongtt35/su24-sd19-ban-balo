@@ -47,10 +47,6 @@ public class KhachHangController {
                        @RequestParam("sdt") String sdt,
                        @RequestParam("cccd") String cccd,
                        @RequestParam("idHangKhachHang") HangKhachHang idHangKhachHang,
-                       @RequestParam("soNha") String soNha,
-                       @RequestParam("phuongXa") String phuongXa,
-                       @RequestParam("quanHuyen") String quanHuyen,
-                       @RequestParam("tinhThanhPho") String tinhThanhPho,
                        @RequestParam("diemTichLuy") Integer diemTichLuy,
                        @RequestParam("ngayTao") String ngayTao,
                        @RequestParam("ngaySua") String ngaySua,
@@ -64,10 +60,6 @@ public class KhachHangController {
                 .sdt(sdt)
                 .cccd(cccd)
                 .hangKhachHang(idHangKhachHang)
-                .soNha(soNha)
-                .phuongXa(phuongXa)
-                .quanHuyen(quanHuyen)
-                .tinhThanhPho(tinhThanhPho)
                 .diemTichLuy(diemTichLuy)
                 .ngayTao(Date.valueOf(ngayTao))
                 .ngaySua(Date.valueOf(ngaySua))
@@ -114,10 +106,6 @@ public class KhachHangController {
         khachHang.setSdt(updatedCustomer.getSdt());
         khachHang.setCccd(updatedCustomer.getCccd());
         khachHang.setHangKhachHang(updatedCustomer.getHangKhachHang());
-        khachHang.setSoNha(updatedCustomer.getSoNha());
-        khachHang.setPhuongXa(updatedCustomer.getPhuongXa());
-        khachHang.setQuanHuyen(updatedCustomer.getQuanHuyen());
-        khachHang.setTinhThanhPho(updatedCustomer.getTinhThanhPho());
         khachHang.setDiemTichLuy(updatedCustomer.getDiemTichLuy());
         khachHang.setNgayTao(updatedCustomer.getNgayTao());
         khachHang.setNgaySua(updatedCustomer.getNgaySua());
@@ -136,13 +124,7 @@ public class KhachHangController {
     public String showSearchForm() {
         return "get-all";
     }
-//
-//    @GetMapping("/khach-hang/searchForm")
-//    public String searchProducts(@RequestParam String tenKhachHang, Model model) {
-//        List<KhachHang> khachHang = khachHangService.search(tenKhachHang);
-//        model.addAttribute("list", khachHang);
-//        return "redirect:/khach-hang/get-all";
-//    }
+
     @GetMapping("/khach-hang/searchForm")
     public String searchByTenSanPham(@RequestParam("tenKhachHang") String tenKhachHang,
                                      @RequestParam(value = "page", defaultValue = "0") int page,

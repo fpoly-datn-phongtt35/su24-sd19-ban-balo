@@ -51,22 +51,6 @@
                 </select>
             </div>
             <div class="col-3">
-                <label>Thanh Pho</label>
-                <input type="text" name="soNha" id="soNha" class="form-control">
-            </div>
-            <div class="col-3">
-                <label>Quan</label>
-                <input type="text" name="phuongXa" id="phuongXa" class="form-control">
-            </div>
-            <div class="col-3">
-                <label>Xa</label>
-                <input type="text" name="quanHuyen" id="quanHuyen" class="form-control">
-            </div>
-            <div class="col-3">
-                <label>Quoc Gia</label>
-                <input type="text" name="tinhThanhPho" id="tinhThanhPho" class="form-control">
-            </div>
-            <div class="col-3">
                 <label>Diem Tich Luy</label>
                 <input type="text" name="diemTichLuy" id="diemTichLuy" class="form-control">
             </div>

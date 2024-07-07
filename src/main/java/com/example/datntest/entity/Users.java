@@ -17,8 +17,8 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdUsers")
     private Integer idUsers;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IdKhachHang", referencedColumnName = "IdKhachHang")
+    @ManyToOne
+    @JoinColumn(name = "IdKhachHang")
     private KhachHang khachHang;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdNhanVien", referencedColumnName = "IdNhanVien")

@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 @Builder
 @Setter
@@ -36,14 +37,8 @@ public class KhachHang {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "HangKhachHang", referencedColumnName = "IdHangKhachHang")
     private HangKhachHang hangKhachHang;
-    @Column(name = "SoNha")
-    private String soNha;
-    @Column(name = "PhuongXa")
-    private String phuongXa;
-    @Column(name = "QuanHuyen")
-    private String quanHuyen;
-    @Column(name = "TinhThanhPho")
-    private String tinhThanhPho;
+    @OneToMany(mappedBy = "khachHang",fetch = FetchType.EAGER)
+    private List<DiaChi> diaChiList;
     @Column(name = "DiemTichLuy")
     private Integer diemTichLuy;
     @Column(name = "NgayTao")

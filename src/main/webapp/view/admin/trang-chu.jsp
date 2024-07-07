@@ -9,199 +9,129 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <link rel="stylesheet" href="/assets/css/trangchu.css"  type="text/css">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
 </head>
 <body>
-<%-- header--%>
-<%--<header>--%>
-<%--    <div class="container-fluid">--%>
-<%--        <div class="row justify-content-end">--%>
-<%--            <div class="col-auto">--%>
-<%--                <a href="#">Đăng nhập</a> |--%>
-<%--                <a href="#">Đăng ký</a>--%>
-<%--                <a href="/cart" role="button" class="btn btn-primary">Giỏ hàng</a>--%>
+<%--Trên--%>
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Xin chào ${user.idKhachHang}
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="/api/diachi">Thông tin tài khoản</a></li>
+        <li><a class="dropdown-item" href="/login/logout">Đăng xuất</a></li>
+    </ul>
+</div>
+
+
+
+<%--<div class="acount-header">--%>
+<%--    <div>--%>
+
+<%--    </div>--%>
+<%--</div>--%>
+<%--&lt;%&ndash;Trái&ndash;%&gt;--%>
+<%--<div class="block-content">--%>
+<%--    <ul id="myAccleftNav">--%>
+<%--        <li>--%>
+<%--            <a href="/tai-khoan/thong-tin" class="active">Thông tin</a>--%>
+<%--        </li>--%>
+<%--        <li>--%>
+<%--            <a href="/tai-khoan/hang-thanh-vien">Hạng thành viên</a>--%>
+<%--        </li>--%>
+<%--        <li>--%>
+<%--            <a href="/tai-khoan/don-hang">Đơn hàng</a>--%>
+<%--        </li>--%>
+<%--        <li>--%>
+<%--            <a href="/tai-khoan/ma-giam-gia">Mã giảm giá</a>--%>
+<%--        </li>--%>
+<%--        <li>--%>
+<%--            <a href="/tai-khoan/san-pham-yeu-thich">Sản phẩm yêu thích</a>--%>
+<%--        </li>--%>
+<%--        <li>--%>
+<%--            <a href="/tai-khoan/dia-chi">Địa chỉ</a>--%>
+<%--        </li>--%>
+<%--        <li class="last">--%>
+<%--            <a title="Quay về trang chủ" href="/">Quay về trang chủ</a>--%>
+<%--        </li>--%>
+<%--    </ul>--%>
+<%--</div>--%>
+<%--&lt;%&ndash;Phải&ndash;%&gt;--%>
+<%--<div class="account-content">--%>
+<%--    <app-profile>--%>
+<%--        <h2 class="sub-title">Thông tin tài khoản</h2>--%>
+<%--        <div class="my-account">--%>
+<%--            <div class="user-view-box">--%>
+<%--                <div class="info-box">--%>
+<%--                    <div class="account-gr">--%>
+<%--                        <div class="customer-left">--%>
+<%--                             Họ--%>
+<%--                            <i class="required">*</i>--%>
+<%--                        </div>--%>
+<%--                        <div class="customer-right">--%>
+<%--                            <input type="text" class="v-input ng-untouched ng-pristine ng-valid">--%>
+<%--                            <!---->--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="account-gr">--%>
+<%--                        <div class="customer-left">--%>
+<%--                            Tên--%>
+<%--                            <i class="required">*</i>--%>
+<%--                        </div>--%>
+<%--                        <div class="customer-right">--%>
+<%--                            <input type="text" class="v-input ng-pristine ng-valid ng-touched">--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="account-gr">--%>
+<%--                        <div class="customer-left">--%>
+<%--                             Số điện thoại--%>
+<%--                            <i class="required">*</i>--%>
+<%--                        </div>--%>
+<%--                        <div class="customer-right">--%>
+<%--                            <input type="text" class="v-input ng-untouched ng-pristine ng-valid">--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="account-gr">--%>
+<%--                        <div class="customer-left">--%>
+<%--                            Địa chỉ--%>
+<%--                        </div>--%>
+<%--                        <div class="customer-right">--%>
+<%--                            <input type="text" class="v-input ng-untouched ng-pristine ng-valid">--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="account-gr">--%>
+<%--                        <div class="customer-left">--%>
+<%--                             Ngày sinh--%>
+<%--                            <i class="required">*</i>--%>
+<%--                        </div>--%>
+<%--                        <div class="customer-right">--%>
+<%--                            <input type="date" class="v-input ng-untouched ng-pristine ng-valid">--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    </div>--%>
 <%--            </div>--%>
 <%--        </div>--%>
-<%--    </div>--%>
-<%--</header>--%>
-<header>
-    <div class="container-fluid">
-        <div class="row justify-content-end">
-            <div class="col-auto">
-                <% if (session.getAttribute("users") != null) {
-                    Users users = (Users) session.getAttribute("users");
-                    if (users.getTrangThai() == 0) { %>
-                <a href="/quan-ly-chung">Quản Lý</a> |
-                <% } %>
-                <a href="/login/logout">Đăng xuất</a> |
-                <a href="/tai-khoan/update?id=<%= users.getIdUsers() %>">Thay đổi thông tin tài khoản</a> |
-                <a href="/doi-mat-khau">Đổi mật khẩu</a> |
-                <span>Xin chào, <%= users.getEmail() %></span> | <!-- Hiển thị tên người dùng -->
-                <% } else { %>
-                <a href="/login">Đăng nhập</a> |
-                <a href="/tai-khoan/dang-ki">Đăng ký</a>
-                <% } %>
-                <a href="/cart" role="button" class="btn btn-primary">Giỏ hàng</a>
-            </div>
-        </div>
-    </div>
-</header>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <form action="/index" method="get">
-                <!-- Bộ lọc và tìm kiếm input -->
-<%--                <div class="mb-3">--%>
-<%--                    <label for="searchInput" class="form-label">Tìm kiếm theo tên:</label>--%>
-<%--                    <div class="input-group">--%>
-<%--                        <input type="text" class="form-control" id="searchInput" name="keyword" value="${param.keyword}"--%>
-<%--                               placeholder="Nhập tên đá quý">--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="mb-3">--%>
-<%--                    <label>Khoảng giá:</label>--%>
-<%--                    <div class="form-check">--%>
-<%--                        <input type="radio" name="priceRange" id="range1" class="form-check-input"--%>
-<%--                               value="" ${param.priceRange == ""?"checked":""}>--%>
-<%--                        <label for="range1" class="form-check-label">Tất cả</label>--%>
-<%--                    </div>--%>
-<%--                    <div class="form-check">--%>
-<%--                        <input type="radio" name="priceRange" id="range2" class="form-check-input"--%>
-<%--                               value="0,5000000" ${param.priceRange == "0,5000000"?"checked":""}>--%>
-<%--                        <label for="range2" class="form-check-label">0 - 5 triệu</label>--%>
-<%--                    </div>--%>
-<%--                    <div class="form-check">--%>
-<%--                        <input type="radio" name="priceRange" id="range3" class="form-check-input"--%>
-<%--                               value="5000000,10000000" ${param.priceRange == "5000000,10000000"?"checked":""}>--%>
-<%--                        <label for="range3" class="form-check-label">5 - 10 triệu</label>--%>
-<%--                    </div>--%>
-<%--                    <div class="form-check">--%>
-<%--                        <input type="radio" name="priceRange" id="range4" class="form-check-input"--%>
-<%--                               value="10000000,20000000" ${param.priceRange == "10000000,20000000"?"checked":""}>--%>
-<%--                        <label for="range4" class="form-check-label">10 - 20 triệu</label>--%>
-<%--                    </div>--%>
-<%--                    <div class="form-check">--%>
-<%--                        <input type="radio" name="priceRange" id="range5" class="form-check-input"--%>
-<%--                               value="20000000," ${param.priceRange == "20000000,"?"checked":""}>--%>
-<%--                        <label for="range5" class="form-check-label">Lớn hơn 20 triệu</label>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <button class="btn btn-success" type="submit">Tìm Kiếm</button>--%>
-<%--            </form>--%>
-        </div>
-
-        <div class="col-md-8">
-            <%-- Table --%>
-            <c:if test="${pageDaQuy.isEmpty()}">
-                <h2>Không có dữ liệu!!</h2>
-            </c:if>
-
-            <c:if test="${not pageDaQuy.isEmpty()}">
-                <p>Đang có ${pageDaQuy.getTotalElements()} dữ liệu</p>
-                <table class="table">
-<%--                    <thead class="table-success">--%>
-<%--                    <tr>--%>
-<%--                        <th>Tên</th>--%>
-<%--                        <th>Số lượng đang có sẵn</th>--%>
-<%--                        <th>Đơn giá</th>--%>
-
-<%--                        <th>Trọng lượng</th>--%>
-<%--                        <th>Actions</th>--%>
-<%--                    </tr>--%>
-<%--                    </thead>--%>
-
-
-                    <c:forEach items="${pageDaQuy.getContent()}" var="lp" varStatus="status">
-                        <tr>
-                            <td>${lp.ten}</td>
-                            <td>${lp.soLuong}</td>
-                            <td> Giá gốc:${lp.donGia}<br>
-                                Giá hiện tại: ${lp.getGiaSauKhiGiam()}<br>
-                                ( giảm ${lp.mucGiamGia * 100} (%))
-                            </td>
-                            <td>${lp.trongLuong}</td>
-                            <td>
-                                <a href="/quan-ly/detail/${lp.id}" role="button" class="btn btn-primary"
-                                   data-bs-toggle="modal"
-                                   data-bs-target="#myModal${status.index}">Detail</a>
-                                <a href="/cart/add/${lp.id}" role="button" class="btn btn-primary"> Them vao gio
-                                    hang</a>
-
-                            </td>
-                        </tr>
-
-                        <%--        <!-- The Modal -->--%>
-                        <div class="modal" id="myModal${status.index}">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <!-- Modal Header -->
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Chi Tiết Sản Phẩm</h4>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                    </div>
-                                    <!-- Modal body -->
-                                    <div class="modal-body">
-                                        <form action="/quan-ly/update" method="post">
-                                            <label>ID:</label>
-                                            <input type="text" name="id" required readonly value="${lp.id}"
-                                                   placeholder="Id tự tăng!"><br>
-                                            <label for="ma">Mã:</label>
-                                            <input type="text" id="ma" name="ma" required readonly value="${lp.ma}"
-                                                   placeholder="Mã tự tăng!"><br>
-
-                                            <label for="ten">Tên:</label>
-                                            <input type="text" id="ten" name="ten" required value="${lp.ten}"><br>
-
-                                            <label for="soLuong">Số lượng:</label>
-                                            <input type="number" id="soLuong" name="soLuong" required
-                                                   value="${lp.soLuong}"><br>
-
-                                            <label for="donGia">Đơn giá:</label>
-                                            <input type="number" id="donGia" name="donGia" step="0.1"
-                                                   value="${lp.donGia}"
-                                                   required><br>
-
-                                            <label for="trongLuong">Trọng lượng:</label>
-                                            <input type="number" id="trongLuong" name="trongLuong" step="0.1"
-                                                   value="${lp.trongLuong}"
-                                                   required><br>
-
-                                            <label for="doSang">moTa:</label>
-                                            <input type="text" id="doSang" name="moTa" value="${lp.moTa}" required><br>
-
-                                        </form>
-                                    </div>
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </table>
-            </c:if>
-
-            <div>
-                <c:if test="${pageDaQuy.number + 1 > 1}">
-                    <a href="?page=${pageDaQuy.number}&keyword=${param.keyword}&priceRange=${param.priceRange}">
-                        Previous
-                    </a>
-                </c:if>
-                <span>${pageDaQuy.number + 1} / ${pageDaQuy.totalPages}</span>
-                <c:if test="${pageDaQuy.number + 1 < pageDaQuy.totalPages}">
-                    <a href="?page=${pageDaQuy.number + 2}&keyword=${param.keyword}&priceRange=${param.priceRange}">
-                        Next
-                    </a>
-                </c:if>
-            </div>
-
-            <%----%>
-        </div>
-
-    </div>
-</div>
+<%--    </app-profile>--%>
+<%--</div>--%>
 </body>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.nice-select.min.js"></script>
+<script src="/js/jquery.nicescroll.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/jquery.countdown.min.js"></script>
+<script src="/js/jquery.slicknav.js"></script>
+<script src="/js/mixitup.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/main.js"></script>
 </html>
