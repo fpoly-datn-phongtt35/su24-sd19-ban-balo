@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -53,7 +53,7 @@ public class NhanVienController {
                       @RequestParam(name = "tenNhanVien") String tenNhanVien,
                       @RequestParam(name = "tenDemNhanVien") String tenDemNhanVien,
                       @RequestParam(name = "hoNhanVien") String hoNhanVien,
-                      @RequestParam(name = "ngaySinh") LocalDate ngaySinh,
+                      @RequestParam(name = "ngaySinh") Date ngaySinh,
                       @RequestParam(name = "gioiTinh") Integer gioiTinh,
                       @RequestParam(name = "sdt") String sdt,
                       @RequestParam(name = "cccd") String cccd,
@@ -62,8 +62,8 @@ public class NhanVienController {
                       @RequestParam(name = "quanHuyen") String quanHuyen,
                       @RequestParam(name = "tinhThanhPho") String tinhThanhPho,
                       @RequestParam(name = "chucVu") String chucVu,
-                      @RequestParam(name = "ngayTao") LocalDate ngayTao,
-                      @RequestParam(name = "ngaySua") LocalDate ngaySua,
+                      @RequestParam(name = "ngayTao") Date ngayTao,
+                      @RequestParam(name = "ngaySua") Date ngaySua,
                       @RequestParam(name = "trangThai") String trangThai){
         NhanVien nhanVien = NhanVien.builder()
                 .maNhanVien(maNhanVien)
@@ -89,22 +89,22 @@ public class NhanVienController {
 
     @PostMapping("update/{id}")
     public String update(@RequestParam(name = "maNhanVien") String maNhanVien,
-                          @RequestParam(name = "tenNhanVien") String tenNhanVien,
-                          @RequestParam(name = "tenDemNhanVien") String tenDemNhanVien,
-                          @RequestParam(name = "hoNhanVien") String hoNhanVien,
-                          @RequestParam(name = "ngaySinh") LocalDate ngaySinh,
-                          @RequestParam(name = "gioiTinh") Integer gioiTinh,
-                          @RequestParam(name = "sdt") String sdt,
-                          @RequestParam(name = "cccd") String cccd,
-                          @RequestParam(name = "soNha") String soNha,
-                          @RequestParam(name = "phuongXa") String phuongXa,
-                          @RequestParam(name = "quanHuyen") String quanHuyen,
-                          @RequestParam(name = "tinhThanhPho") String tinhThanhPho,
-                          @RequestParam(name = "chucVu") String chucVu,
-                          @RequestParam(name = "ngayTao") LocalDate ngayTao,
-                          @RequestParam(name = "ngaySua") LocalDate ngaySua,
-                          @RequestParam(name = "trangThai") String trangThai,
-                          @PathVariable(name = "id") Long id){
+                         @RequestParam(name = "tenNhanVien") String tenNhanVien,
+                         @RequestParam(name = "tenDemNhanVien") String tenDemNhanVien,
+                         @RequestParam(name = "hoNhanVien") String hoNhanVien,
+                         @RequestParam(name = "ngaySinh") Date ngaySinh,
+                         @RequestParam(name = "gioiTinh") Integer gioiTinh,
+                         @RequestParam(name = "sdt") String sdt,
+                         @RequestParam(name = "cccd") String cccd,
+                         @RequestParam(name = "soNha") String soNha,
+                         @RequestParam(name = "phuongXa") String phuongXa,
+                         @RequestParam(name = "quanHuyen") String quanHuyen,
+                         @RequestParam(name = "tinhThanhPho") String tinhThanhPho,
+                         @RequestParam(name = "chucVu") String chucVu,
+                         @RequestParam(name = "ngayTao") Date ngayTao,
+                         @RequestParam(name = "ngaySua") Date ngaySua,
+                         @RequestParam(name = "trangThai") String trangThai,
+                         @PathVariable(name = "id") Long id){
         NhanVien nhanVien = NhanVien.builder()
                 .maNhanVien(maNhanVien)
                 .tenNhanVien(tenNhanVien)

@@ -15,4 +15,6 @@ public interface NhanVienRepository extends JpaRepository<NhanVien, Long> {
     Page<NhanVien> searchByKey(@Param("key")String key, Pageable pageable);
     @Query(value = "select * from NhanVien", nativeQuery = true)
     Page<NhanVien> findAll(Pageable pageable);
+
+    boolean existsByMaNhanVien(String maNhanVien);
 }

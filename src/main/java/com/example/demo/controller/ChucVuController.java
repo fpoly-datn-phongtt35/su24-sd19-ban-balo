@@ -8,12 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
 
 @Controller
 @RequestMapping("/chuc-vu/")
 public class ChucVuController {
+
 
     @Autowired
     private ChucVuService chucVuService;
@@ -36,8 +37,8 @@ public class ChucVuController {
     @PostMapping("add")
     public String add(@RequestParam(name = "maChucVu") String maChucVu,
                       @RequestParam(name = "tenChucVu") String tenChucVu,
-                      @RequestParam(name = "ngayTao") LocalDate ngayTao,
-                      @RequestParam(name = "ngaySua") LocalDate ngaySua,
+                      @RequestParam(name = "ngayTao") Date ngayTao,
+                      @RequestParam(name = "ngaySua") Date ngaySua,
                       @RequestParam(name = "trangThai") Integer trangThai){
         ChucVu chucVu = ChucVu.builder()
                 .maChucVu(maChucVu)
@@ -59,8 +60,8 @@ public class ChucVuController {
     @PostMapping("update/{id}")
     public String update (@RequestParam(name = "maChucVu") String maChucVu,
                           @RequestParam(name = "tenChucVu") String tenChucVu,
-                          @RequestParam(name = "ngayTao") LocalDate ngayTao,
-                          @RequestParam(name = "ngaySua") LocalDate ngaySua,
+                          @RequestParam(name = "ngayTao") Date ngayTao,
+                          @RequestParam(name = "ngaySua") Date ngaySua,
                           @RequestParam(name = "trangThai") Integer trangThai,
                           @PathVariable(name = "id") Long id){
         ChucVu chucVu = ChucVu.builder()

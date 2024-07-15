@@ -1,61 +1,65 @@
 package com.example.demo.model;
 
+
 import jakarta.persistence.*;
-import lombok.*;
-import lombok.experimental.FieldDefaults;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.Nationalized;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
 
 @Getter
 @Setter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "Users")
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "IdUsers", nullable = false)
+    private Integer id;
 
-    @Column(unique = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "IdKhachHang")
+    private KhachHang khachHang;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "IdNhanVien")
+    private NhanVien nhanVien;
+
+    @Size(max = 50)
+    @Nationalized
+    @Column(name = "Email", length = 50)
     private String email;
+
+    @Size(max = 50)
+    @Nationalized
+    @Column(name = "PassWord", length = 90)
     private String password;
 
-    @OneToOne
-    @JoinColumn(name = "IdKhachHang")
-    KhachHang khachHang;
+    @Column(name = "NgayTao")
+    private Date ngayTao;
 
-    @OneToOne
-    @JoinColumn(name = "IdNhanVien")
-    NhanVien nhanVien;
+    @Column(name = "NgaySua")
+    private Date ngaySua;
 
-    @Enumerated(EnumType.STRING)
-    Role role;
-    String avatar;
-    Timestamp ngayTao;
-    Timestamp ngaySua;
-
-    @OneToOne
-    @JoinColumn(name = "nguoiTao")
-    User nguoiTao;
-
-    @OneToOne
-    @JoinColumn(name = "nguoiSua")
-    User nguoiSua;
-
-    int trangThai;
-
+    @Column(name = "TrangThai")
+    private Integer trangThai;
+    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
     }
 
     @Override

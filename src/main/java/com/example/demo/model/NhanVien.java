@@ -5,7 +5,8 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.Nationalized;
 
-import java.time.LocalDate;
+import java.sql.Date;
+
 
 @Getter
 @Setter
@@ -40,7 +41,7 @@ public class NhanVien {
     private String hoNhanVien;
 
     @Column(name = "NgaySinh")
-    private LocalDate ngaySinh;
+    private Date ngaySinh;
 
     @Column(name = "GioiTinh")
     private Integer gioiTinh;
@@ -80,10 +81,10 @@ public class NhanVien {
     private ChucVu chucVu;
 
     @Column(name = "NgayTao")
-    private LocalDate ngayTao;
+    private Date ngayTao;
 
     @Column(name = "NgaySua")
-    private LocalDate ngaySua;
+    private Date ngaySua;
 
     @Column(name = "TrangThai")
     private Integer trangThai;

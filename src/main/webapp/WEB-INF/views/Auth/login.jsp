@@ -12,60 +12,133 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 <body>
 <main>
 
-    <section class="vh-100" style="background-color: hotpink;">
-        <div class="container py-5 h-100">
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col col-xl-10">
-                    <div class="card" style="border-radius: 1rem;">
-                        <div class="row g-0">
-                            <div class="col-md-6 col-lg-5 d-none d-md-block">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
-                                     alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
-                            </div>
-                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                                <div class="card-body p-4 p-lg-5 text-black">
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                         class="img-fluid" alt="Sample image">
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <form action="/login-handle" method="post" >
+                        <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                            <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+                            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
 
-                                    <form action="" method="post" class="all-classes-container">
+                            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-twitter"></i>
+                            </button>
 
-                                        <div class="d-flex align-items-center mb-3 pb-1">
-                                            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                            <span class="h1 fw-bold mb-0">KING SHOP</span>
-                                        </div>
-
-                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Đăng Nhập Tài Khoản Của Bạn</h5>
-
-                                        <div data-mdb-input-init class="form-outline mb-4" >
-                                            <input type="email" id="form2Example17" class="form-control form-control-lg"/>
-                                            <label class="form-label" for="form2Example17">Email address</label>
-                                        </div>
-
-                                        <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="password" id="form2Example27" class="form-control form-control-lg" />
-                                            <label class="form-label" for="form2Example27">Password</label>
-                                        </div>
-
-                                        <div class="pt-1 mb-4" style="text-align: center">
-                                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block" type="submit" >Đăng Nhập</button>
-                                        </div>
-
-                                        <a href="#!" style="color: #393f81">Quên Mật Khẩu</a>
-                                        <p class="mb-5 pb-lg-2" style="color: #393f81" >Bạn Có Tài Khoản Chưa?
-                                            <a href="/register" style="color: #393f81" >Đăng kí tài khoản</a></p>
-                                    </form>
-
-                                </div>
-                            </div>
+                            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-linkedin-in"></i>
+                            </button>
                         </div>
-                    </div>
+
+                        <div class="divider d-flex align-items-center my-4">
+                            <p class="text-center fw-bold mx-3 mb-0">Or</p>
+                        </div>
+
+                        <!-- Email input -->
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <input  type="text" id="email" value="${email}" class="form-control form-control-lg"
+                                   placeholder="Email" name="email"/>
+                            <label class="form-label" for="email">Email address</label>
+                        </div>
+
+                        <!-- Password input -->
+                        <div data-mdb-input-init class="form-outline mb-3">
+                            <input type="password" id="password" value="${password}" class="form-control form-control-lg"
+                                   placeholder="Mật Khẩu" name="password" />
+                            <label class="form-label" for="password">Password</label>
+                        </div>
+                        <p class="text-danger" text="${message}"></p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- Checkbox -->
+                            <div class="form-check mb-0">
+                                <input class="form-check-input me-2" type="checkbox" value="password" id="mat khau" />
+                                <label class="form-check-label" for="mat khau">
+                                    Nhớ mật khẩu
+                                </label>
+                            </div>
+                            <a href="" class="text-body">Quên mật khẩu?</a>
+                        </div>
+
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
+                                     style="padding-left: 2.5rem; padding-right: 2.5rem;" value="login">Đăng Nhập</button>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register"
+                                                                                              class="link-danger">Đăng Ký</a></p>
+                        </div>
+
+
+                    </form>
                 </div>
             </div>
         </div>
+        <div
+                class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+            <!-- Copyright -->
+            <div class="text-white mb-3 mb-md-0">
+                Copyright © 2020. All rights reserved.
+            </div>
+            <!-- Copyright -->
+
+            <!-- Right -->
+            <div>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#!" class="text-white me-4">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="#!" class="text-white">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </div>
     </section>
+<%--    <script type="text/javascript">--%>
+<%--        function kt(){--%>
+<%--            var email = document.getElementById("email");--%>
+<%--            var passWord = document.getElementById("password");--%>
+<%--            var sdt = document.getElementById("sdt");--%>
+<%--            if (email.style.length == 0 || passWord.style.length == 0 || sdt.style.length == 0){--%>
+<%--                alert("Vui long ko de trong");--%>
+<%--                email.style.border = "1px solid red";--%>
+<%--                email.style.background = "yellow";--%>
+<%--                passWord.style.border = "1px solid red";--%>
+<%--                passWord.style.background = "yellow";--%>
+<%--                sdt.style.border = "1px solid red";--%>
+<%--                sdt.style.background = "yellow";--%>
+<%--                return false;--%>
+<%--            }else {--%>
+<%--                email.style.border = "none";--%>
+<%--                email.style.background = "white";--%>
+<%--                passWord.style.border = "none";--%>
+<%--                passWord.style.background = "white";--%>
+<%--                sdt.style.border = "none";--%>
+<%--                sdt.style.background = "white";--%>
+<%--            }--%>
+<%--            if (email.style.length != 0 & passWord.style.length != 0 & sdt.style.length != 0){--%>
+<%--                alert("Thanh cong");--%>
+<%--                return true;--%>
+<%--            }--%>
+<%--        }--%>
+<%--    </script>--%>
+
 
 </main>
 

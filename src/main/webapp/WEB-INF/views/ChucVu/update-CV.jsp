@@ -30,5 +30,6 @@
     <button type="submit" class="btn btn-secondary">Update</button>
     <a href="/chuc-vu/hien-thi" type="button" class="btn btn-warning">Hien Thi</a>
 
+</main>
 </body>
 </html>

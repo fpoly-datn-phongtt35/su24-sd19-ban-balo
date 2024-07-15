@@ -15,5 +15,6 @@ public interface NhanVienService {
     void delete(Long id);
     Page<NhanVien> getData(Pageable pageable);
     Page<NhanVien> searchByKey(String key, Pageable pageable);
+    String generateCustomerCode();
 
 }

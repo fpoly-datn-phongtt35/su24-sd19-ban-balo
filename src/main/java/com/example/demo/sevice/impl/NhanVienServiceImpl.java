@@ -52,4 +52,18 @@ public class NhanVienServiceImpl implements NhanVienService {
     public Page<NhanVien> searchByKey(String key, Pageable pageable) {
         return nhanVienRepository.searchByKey(key, pageable);
     }
+
+    @Override
+    public String generateCustomerCode() {
+        long count = nhanVienRepository.count();
+        int numberOfDigits = (int) Math.log10(count + 1) + 1;
+        int numberOfZeros = Math.max(0, 5 - numberOfDigits);
+        String employeeCode;
+        do {
+            employeeCode = String.format("NV%0" + (numberOfDigits + numberOfZeros) + "d", count + 1);
+            count++;
+        } while (nhanVienRepository.existsByMaNhanVien(employeeCode));
+
+        return employeeCode;
+    }
 }
