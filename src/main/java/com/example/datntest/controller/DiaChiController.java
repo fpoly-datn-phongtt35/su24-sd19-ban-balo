@@ -3,7 +3,6 @@ package com.example.datntest.controller;
 import com.example.datntest.entity.*;
 import com.example.datntest.repository.DiaChiReposiroty;
 import com.example.datntest.repository.KhachHangRepository;
-import com.example.datntest.service.DiaChiService;
 import com.example.datntest.service.KhachHangService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -26,26 +26,28 @@ public class DiaChiController {
     private KhachHangRepository khachHangRepository;
 
     @GetMapping("/diachi")
-    public String getDiaChiForm(Model model) {
+    public String getDiaChiForm(Model model, HttpSession session) {
         model.addAttribute("diaChi", new DiaChi());
-        KhachHang khachHang = khachHangRepository.findById(2).get();
-        for (DiaChi kh:
-                khachHang.getDiaChiList()) {
-            System.out.println(kh.getCity());
+
+        KhachHang ses = (KhachHang) session.getAttribute("user");
+        if(ses == null) return "redirect:/login";
+        KhachHang khachHang = khachHangRepository.findById(ses.getIdKhachHang()).get();
+        model.addAttribute("kh", khachHang);
+        for (DiaChi diaChi : khachHang.getDiaChiList()) {
+            System.out.println(diaChi.getCity());
         }
-        System.out.println();
         return "/dia-chi";
     }
 
     @PostMapping("/updateInfo")
-    public String updateInfo(Model model, @RequestParam("city") String city,
+    public String updateInfo(@ModelAttribute("kh") KhachHang updatedCustomer,
+                                Model model, @RequestParam("city") String city,
                              @RequestParam("district") String district,
                              @RequestParam("ward") String ward, HttpSession session) {
-        KhachHang khachHang1 = (KhachHang) session.getAttribute("user");
-//        session.getAttribute(String.valueOf(khachHang1));
+        KhachHang khachHang = (KhachHang) session.getAttribute("user");
         List<DiaChi> list;
-        if(!khachHang1.getDiaChiList().isEmpty()){
-            list   = khachHang1.getDiaChiList();
+        if(!khachHang.getDiaChiList().isEmpty()){
+            list   = khachHang.getDiaChiList();
         }else {
             list   = new ArrayList<>();
         }
@@ -53,18 +55,30 @@ public class DiaChiController {
         diaChi.setCity(city);
         diaChi.setDistrict(district);
         diaChi.setWard(ward);
-        diaChi.setKhachHang(khachHang1);
+        diaChi.setKhachHang(khachHang);
         list.add(diaChi);
-        khachHang1.setDiaChiList(list);
-//        DiaChi diaChi1 = diaChiReposiroty.findById(""id);
-//        if(diaChi1 == null){
-//            diaChiReposiroty.save(diaChi);
-//        }else {
-//            diaChi.setIdDiaChi(diaChi1.getIdDiaChi());
-//            diaChiReposiroty.save(diaChi);
-//        }
-        diaChiReposiroty.save(diaChi);
-        khachHangRepository.save(khachHang1);
+        khachHang.setDiaChiList(list);
+
+        khachHang.setMaKhachHang(updatedCustomer.getMaKhachHang());
+        khachHang.setTenKhachHang(updatedCustomer.getTenKhachHang());
+        khachHang.setHoKhachHang(updatedCustomer.getHoKhachHang());
+        khachHang.setNgaySinh(updatedCustomer.getNgaySinh());
+        khachHang.setGioiTinh(updatedCustomer.getGioiTinh());
+        khachHang.setSdt(updatedCustomer.getSdt());
+        khachHang.setCccd(updatedCustomer.getCccd());
+        khachHang.setHangKhachHang(updatedCustomer.getHangKhachHang());
+        khachHang.setDiemTichLuy(updatedCustomer.getDiemTichLuy());
+        khachHang.setNgaySua(new Date());
+        khachHang.setTrangThai(updatedCustomer.getTrangThai());
+
+        diaChiReposiroty.saveAndFlush(diaChi);
+        khachHangRepository.saveAndFlush(khachHang);
         return "/dia-chi";
+    }
+    @GetMapping("/updateInfo/{idKhachHang}")
+    public String view(@PathVariable("idKhachHang") Integer idKhachHang, Model model) {
+        KhachHang khachHang = khachHangService.detail(idKhachHang);
+        model.addAttribute("kh", khachHang);
+        return "/update";
     }
 }

@@ -21,7 +21,7 @@ public class UserImpl implements UserService {
 
     @Override
     public Users addAccount(Users users) {
-        return this.userRepository.save(users);
+        return this.userRepository.saveAndFlush(users);
     }
 
     @Override

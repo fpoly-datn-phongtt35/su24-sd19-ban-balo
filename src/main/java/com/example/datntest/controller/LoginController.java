@@ -26,7 +26,6 @@ public class LoginController {
             if (users.getTrangThai() == 1) {
                 //  chuyen den trang voi quyen khach hang
                 session.setAttribute("user", users.getKhachHang());
-
                 return "redirect:/kh/trang-chu";
             } else {
                 // chuyen den trang voi quyen nhan vien

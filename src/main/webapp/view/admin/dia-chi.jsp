@@ -23,13 +23,13 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="name">Họ: </label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" placeholder="Ho" name="hoKhachHang">
+                <input type="text" class="form-control" id="name" placeholder="Ho" name="hoKhachHang" value="${kh.hoKhachHang}">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="name">Tên: </label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="ten" placeholder="Ten" name="tenKhachHang">
+                <input type="text" class="form-control" id="ten" placeholder="Ten" name="tenKhachHang" value="${kh.tenKhachHang}">
             </div>
         </div>
 <%--        <div class="form-group">--%>
@@ -41,8 +41,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="phoneNumber">Số điện thoại:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="phoneNumber" placeholder="Enter phone number"
-                       name="sdt">
+                <input type="text" class="form-control" id="phoneNumber" placeholder="Enter phone number" name="sdt" value="${kh.sdt}">
             </div>
         </div>
         <div class="form-group">
@@ -68,25 +67,22 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="dateOfBirth">Ngày sinh:</label>
             <div class="col-sm-10">
-                <input type="date" class="form-control" id="dateOfBirth" placeholder="Enter email" name="ngaySinh">
+                <input type="date" class="form-control" id="dateOfBirth" placeholder="Enter email" name="ngaySinh" value="${kh.ngaySinh}">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2">Giới tính:</label>
             <div class="col-sm-10">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gioiTinh" id="inlineRadio1"
-                           value="option1">
+                    <input class="form-check-input" type="radio" name="gioiTinh" id="inlineRadio1" value="1">
                     <label class="form-check-label" for="inlineRadio1">Nam</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gioiTinh" id="inlineRadio2"
-                           value="option2">
+                    <input class="form-check-input" type="radio" name="gioiTinh" id="inlineRadio2" value="0">
                     <label class="form-check-label" for="inlineRadio2">Nữ</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gioiTinh" id="inlineRadio3"
-                           value="option3">
+                    <input class="form-check-input" type="radio" name="gioiTinh" id="inlineRadio3" value="2">
                     <label class="form-check-label" for="inlineRadio3">Khác</label>
                 </div>
             </div>

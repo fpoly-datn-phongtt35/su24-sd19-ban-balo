@@ -29,7 +29,7 @@ public class KhachHang {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date ngaySinh;
     @Column(name = "GioiTinh")
-    private Integer gioiTinh;
+    private Integer gioiTinh;   // nam 1, nữ 0,
     @Column(name = "SDT")
     private String sdt;
     @Column(name = "CCCD")

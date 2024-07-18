@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface KhachHangService {
     Page<KhachHang> getAll(int pages);
-    void add(KhachHang khachHang);
+    KhachHang add(KhachHang khachHang);
     KhachHang detail(Integer idKhachHang);
     KhachHang delete(Integer idKhachHang);
     Page<KhachHang> searchByTenKhachHang(String tenKhachHang, Pageable pageable);

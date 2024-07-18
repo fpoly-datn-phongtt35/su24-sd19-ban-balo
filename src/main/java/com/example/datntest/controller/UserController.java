@@ -1,7 +1,9 @@
 package com.example.datntest.controller;
 
+import com.example.datntest.entity.KhachHang;
 import com.example.datntest.entity.Users;
 import com.example.datntest.repository.UserRepository;
+import com.example.datntest.service.KhachHangService;
 import com.example.datntest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +13,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
+
 @Controller
 @RequestMapping("/tai-khoan")
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private KhachHangService khachHangService;
+
     @Autowired
     private UserRepository userRepository;
     @GetMapping("/dang-ki")
@@ -29,11 +36,16 @@ public class UserController {
                               @RequestParam("email") String email,
                               @RequestParam("passWord") String passWord
     ) {
+        KhachHang newKhachHang = KhachHang.builder().ngayTao(new Date()).build();
+        KhachHang savedKhachHang = this.khachHangService.add(newKhachHang);
+
+
         //1:kh,0:nv
         int trangThai = 1;
         Users users = Users.builder()
                 .email(email)
                 .passWord(passWord)
+                .khachHang(savedKhachHang)
                 .trangThai(trangThai)
                 .build();
 
