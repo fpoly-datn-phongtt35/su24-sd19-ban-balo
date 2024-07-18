@@ -5,6 +5,7 @@ import com.example.demo.model.NhanVien;
 import com.example.demo.sevice.ChucVuService;
 import com.example.demo.sevice.NhanVienService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -129,8 +130,11 @@ public class NhanVienController {
     @GetMapping("search")
     public String searchByKey(@RequestParam("key") String key, Model model, @RequestParam(name = "page", defaultValue = "0") int page) {
         Pageable pageable = PageRequest.of(page, 5);
-        model.addAttribute("listCategory", nhanVienService.searchByKey(key, pageable));
-        model.addAttribute("category", new NhanVien());
+        Page<NhanVien> nhanViens = nhanVienService.searchByKey(key, pageable);
+        model.addAttribute("nhanViens", nhanViens);
+
+        List<ChucVu> chucVus = chucVuService.getAll();
+        model.addAttribute("chucVus", chucVus);
         return "NhanVien/indexNV";
     }
 }

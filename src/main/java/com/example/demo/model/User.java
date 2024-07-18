@@ -28,7 +28,7 @@ public class User implements UserDetails {
     @JoinColumn(name = "IdKhachHang")
     private KhachHang khachHang;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL) // Adjust cascade type as needed
     @JoinColumn(name = "IdNhanVien")
     private NhanVien nhanVien;
 

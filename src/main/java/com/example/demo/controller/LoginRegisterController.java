@@ -109,57 +109,56 @@ public class LoginRegisterController {
     ) {
         if (bindingResult.hasErrors()) {
             return "Auth/register";
-        } else {
-            if (userService.existByUsername(registerDto.getEmail())) {
-                model.addAttribute("email", "Email đã tồn tại!");
-                return "Auth/register";
-            } else {
-                try {
-                    NhanVien nhanVien = new NhanVien();
-                    nhanVien.setTenNhanVien(registerDto.getHo() + " " + registerDto.getTenDem() + " " + registerDto.getTen());
-                    nhanVien.setTrangThai(1);
-                    nhanVien.setNgayTao(new Date(System.currentTimeMillis()));
-                    nhanVien.setGioiTinh(registerDto.getGioiTinh());
-                    nhanVien.setSdt(registerDto.getSdt());
-                    nhanVien.setMaNhanVien(nhanVienService.generateCustomerCode());
+        }
+        if (userService.existByUsername(registerDto.getEmail())) {
+            model.addAttribute("email", "Email đã tồn tại!");
+            return "Auth/register";
+        }
+        try {
+            // Create or fetch NhanVien entity
+            NhanVien nhanVien = new NhanVien();
+            nhanVien.setTenNhanVien(registerDto.getHo() + " " + registerDto.getTenDem() + " " + registerDto.getTen());
+            nhanVien.setTrangThai(1);
+            nhanVien.setNgayTao(new Date(System.currentTimeMillis()));
+            nhanVien.setGioiTinh(registerDto.getGioiTinh());
+            nhanVien.setSdt(registerDto.getSdt());
+            nhanVien.setMaNhanVien(nhanVienService.generateCustomerCode());
 
-                    // Kiểm tra mật khẩu không null trước khi mã hóa
-                    if (registerDto.getPassword() == null) {
-                        throw new IllegalArgumentException("Mật khẩu không được null");
-                    }
+            // Persist NhanVien entity to ensure it's managed
+            nhanVien = nhanVienService.add(nhanVien);
 
-                    // Mã hóa mật khẩu
-                    String encodedPassword = passwordEncoder.encode(registerDto.getPassword());
+            // Encrypt password
+            String encodedPassword = passwordEncoder.encode(registerDto.getPassword());
 
-                    User user = new User();
-                    user.setEmail(registerDto.getEmail());
-                    user.setPassword(encodedPassword);
-                    user.setTrangThai(1); // true = active
-                    user.setNhanVien(nhanVien);
-                    user.setRole(Role.USER);
-                    user.setNgayTao(new Date(System.currentTimeMillis()));
-                    User createdUser = userService.createNewUser(user);
+            // Create User entity
+            User user = new User();
+            user.setEmail(registerDto.getEmail());
+            user.setPassword(encodedPassword);
+            user.setTrangThai(1); // active
+            user.setNhanVien(nhanVien); // Associate with managed NhanVien
+            user.setRole(Role.USER);
+            user.setNgayTao(new Date(System.currentTimeMillis()));
 
-                    if (createdUser == null) {
-                        throw new RuntimeException("Lỗi khi tạo mới người dùng, vui lòng thử lại!");
-                    } else {
-                        Authentication authentication = authenticationManager.authenticate(
-                                new UsernamePasswordAuthenticationToken(registerDto.getEmail(), registerDto.getPassword())
-                        );
-                        SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
-                        securityContext.setAuthentication(authentication);
-                        session = request.getSession(true);
-                        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
-                        return "Auth/login";
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-                    model.addAttribute("message", "Lỗi khi tạo mới người dùng, vui lòng thử lại!");
-                    return "Auth/register";
-                }
-            }
+            // Persist User
+            userService.createNewUser(user);
+
+            // Log in the user
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(registerDto.getEmail(), registerDto.getPassword())
+            );
+            SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
+            securityContext.setAuthentication(authentication);
+            session = request.getSession(true);
+            session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
+
+            return "redirect:/";
+        } catch (Exception e) {
+            e.printStackTrace();
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            model.addAttribute("message", "Lỗi khi tạo mới người dùng, vui lòng thử lại!");
+            return "Auth/register";
         }
     }
-    
+
+
 }

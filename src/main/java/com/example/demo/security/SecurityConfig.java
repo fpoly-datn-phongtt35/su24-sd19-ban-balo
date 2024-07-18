@@ -23,8 +23,8 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> {
                     req
-                            .requestMatchers( "/chuc-vu/hien-thi", "/nhan-vien/hien-thi").hasAnyAuthority("ADMIN")
-                            .requestMatchers("/chuc-vu/hien-thi", "/chuc-vu/view-update/", "/nhan-vien/hien-thi").hasAnyAuthority("USER", "ADMIN")
+                            .requestMatchers( "/chuc-vu/view-update/","/chuc-vu/hien-thi").hasAnyAuthority("ADMIN")
+                            .requestMatchers(  "/nhan-vien/hien-thi").hasAnyAuthority("USER", "ADMIN")
                             .requestMatchers("/").hasAnyAuthority("CUSTOMER")
                             .requestMatchers("/change-password").authenticated()
                             .anyRequest().permitAll();
@@ -63,4 +63,5 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }
