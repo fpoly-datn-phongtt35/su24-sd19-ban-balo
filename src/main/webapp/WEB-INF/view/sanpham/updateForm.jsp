@@ -69,6 +69,17 @@
             </c:forEach>
         </select>
     </div>
+    <div class="col-6">
+        <label>anh</label>
+        <select name="idAnh">
+            <c:forEach items="${lstA}" var="i">
+                <option value="${i.idAnh}"
+                        <c:if test="${i.idAnh == sanpham.idAnh.idAnh}" >selected</c:if> >
+                        ${i.idAnh}
+                </option>
+            </c:forEach>
+        </select>
+    </div>
 
             <div class="col-6">
                 <label>maSanPham</label>
@@ -105,11 +116,6 @@
                 <label>giaNhap</label>
                 <input type="text" name="giaNhap" id="giaNhap" class="form-control"  value="${sanpham.giaNhap}" >
             </div>
-<%--            <div class="col-6">--%>
-<%--                <label>soLuongTon</label>--%>
-<%--                <input type="text" name="soLuongTon" id="soLuongTon" class="form-control"  value="${sanpham.soLuongTon}" >--%>
-<%--            </div>--%>
-
             <div class="col-6">
                 <label>ngayTao</label>
                 <input type="date" name="ngayTao" id="ngayTao" class="form-control"

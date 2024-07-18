@@ -31,56 +31,69 @@ public class SanPhamController {
     private NSXRepository nsxRepository;
     @Autowired
     private HangRepository hangRepository;
-
-    @GetMapping("/sanpham/hien-thi2")
-    private String getHTMLtable(Model model
-    ){
-        model.addAttribute("list",sanPhamRepository.getSanPham());
-        return "/sanpham/get-all";
-    }
-    @GetMapping("/sanpham/table1")
-    @ResponseBody
-    public List<SanPham> originTable() {
-        // Xử lý tìm kiếm dữ liệu dựa trên query
-        List<SanPham> searchData = sanPhamRepository.getSanPham();
-        // Hàm searchData là để giả lập việc tìm kiếm
-        return searchData;
-    }
-    @GetMapping("/sanpham/search")
-    @ResponseBody
-    public List<SanPham> searchTable(@RequestParam("query") String query) {
-        // Xử lý tìm kiếm dữ liệu dựa trên query
-        List<SanPham> searchData = sanPhamRepository.ListtimTheoTenorMa(query);
-        // Hàm searchData là để giả lập việc tìm kiếm
-        return searchData;
-    }
+    @Autowired
+    private AnhRepository anhRepository;
+//
+//    @GetMapping("/sanpham/hien-thi2")
+//    private String getHTMLtable(Model model
+//    ){
+//        model.addAttribute("list",sanPhamRepository.getSanPham());
+//        return "/sanpham/get-all";
+//    }
+//    @GetMapping("/sanpham/table1")
+//    @ResponseBody
+//    public List<SanPham> originTable() {
+//        // Xử lý tìm kiếm dữ liệu dựa trên query
+//        List<SanPham> searchData = sanPhamRepository.getSanPham();
+//        // Hàm searchData là để giả lập việc tìm kiếm
+//        return searchData;
+//    }
+//    @GetMapping("/sanpham/search")
+//    @ResponseBody
+//    public List<SanPham> searchTable(@RequestParam("query") String query) {
+//        // Xử lý tìm kiếm dữ liệu dựa trên query
+//        List<SanPham> searchData = sanPhamRepository.ListtimTheoTenorMa(query);
+//        // Hàm searchData là để giả lập việc tìm kiếm
+//        return searchData;
+//    }
 
     @GetMapping("/sanpham/hien-thi")
     private String hienthi(Model model,
                            @RequestParam(required = false) String tenSanPham,
                            @RequestParam(required = false) String tenChatLieu,
+                           @RequestParam(required = false) String tenDongSanPham,
+                           @RequestParam(required = false) String tenHang,
                            @RequestParam(required = false) BigDecimal giaTu,
                            @RequestParam(required = false) BigDecimal giaDen,
                            @RequestParam(value = "page", defaultValue = "0") int pages) {
 
 
-        Pageable pageable = PageRequest.of(pages, 5);
+        Pageable pageable = PageRequest.of(pages, 8);
         Page<SanPham> sanPhamPage;
 
         if (tenSanPham != null && !tenSanPham.isEmpty()) {
-            // Nếu có nhập tên sản phẩm, thực hiện tìm kiếm
             sanPhamPage = sanPhamService.timKiemTheoTen(tenSanPham, pageable);
         } else if (tenChatLieu != null && !tenChatLieu.isEmpty()) {
             sanPhamPage = sanPhamService.timKiemTheoTenChatLieu(pageable, tenChatLieu);
+        }else if (tenDongSanPham != null && !tenDongSanPham.isEmpty()) {
+            sanPhamPage = sanPhamService.timKiemTheoTenDongSanPham(pageable, tenDongSanPham);
+        } else if (tenHang != null && !tenHang.isEmpty()) {
+            sanPhamPage = sanPhamService.timKiemTheoTenHang(pageable, tenHang);
         }else if (giaTu != null && giaDen != null) {
             sanPhamPage = sanPhamService.timKiemTheoKhoangGia(giaTu, giaDen, pageable);
         }  else {
             sanPhamPage = sanPhamService.getAll(pageable);
         }
         model.addAttribute("lstCL", chatLieuRepository.findBytrangThai(chatLieuRepository.ACTIVE));
-        model.addAttribute("list", sanPhamPage);
+        model.addAttribute("lstDSP", dongSanPhamRepository.findBytrangThai(dongSanPhamRepository.ACTIVE));
+        model.addAttribute("lstH", hangRepository.findBytrangThai(HangRepository.ACTIVE));
+        model.addAttribute("lstA", anhRepository.findBytrangThai(anhRepository.ACTIVE));
+        model.addAttribute("list", sanPhamService.getAll(pageable));
+//        model.addAttribute("listUrl", sanPhamRepository.getNameAnh(id));
+
         return "/sanpham/get-all";
     }
+    //detail
 
     @GetMapping("/sanpham/view-add")
     private String viewAdd(Model model) {
@@ -88,6 +101,7 @@ public class SanPhamController {
         model.addAttribute("lstDSP", dongSanPhamRepository.findBytrangThai(dongSanPhamRepository.ACTIVE));
         model.addAttribute("lstNSX", nsxRepository.findBytrangThai(nsxRepository.ACTIVE));
         model.addAttribute("lstH", hangRepository.findBytrangThai(hangRepository.ACTIVE));
+        model.addAttribute("lstA", anhRepository.findBytrangThai(anhRepository.ACTIVE));
         return "sanpham/add";
     }
     @PostMapping("/sanpham/add")
@@ -95,6 +109,7 @@ public class SanPhamController {
                       @RequestParam("idDongSanPham") DongSanPham idDongSanPham,
                       @RequestParam("idNSX") NSX idNSX,
                       @RequestParam("idHang") Hang idHang,
+                      @RequestParam("idAnh") Anh idAnh,
                       @RequestParam("maSanPham")String maSanPham,
                       @RequestParam("tenSanPham") String tenSanPham,
                       @RequestParam("chieuDai")Integer chieuDai,
@@ -103,7 +118,6 @@ public class SanPhamController {
                       @RequestParam("trongLuong")Integer trongLuong,
                       @RequestParam("trongLuongToiDa")Integer trongLuongToiDa,
                       @RequestParam("giaNhap") BigDecimal giaNhap,
-//                      @RequestParam("soLuongTon")Integer soLuongTon,
                       @RequestParam("ngayTao") String ngayTao,
                       @RequestParam("ngaySua") String ngaySua,
                       @RequestParam("trangThai") Integer trangThai)
@@ -113,6 +127,7 @@ public class SanPhamController {
                 .idDongSanPham(idDongSanPham)
                 .idNSX(idNSX)
                 .idHang(idHang)
+                .idAnh(idAnh)
                 .maSanPham(maSanPham)
                 .tenSanPham(tenSanPham)
                 .chieuDai(chieuDai)
@@ -121,7 +136,6 @@ public class SanPhamController {
                 .trongLuong(trongLuong)
                 .trongLuongToiDa(trongLuongToiDa)
                 .giaNhap(giaNhap)
-//                .soLuongTon(soLuongTon)
                 .ngayTao(Date.valueOf(ngayTao))
                 .ngaySua(Date.valueOf(ngaySua))
                 .trangThai(trangThai)
@@ -143,7 +157,7 @@ public class SanPhamController {
         model.addAttribute("lstDSP", dongSanPhamRepository.findBytrangThai(dongSanPhamRepository.ACTIVE));
         model.addAttribute("lstNSX", nsxRepository.findBytrangThai(nsxRepository.ACTIVE));
         model.addAttribute("lstH", hangRepository.findBytrangThai(hangRepository.ACTIVE));
-
+        model.addAttribute("lstA", anhRepository.findBytrangThai(anhRepository.ACTIVE));
         model.addAttribute("sanpham", sanPham);
         return "sanpham/updateForm";
     }
@@ -157,6 +171,7 @@ public class SanPhamController {
         sanPham.setIdDongSanPham(updatedCustomer.getIdDongSanPham());
         sanPham.setIdNSX(updatedCustomer.getIdNSX());
         sanPham.setIdHang(updatedCustomer.getIdHang());
+        sanPham.setIdAnh(updatedCustomer.getIdAnh());
         sanPham.setMaSanPham(updatedCustomer.getMaSanPham());
         sanPham.setTenSanPham(updatedCustomer.getTenSanPham());
         sanPham.setChieuDai(updatedCustomer.getChieuDai());

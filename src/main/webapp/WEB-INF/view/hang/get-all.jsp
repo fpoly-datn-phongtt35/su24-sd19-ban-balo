@@ -17,7 +17,7 @@
 
 <h1>Danh sach Hang</h1>
 <button class="btn btn-primary"><a class="btn btn-primary" href="/hang/view-add">ADD</a></button>
-<table class="table table-secondary">
+<table class="table table-primary table-striped table-hover">
     <tr>
         <th>MaHang</th>
         <th>TenHang</th>

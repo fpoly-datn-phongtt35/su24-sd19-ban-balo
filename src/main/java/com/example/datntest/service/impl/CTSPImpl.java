@@ -55,4 +55,5 @@ public class CTSPImpl implements CTSPService {
         return ctspRepository.findByTenSanPhamContainingAndGiaBanBetween(tenSanPham, minGiaBan, maxGiaBan, pageable);
     }
 
+    //detail
 }

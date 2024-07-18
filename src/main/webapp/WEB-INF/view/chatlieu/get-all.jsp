@@ -18,7 +18,7 @@
 
 <h1>Danh sach ChatLieu</h1>
 <button class="btn btn-primary"><a class="btn btn-primary" href="/chatlieu/view-add">ADD</a></button>
-<table class="table table-secondary">
+<table class="table table-primary table-striped table-hover">
     <tr>
         <th>maChatLieu</th>
         <th>tenChatLieu</th>

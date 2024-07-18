@@ -42,6 +42,7 @@ public class SanPham {
     @JoinColumn(name = "IdHang", referencedColumnName = "IdHang")
     private Hang idHang;
 
+
     @Column(name = "MaSanPham")
     private String maSanPham;
 
@@ -65,9 +66,6 @@ public class SanPham {
 
     @Column(name = "GiaNhap")
     private BigDecimal giaNhap;
-//
-//    @Column(name = "SoLuongTon")
-//    private Integer soLuongTon;
 
     @Column(name = "NgayTao")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -79,5 +77,9 @@ public class SanPham {
 
     @Column(name = "TrangThai")
     private Integer trangThai;
+
+    @ManyToOne
+    @JoinColumn(name = "Anh", referencedColumnName = "IdAnh")
+    private Anh idAnh;
 
 }

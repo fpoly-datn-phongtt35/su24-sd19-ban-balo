@@ -65,8 +65,6 @@
             <td>${ctsp.idSanPham.tenSanPham}</td>
             <td>${ctsp.idMauSac.tenMauSac}</td>
             <td><img width="50px" src=${ctsp.idAnh.url}    alt=""></td>
-
-        <%--            <td><img src="${ctsp.idAnh.url}" alt="Anh" width="50"></td>--%>
             <td>${ctsp.moTa}</td>
             <td>${ctsp.giaBan}</td>
             <td>${ctsp.soLuongTon}</td>
@@ -103,12 +101,5 @@
 </table>
 
 <footer>
-<%--    <nav aria-label="Page navigation example">--%>
-<%--        <ul class="pagination">--%>
-<%--            <li class="page-item"><a class="page-link" href="/ctsp/hien-thi?page=${list.number - 1}">Trước</a></li>--%>
-<%--            <li class="page-item"><a class="page-link" href="#">${list.number}</a></li>--%>
-<%--            <li class="page-item"><a class="page-link" href="/ctsp/hien-thi?page=${list.number + 1}">Sau</a></li>--%>
-<%--        </ul>--%>
-<%--    </nav>--%>
 </footer>
 </body>

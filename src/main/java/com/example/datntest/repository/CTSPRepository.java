@@ -29,6 +29,6 @@ public interface CTSPRepository extends JpaRepository<CTSP,Integer> {
     @Query("SELECT ctsp FROM CTSP ctsp WHERE ctsp.idSanPham.tenSanPham LIKE %?1% AND ctsp.giaBan BETWEEN ?2 AND ?3 AND ctsp.trangThai!=0")
     Page<CTSP> findByTenSanPhamContainingAndGiaBanBetween(String tenSanPham, BigDecimal minGiaBan, BigDecimal maxGiaBan, Pageable pageable);
 
-
+//detail
 
 }

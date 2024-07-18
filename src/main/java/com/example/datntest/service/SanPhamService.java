@@ -14,11 +14,13 @@ public interface SanPhamService {
     void add(SanPham sanPham);
     SanPham detail(Integer idSanPham);
     SanPham delete(Integer idSanPham);
-//tìm kiếm
+//tìm kiếmx
     Page<SanPham> timKiemTheoTen(String tenSanPham, Pageable pageable);
     Page<SanPham> timKiemTheoTenChatLieu(Pageable pageable, String tenChatLieu);
+    Page<SanPham> timKiemTheoTenDongSanPham(Pageable pageable, String tenDongSanPham);
+    Page<SanPham> timKiemTheoTenHang(Pageable pageable, String tenHang);
     //khoảng giá
     Page<SanPham> timKiemTheoKhoangGia(BigDecimal giaTu, BigDecimal giaDen, Pageable pageable);
 //tổng
-    Page<SanPham> timKiem(Pageable pageable, String tenSanPham, List<String> tenChatLieu, BigDecimal giaTu, BigDecimal giaDen);
+    public Page<SanPham> searchSanPham(Pageable pageable, String tenSanPham, String tenChatLieu,String tenDongSanPham,String tenHang, BigDecimal giaTu, BigDecimal giaDen);
 }

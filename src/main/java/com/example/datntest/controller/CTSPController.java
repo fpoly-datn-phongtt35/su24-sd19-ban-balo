@@ -32,6 +32,7 @@ public class CTSPController {
     @Autowired
     private UsersRepository usersRepository;
 
+    // get all cho quản lý
     @GetMapping("/ctsp/hien-thi")
     private String hienthi(Model model,
                            @RequestParam ("page") Optional<Integer> pageParam)
@@ -42,6 +43,18 @@ public class CTSPController {
         model.addAttribute("list", page);
 
         return "/ctsp/get-all";
+    }
+    // get all cho khách hàng
+    @GetMapping("/ctsp/hien-thi2")
+    private String hienthi2(Model model,
+                           @RequestParam ("page") Optional<Integer> pageParam)
+    {
+        int page1 = pageParam.orElse(0);
+        Pageable p = PageRequest.of(page1,5);
+        Page<CTSP> page = ctspRepository.findBytrangThai(ctspRepository.ACTIVE,p);
+        model.addAttribute("list", page);
+
+        return "/ctsp/get-all_kh";
     }
 
     @GetMapping("/ctsp/view-add")
@@ -128,6 +141,9 @@ public class CTSPController {
         ctspRepository.save(ctsp);
        return "redirect:/ctsp/hien-thi";
     }
+    //detail
+
+
 //// tìm theo tên
 //    @GetMapping("/ctsp/search")
 //    public String searchByTenSanPham(@RequestParam("tenSanPham") String tenSanPham,

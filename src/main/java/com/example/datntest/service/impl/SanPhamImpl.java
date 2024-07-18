@@ -43,6 +43,15 @@ public class SanPhamImpl implements SanPhamService {
     public Page<SanPham> timKiemTheoTenChatLieu(Pageable pageable, String tenChatLieu) {
         return sanPhamRepository.findByIdChatLieu_TenChatLieu(pageable, tenChatLieu);
     }
+    @Override
+    public Page<SanPham> timKiemTheoTenDongSanPham(Pageable pageable, String tenDongSanPham) {
+        return sanPhamRepository.findByIdDongSanPham_TenDongSanPham(pageable, tenDongSanPham);
+    }
+    @Override
+    public Page<SanPham> timKiemTheoTenHang(Pageable pageable, String tenHang) {
+        return sanPhamRepository.findByIdHang_TenHang(pageable, tenHang);
+    }
+
 
     @Override
     public Page<SanPham> timKiemTheoTen(String tenSanPham, Pageable pageable) {
@@ -53,9 +62,10 @@ public class SanPhamImpl implements SanPhamService {
     public Page<SanPham> timKiemTheoKhoangGia(BigDecimal giaTu, BigDecimal giaDen, Pageable pageable) {
         return sanPhamRepository.findByGiaNhapBetween(giaTu, giaDen, pageable);
     }
-    //tổng
+    //tổng tìm
     @Override
-    public Page<SanPham> timKiem(Pageable pageable, String tenSanPham, List<String> tenChatLieu, BigDecimal giaTu, BigDecimal giaDen) {
-        return sanPhamRepository.findByCriteria(tenSanPham, tenChatLieu, giaTu, giaDen, pageable);
+    public Page<SanPham> searchSanPham(Pageable pageable, String tenSanPham,String tenDongSanPham, String tenChatLieu,String tenHang, BigDecimal giaTu, BigDecimal giaDen) {
+        return sanPhamRepository.searchSanPham(pageable, tenSanPham, tenChatLieu,tenDongSanPham,tenHang, giaTu, giaDen);
     }
+
 }

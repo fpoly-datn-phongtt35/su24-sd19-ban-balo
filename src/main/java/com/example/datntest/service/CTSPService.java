@@ -20,4 +20,7 @@ public interface CTSPService {
     Page<CTSP> searchByPriceRange(BigDecimal minGiaBan, BigDecimal maxGiaBan, Pageable pageable);
     //tất
     Page<CTSP> searchByTenSanPhamAndPriceRange(String tenSanPham, BigDecimal minGiaBan, BigDecimal maxGiaBan, Pageable pageable);
+//detail
+
+
 }

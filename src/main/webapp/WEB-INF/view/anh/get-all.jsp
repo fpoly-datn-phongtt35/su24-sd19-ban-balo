@@ -18,7 +18,7 @@
 
 <h1>Danh sach anh</h1>
 <button class="btn btn-primary"><a class="btn btn-primary" href="/anh/view-add">ADD</a></button>
-<table class="table table-secondary">
+<table class="table table-primary table-striped table-hover">
     <tr>
         <th>url</th>
         <th>NgayTao</th>
@@ -58,7 +58,6 @@
         </ul>
     </nav>
 </table>
-<footer>
 
-</footer>
+
 </body>

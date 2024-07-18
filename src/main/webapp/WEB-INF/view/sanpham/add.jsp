@@ -17,13 +17,20 @@
 <body>
 <h1 class="text-center" style="padding-bottom: 50px">sanpham</h1>
 <form action="/sanpham/add" method="post" onsubmit="return kt()">
-    <table>
+    <table class="table">
         <div class="col-mt-3">
 
-<%--            <div class="col-6">--%>
-<%--                <label>idChatLieu</label>--%>
-<%--                <input type="text" name="idChatLieu" id="idChatLieu" class="form-control">--%>
-<%--            </div>--%>
+            <div class="col-6">
+                <label>anh</label>
+                <select name="idAnh">
+                    <c:forEach items="${lstA}" var="i">
+                        <option value="${i.idAnh}">
+                                ${i.idAnh}
+                        </option>
+                    </c:forEach>
+                </select>
+            </div>
+
             <div class="col-6">
                 <label>idChatLieu</label>
                 <select name="idChatLieu">
@@ -35,10 +42,6 @@
                 </select>
             </div>
 
-<%--            <div class="col-6">--%>
-<%--                <label>idDongSanPham</label>--%>
-<%--                <input type="text" name="idDongSanPham" id="idDongSanPham" class="form-control">--%>
-<%--            </div>--%>
     <div class="col-6">
         <label>idDongSanPham</label>
         <select name="idDongSanPham">
@@ -50,10 +53,6 @@
         </select>
     </div>
 
-<%--            <div class="col-6">--%>
-<%--                <label>idNSX</label>--%>
-<%--                <input type="text" name="idNSX" id="idNSX" class="form-control">--%>
-<%--            </div>--%>
     <div class="col-6">
         <label>idNSX</label>
         <select name="idNSX">
@@ -65,11 +64,6 @@
         </select>
     </div>
 
-<%--            <div class="col-6">--%>
-<%--                <label>idHang</label>--%>
-<%--                <input type="text" name="idHang" id="idHang" class="form-control">--%>
-<%--            </div>--%>
-    <div class="col-6">
         <label>idHang</label>
         <select name="idHang">
             <c:forEach items="${lstH}" var="i">
@@ -120,12 +114,6 @@
                 <label>giaNhap</label>
                 <input type="text" name="giaNhap" id="giaNhap" class="form-control">
             </div>
-
-<%--            <div class="col-6">--%>
-<%--                <label>soLuongTon</label>--%>
-<%--                <input type="text" name="soLuongTon" id="soLuongTon" class="form-control">--%>
-<%--            </div>--%>
-
 
             <div class="col-6">
                 <label>ngayTao</label>
