@@ -20,51 +20,86 @@
 
 </head>
 <body>
-<%--<form  >--%>
-<%--    Tài khoản: <input type="text" name="email">--%>
-<%--    Mật khẩu: <input type="password" name="passWord">--%>
-<%--    <button type="submit" value="Login">Dang Nhap</button>--%>
-<%--</form>--%>
+<section class="vh-100" style="background-color: #bfdbf8;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img src="../../upload/logo.jpg"
+                                 alt="login form"  style="width: 350px;height: 350px;margin-top:150px;margin-left: 55px" />
+                        </div>
+                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
 
-<%--<a href="/tai-khoan/dang-ki">Đăng ký tài khoản</a>--%>
-<%--&lt;%&ndash;<a href="/quen-mat-khau">Quen mat khau</a>&ndash;%&gt;--%>
+                                <form action="/login" method="post">
 
-<div class="container">
-    <form action="/login" method="post" onsubmit="return kt()">
+                                    <div class="d-flex align-items-center mb-3 pb-1">
 
+                                        <span class="h1 fw-bold mb-0">Xin chào</span>
+                                    </div>
 
-        <div class="auth-form">
-            <div class="auth-form__container">
-                <div class="auth-form__header">
-                </div>
-                <div class="auth-form__form">
-                    <div class="auth-form__group">
-                        <input
-                                type="text"
-                                class="auth-form__input"
-                                placeholder="Email"
-                                name="email"
-                                id=email"
-                        />
+                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Đăng nhập bằng tài khoản của bạn</h5>
+                                    <div class="col-12">
+                                        <label style="color:red;text-align: center">${thongBao}</label>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Tài khoản</label>
+                                        <input
+                                                type="text"
+                                                class="auth-form__input"
+                                                placeholder="Email"
+                                                name="email"
+                                                id=email"
+                                        />
+
+                                        <span class="text-danger" id="usernameError"></span>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Mật khẩu</label>
+                                        <input
+                                                type="password"
+                                                class="auth-form__input"
+                                                placeholder="Mật khẩu"
+                                                name="passWord"
+                                                id=passWord"
+                                        />
+
+                                        <span class="text-danger" id="passwordError"></span>
+                                    </div>
+
+                                    <div class="mb-4">
+
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit" id="loginBtt" onclick="validate()" value="Login">Đăng nhập</button>
+                                        <div style="color: red">${tb}</div>
+                                    </div>
+
+                                    <a class="small text-muted" href="tai-khoan/quen-mat-khau"
+                                       style="font-size: larger;color: #00A2FF">Quên
+                                        mật khẩu?</a>
+                                    <hr>
+                                    <br>
+                                    <p>
+                                        <a type="button" class="btn btn-outline-dark btn-lg btn-block"
+                                           style="font-size: larger; font-weight: bold" href="/tai-khoan/dang-ki">Đăng ký
+                                            tài khoản</a>
+                                            <%--                                        <button type="button"--%>
+                                            <%--                                                data-bs-toggle="modal" class="btn btn-info"--%>
+                                            <%--                                                data-bs-target="#dangKy" style="color: #393f81;">Đăng kí tài khoản--%>
+                                            <%--                                        </button>--%>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="auth-form__group">
-                        <input
-                                type="password"
-                                class="auth-form__input"
-                                placeholder="Mật khẩu"
-                                name="passWord"
-                                id=passWord"
-                        />
-                    </div>
-                </div>
-
-                <div class="auth-form__controls">
-                    <button class="auth-form__controls-btn btn--primary" type="submit" value="Login">ĐĂNG NHẬP</button>
                 </div>
             </div>
-
         </div>
-    </form>
+    </div>
+</section>
+
     <div class="dang-nhap">
         <p>Bạn chưa có tài khoản?<a href="/tai-khoan/dang-ki">Đăng ký tài khoản</a></p>
     </div>

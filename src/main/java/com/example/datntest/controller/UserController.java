@@ -8,10 +8,7 @@ import com.example.datntest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -52,5 +49,9 @@ public class UserController {
         this.userService.addAccount(users);
         // quay vè trang dang nhap
         return "redirect:/login";
+    }
+    @GetMapping("/quen-mat-khau")
+    public String quenMatKhau(Model model, @ModelAttribute("khachHang") KhachHang khachHang) {
+        return "/quen-mat-khau";
     }
 }

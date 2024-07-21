@@ -1,9 +1,11 @@
 package com.example.datntest.controller;
 
 
+import com.example.datntest.entity.DiaChi;
 import com.example.datntest.entity.HangKhachHang;
 import com.example.datntest.entity.KhachHang;
 import com.example.datntest.repository.KhachHangRepository;
+import com.example.datntest.service.DiaChiService;
 import com.example.datntest.service.KhachHangService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class KhachHangController {
     private KhachHangService khachHangService;
     @Autowired
     private KhachHangRepository khachHangRepository;
+    @Autowired
+    private DiaChiService diaChiService;
 
     @GetMapping("/khach-hang/get-all")
     private String hienthi(Model model,
@@ -32,6 +36,16 @@ public class KhachHangController {
         model.addAttribute("list", page);
         return "/get-all";
     }
+//    @GetMapping("/khach-hang/get-all")
+//    public String hienThi(Model model, @RequestParam(name = "pageNum", required = false, defaultValue = "0") Integer pageNum,
+//                          @RequestParam(name = "pageSize", required = false, defaultValue = "5") Integer pageSize, @ModelAttribute("khachHang") KhachHang khachHang, @ModelAttribute("addDiaChi") DiaChi diaChi) {
+//        Pageable pageable = PageRequest.of(pageNum, pageSize);
+//        Page<KhachHang> page = khachHangService.getAll(pageable);
+//        model.addAttribute("listKhachHang", page.getContent());
+//        model.addAttribute("totalPage", page.getTotalPages());
+//        model.addAttribute("contentPage", "../khachhang/hien-thi.jsp");
+//        return "/get-all";
+//    }
 
     @GetMapping("/khach-hang/view-add")
     private String viewAdd() {
@@ -134,6 +148,21 @@ public class KhachHangController {
         Page<KhachHang> list = khachHangService.searchByTenKhachHang(tenKhachHang, pageable);
         model.addAttribute("list", list);
         return "/search";
+    }
+
+    @GetMapping("/khach-hang/danh-sach-dia-chi/{idKhachHang}")
+    public String danhSachDiaChi(Model model, @ModelAttribute("khachHang") KhachHang KhachHang
+            , @RequestParam(name = "pageNum", required = false, defaultValue = "0") Integer pageNum,
+                                 @RequestParam(name = "pageSize", required = false, defaultValue = "5") Integer pageSize, @PathVariable("idKhachHang") Integer idKhachHang, @ModelAttribute("addDiaChi") DiaChi diaChi) {
+        List<DiaChi> list = diaChiService.danhSachDiaChi(idKhachHang);
+        model.addAttribute("listDiaChi", list);
+        model.addAttribute("batmodaldanhsachdiachi", 0);
+        PageRequest pageable = PageRequest.of(pageNum, pageSize);
+        Page<KhachHang> page = khachHangService.getAll(pageSize);
+        model.addAttribute("listKhachHang", page.getContent());
+        model.addAttribute("totalPage", page.getTotalPages());
+        model.addAttribute("contentPage", "../khachhang/get-all.jsp");
+        return "hien-thi";
     }
 }
 
