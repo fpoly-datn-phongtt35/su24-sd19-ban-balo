@@ -119,7 +119,7 @@
                     <td>${cv.trangThai == 1 ? 'Hoạt động' : 'Ngưng hoạt động'}</td>
                     <td>
                         <a href="/chuc-vu/view-update/${cv.id}" class="btn btn-success btn-sm">Update</a>
-                        <a href="/chuc-vu/remove/${cv.id}" class="btn btn-warning btn-sm">Remove</a>
+                        <a href="/chuc-vu/remove/${cv.id}" class="btn btn-warning btn-sm" onclick="return confirm('Bạn có muốn xóa không?')">Remove</a>
                     </td>
                 </tr>
             </c:forEach>

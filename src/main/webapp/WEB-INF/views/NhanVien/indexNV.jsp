@@ -203,7 +203,7 @@
                     <td>${nv.trangThai == 1 ? 'Hoạt động' : 'Ngưng hoạt động'}</td>
                     <td>
                         <a href="/nhan-vien/view-update/${nv.id}" class="btn btn-success btn-sm">Update</a>
-                        <a href="/nhan-vien/remove/${nv.id}" class="btn btn-warning btn-sm">Remove</a>
+                        <a href="/nhan-vien/remove/${nv.id}" class="btn btn-warning btn-sm" onclick="return confirm('Bạn có muốn xóa không?')">Remove</a>
                     </td>
                 </tr>
             </c:forEach>

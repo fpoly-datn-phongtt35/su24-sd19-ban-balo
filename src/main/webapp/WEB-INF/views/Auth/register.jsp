@@ -13,7 +13,7 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         .gradient-custom {
-            background: linear-gradient(to bottom right, rgb(78, 188, 200), rgb(99, 124, 230));
+            background: linear-gradient(to bottom right, rgb(191, 219, 248), rgb(191, 219, 248));
         }
 
         .card-registration {
@@ -37,13 +37,13 @@
         }
 
         .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
+            background-color: #040707;
+            border-color: #040707;
         }
 
         .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #004085;
+            background-color: #818f8f;
+            border-color: #818f8f;
         }
 
         .form-check-input {
@@ -71,28 +71,16 @@
                             <form action="/register" method="post" class="all-classes-container">
 
                                 <div class="row">
-                                    <div class="col-md-6 mb-4">
+                                    <div class="mb-4">
                                         <div class="form-outline">
-                                            <input type="text" id="ten" class="form-control form-control-lg" name="ten" />
-                                            <label class="form-label" for="ten">Tên</label>
+                                            <input type="email" id="email" class="form-control form-control-lg" name="email" />
+                                            <label class="form-label" for="email">Email</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-4">
-                                        <div class="form-outline">
-                                            <input type="text" id="ho" class="form-control form-control-lg" name="ho" />
-                                            <label class="form-label" for="ho">Họ</label>
-                                        </div>
-                                    </div>
-                                </div>
 
+                                </div>
                                 <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <div class="form-outline datepicker w-100">
-                                            <input type="date" class="form-control form-control-lg" id="ngaySinh" name="ngaySinh" />
-                                            <label for="ngaySinh" class="form-label">Ngày Sinh</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-4">
+                                    <div class="mb-4">
                                         <div class="form-outline">
                                             <input type="tel" id="sdt" class="form-control form-control-lg" name="sdt" />
                                             <label class="form-label" for="sdt">Số điện thoại</label>
@@ -100,29 +88,11 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-4">
-                                    <div class="form-outline">
-                                        <input type="email" id="email" class="form-control form-control-lg" name="email" />
-                                        <label class="form-label" for="email">Email</label>
-                                    </div>
-                                </div>
-
                                 <div class="row">
-                                    <div class="col-md-6 mb-4">
+                                    <div class="mb-4">
                                         <div class="form-outline">
                                             <input type="password" id="password" class="form-control form-control-lg" name="password" />
                                             <label class="form-label" for="password">Mật Khẩu</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <h6 class="mb-2 pb-1">Giới Tính:</h6>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="gioiTinh" id="gioiTinh2" value="2" checked />
-                                            <label class="form-check-label" for="gioiTinh2">Nữ</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="gioiTinh" id="gioiTinh" value="1" />
-                                            <label class="form-check-label" for="gioiTinh">Nam</label>
                                         </div>
                                     </div>
                                 </div>

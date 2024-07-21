@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.LoginDto;
 import com.example.demo.dto.RegisterDto;
+import com.example.demo.library.LibService;
 import com.example.demo.model.NhanVien;
 import com.example.demo.model.Role;
 import com.example.demo.model.User;
@@ -30,6 +31,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Date;
 
@@ -65,6 +67,23 @@ public class LoginRegisterController {
     @GetMapping("/forgot-password")
     public String forgot() {
         return "Auth/forgot-password";
+    }
+    @PostMapping("/forgot-password")
+    public String forgotPass(@RequestParam("email") String email, Model model) {
+        boolean exists = userService.existsByEmail(email);
+        if (!exists) {
+            model.addAttribute("message", "Email không tồn tại.");
+            return "Auth/forgot-password";
+        } else {
+            User user = userService.getByUsername(email);
+            String password = LibService.generateRandomString(10);
+            user.setPassword(passwordEncoder.encode(password));
+            userService.update(user);
+            String tb = "Bạn đã tiến hàng yêu cầu mật khẩu mới !";
+            String body = "<h1>mật khẩu mới !</h1><h2>email đăng nhập là : " + user.getEmail() + "</h2><h2>Mật Khẩu là : " + password + "</h2>";
+            mailUtility.sendMail(user.getEmail(), tb, body);
+        }
+        return "redirect:/login";
     }
 
 
@@ -151,7 +170,7 @@ public class LoginRegisterController {
             session = request.getSession(true);
             session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
 
-            return "redirect:/";
+            return "redirect:/login";
         } catch (Exception e) {
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();

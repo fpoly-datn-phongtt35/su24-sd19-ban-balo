@@ -1,15 +1,20 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Quên Mật Khẩu</title>
+    <title>King Shop</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         .gradient-custom {
-            background: linear-gradient(to bottom right, rgb(78, 188, 200), rgb(99, 124, 230));
+            background: linear-gradient(to bottom right, rgb(191, 219, 248), rgb(191, 219, 248));
         }
         .card-reset-password {
             border-radius: 15px;
@@ -22,12 +27,13 @@
             border-radius: 0.375rem;
         }
         .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
+            background-color: #040707;
+            border-color: #040707;
         }
+
         .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #004085;
+            background-color: #818f8f;
+            border-color: #818f8f;
         }
         .text-danger {
             color: #dc3545;
@@ -53,7 +59,7 @@
                                 <p class="text-danger mb-4">${message}</p>
 
                                 <div class="text-center">
-                                    <input class="btn btn-primary btn-lg" type="submit" value="Gửi liên kết đặt lại mật khẩu" />
+                                    <input class="btn btn-primary btn-lg" type="submit" value="Gửi lại mật khẩu" />
                                 </div>
 
                                 <div class="text-center mt-3">
