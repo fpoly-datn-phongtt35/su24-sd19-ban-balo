@@ -17,9 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
 @Controller
 @RequestMapping("pgg")
 public class PhieuGiamGia_Controller {
@@ -33,7 +32,8 @@ public class PhieuGiamGia_Controller {
     private String getHTMLtable(Model model,@RequestParam("page") Optional<Integer> pageP
     ){
         int page = pageP.orElse(0);
-        model.addAttribute("dataList",pggRepo.getPhieuGG());
+        Page<PhieuGiamGia_Entity> pageData = pggRepo.getPhieuGG(PageRequest.of(page, 1)); // Thay đổi để lấy theo trang
+        model.addAttribute("dataList",pageData.getContent());
         return "pgg/index";
     }
 
@@ -45,6 +45,17 @@ public class PhieuGiamGia_Controller {
         // Hàm searchData là để giả lập việc tìm kiếm
         return searchData;
     }
+//    @GetMapping("table1")
+//    @ResponseBody
+//    public Map<String, Object> originTable(@RequestParam("page") int page, @RequestParam("length") int length) {
+//        Page<PhieuGiamGia_Entity> pageData = pggRepo.getPhieuGG(PageRequest.of(page, length));
+//
+//        Map<String, Object> response = new HashMap<>();
+//        response.put("data", pageData.getContent());
+//        response.put("recordsTotal", pageData.getTotalElements());
+//        response.put("recordsFiltered", pageData.getTotalElements());
+//        return response;
+//    }
 
     @GetMapping("search")
     @ResponseBody
@@ -54,33 +65,6 @@ public class PhieuGiamGia_Controller {
       // Hàm searchData là để giả lập việc tìm kiếm
         return searchData;
     }
-
-//    private List<PhieuGiamGia_Entity> searchData(String query) {
-//        // Giả lập hàm tìm kiếm dữ liệu
-//        List<PhieuGiamGia_Entity> result = new ArrayList<>();
-//        for (PhieuGiamGia_Entity data : pggRepo.getPhieuGG()) {
-//            // Kiểm tra xem dữ liệu có chứa query không (tùy vào yêu cầu của bạn)
-//            if (data.getTen().toLowerCase().contains(query.toLowerCase()) ||
-//                    data.getMa().toLowerCase().contains(query.toLowerCase())) {
-//                result.add(data);
-//            }
-//        }
-//        return result;
-//    }
-
-//
-//
-//
-//    @GetMapping("index/getByName")
-//    private String getByTen(Model model,@RequestParam("page") Optional<Integer> pageP,
-////                            @RequestParam("ten") String ten,//
-//                            @RequestParam("query") String query
-//                           ){
-//        int page = pageP.orElse(0);
-//        Pageable pageable = PageRequest.of(page,1);
-//        model.addAttribute("page",pggRepo.PagetimTheoTen(pageable,query));
-//        return  "data_table";
-//    }
 
     @GetMapping("create")
     public String create(Model model) {
@@ -124,8 +108,8 @@ public class PhieuGiamGia_Controller {
     @GetMapping("edit/{id}")
     public String Edit(@PathVariable("id") PhieuGiamGia_Entity phieuGiamGiaEntity, Model model) {
         model.addAttribute("lstNT", pggRepo.getme());
-
         model.addAttribute("data", phieuGiamGiaEntity);
+        System.out.println(phieuGiamGiaEntity.getGiamToiDa());
         return "pgg/edit";
     }
 

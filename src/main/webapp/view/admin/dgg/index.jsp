@@ -39,8 +39,6 @@
             <td>${i.giamToiDa}</td>
             <td>${i.dieuKien}</td>
 
-
-
             <td>
                 <c:set var="beginday" value="${i.beginday}" />
                 <fmt:formatDate pattern="yyyy-MM-dd" value="${i.beginday}" />

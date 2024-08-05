@@ -29,7 +29,9 @@ public class DotGiamGia_Controller {
 
 
     @GetMapping("index")
-    private String getAll(Model model, @RequestParam("page") Optional<Integer> pageP){
+    private String getAll(Model model
+            , @RequestParam("page") Optional<Integer> pageP
+    ){
         int page = pageP.orElse(0);
         Pageable pageable = PageRequest.of(page,1);
         model.addAttribute("page",dggRepo.getDotGG(pageable));

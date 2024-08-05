@@ -21,7 +21,7 @@ public interface PhieuGiamGia_Repository extends JpaRepository<PhieuGiamGia_Enti
     public static final int ACTIVE =1;
     public static final int INACTIVE =2;
 //    public Page<PhieuGiamGia_Entity> findBytrangthai(int trangthai, Pageable pageable);
-
+    PhieuGiamGia_Entity findById(int id);
     //GetSanPham
     @Query("SELECT c from PhieuGiamGia_Entity c where c.trangthai!=0")
     public Page<PhieuGiamGia_Entity> getPhieuGG( Pageable pageable);
@@ -45,7 +45,7 @@ public interface PhieuGiamGia_Repository extends JpaRepository<PhieuGiamGia_Enti
     @Query("SELECT c from PhieuGiamGia_Entity c where c.trangthai!=0 and c.ten=:query")
     Page<PhieuGiamGia_Entity> PagetimTheoTen( Pageable pageable, String query);
 
-    @Query("SELECT c from PhieuGiamGia_Entity c where c.trangthai!=0 and c.ten=:query or c.ma=:query")
+    @Query("SELECT c from PhieuGiamGia_Entity c where c.trangthai!=0 and (c.ten LIKE %:query% or c.ma LIKE %:query%) ")
     List<PhieuGiamGia_Entity> ListtimTheoTen(String query);
 
 }

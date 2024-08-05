@@ -4,9 +4,13 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 <%--value="${mausacEdit.id}"--%>
 
 <sf:form action="/pgg/update/${data.id}" method="POST" modelAttribute="data">
@@ -68,7 +72,7 @@
 
     <div>
         <label>nguoiSua</label>
-        <sf:select path="nguoiSua" cssClass="form-select">
+        <sf:select path="nguoiSua"  class="form-select" aria-label="Default select example">
             <c:forEach items="${lstNT}" var="i">
                 <sf:option value="${i.idUsers}">${i.idUsers}</sf:option>
             </c:forEach>
