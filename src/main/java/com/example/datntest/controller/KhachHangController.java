@@ -1,23 +1,18 @@
 package com.example.datntest.controller;
 
 
-import com.example.datntest.entity.DiaChi;
 import com.example.datntest.entity.HangKhachHang;
 import com.example.datntest.entity.KhachHang;
 import com.example.datntest.repository.KhachHangRepository;
-import com.example.datntest.service.DiaChiService;
 import com.example.datntest.service.KhachHangService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
-import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -26,8 +21,6 @@ public class KhachHangController {
     private KhachHangService khachHangService;
     @Autowired
     private KhachHangRepository khachHangRepository;
-    @Autowired
-    private DiaChiService diaChiService;
 
     @GetMapping("/khach-hang/get-all")
     private String hienthi(Model model,
@@ -36,16 +29,6 @@ public class KhachHangController {
         model.addAttribute("list", page);
         return "/get-all";
     }
-//    @GetMapping("/khach-hang/get-all")
-//    public String hienThi(Model model, @RequestParam(name = "pageNum", required = false, defaultValue = "0") Integer pageNum,
-//                          @RequestParam(name = "pageSize", required = false, defaultValue = "5") Integer pageSize, @ModelAttribute("khachHang") KhachHang khachHang, @ModelAttribute("addDiaChi") DiaChi diaChi) {
-//        Pageable pageable = PageRequest.of(pageNum, pageSize);
-//        Page<KhachHang> page = khachHangService.getAll(pageable);
-//        model.addAttribute("listKhachHang", page.getContent());
-//        model.addAttribute("totalPage", page.getTotalPages());
-//        model.addAttribute("contentPage", "../khachhang/hien-thi.jsp");
-//        return "/get-all";
-//    }
 
     @GetMapping("/khach-hang/view-add")
     private String viewAdd() {
@@ -61,6 +44,10 @@ public class KhachHangController {
                        @RequestParam("sdt") String sdt,
                        @RequestParam("cccd") String cccd,
                        @RequestParam("idHangKhachHang") HangKhachHang idHangKhachHang,
+                       @RequestParam("soNha") String soNha,
+                       @RequestParam("phuongXa") String phuongXa,
+                       @RequestParam("quanHuyen") String quanHuyen,
+                       @RequestParam("tinhThanhPho") String tinhThanhPho,
                        @RequestParam("diemTichLuy") Integer diemTichLuy,
                        @RequestParam("ngayTao") String ngayTao,
                        @RequestParam("ngaySua") String ngaySua,
@@ -74,6 +61,10 @@ public class KhachHangController {
                 .sdt(sdt)
                 .cccd(cccd)
                 .hangKhachHang(idHangKhachHang)
+                .soNha(soNha)
+                .phuongXa(phuongXa)
+                .quanHuyen(quanHuyen)
+                .tinhThanhPho(tinhThanhPho)
                 .diemTichLuy(diemTichLuy)
                 .ngayTao(Date.valueOf(ngayTao))
                 .ngaySua(Date.valueOf(ngaySua))
@@ -120,6 +111,10 @@ public class KhachHangController {
         khachHang.setSdt(updatedCustomer.getSdt());
         khachHang.setCccd(updatedCustomer.getCccd());
         khachHang.setHangKhachHang(updatedCustomer.getHangKhachHang());
+        khachHang.setSoNha(updatedCustomer.getSoNha());
+        khachHang.setPhuongXa(updatedCustomer.getPhuongXa());
+        khachHang.setQuanHuyen(updatedCustomer.getQuanHuyen());
+        khachHang.setTinhThanhPho(updatedCustomer.getTinhThanhPho());
         khachHang.setDiemTichLuy(updatedCustomer.getDiemTichLuy());
         khachHang.setNgayTao(updatedCustomer.getNgayTao());
         khachHang.setNgaySua(updatedCustomer.getNgaySua());
@@ -132,37 +127,6 @@ public class KhachHangController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/login";
-    }
-
-    @GetMapping("/khach-hang/search")
-    public String showSearchForm() {
-        return "get-all";
-    }
-
-    @GetMapping("/khach-hang/searchForm")
-    public String searchByTenSanPham(@RequestParam("tenKhachHang") String tenKhachHang,
-                                     @RequestParam(value = "page", defaultValue = "0") int page,
-                                     @RequestParam(value = "size", defaultValue = "10") int size,
-                                     Model model) {
-        Pageable pageable = PageRequest.of(page, size);
-        Page<KhachHang> list = khachHangService.searchByTenKhachHang(tenKhachHang, pageable);
-        model.addAttribute("list", list);
-        return "/search";
-    }
-
-    @GetMapping("/khach-hang/danh-sach-dia-chi/{idKhachHang}")
-    public String danhSachDiaChi(Model model, @ModelAttribute("khachHang") KhachHang KhachHang
-            , @RequestParam(name = "pageNum", required = false, defaultValue = "0") Integer pageNum,
-                                 @RequestParam(name = "pageSize", required = false, defaultValue = "5") Integer pageSize, @PathVariable("idKhachHang") Integer idKhachHang, @ModelAttribute("addDiaChi") DiaChi diaChi) {
-        List<DiaChi> list = diaChiService.danhSachDiaChi(idKhachHang);
-        model.addAttribute("listDiaChi", list);
-        model.addAttribute("batmodaldanhsachdiachi", 0);
-        PageRequest pageable = PageRequest.of(pageNum, pageSize);
-        Page<KhachHang> page = khachHangService.getAll(pageSize);
-        model.addAttribute("listKhachHang", page.getContent());
-        model.addAttribute("totalPage", page.getTotalPages());
-        model.addAttribute("contentPage", "../khachhang/get-all.jsp");
-        return "hien-thi";
     }
 }
 

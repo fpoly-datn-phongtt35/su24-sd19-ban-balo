@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, users-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
@@ -48,7 +48,22 @@
                 <label>Hang Khach Hang</label>
                 <input type="text" name="hangKhachHang" id="hangKhachHang" class="form-control" value="${kh.hangKhachHang.tenHangKhachHang}">
             </div>
-
+            <div class="col-3">
+                <label>Thanh Pho</label>
+                <input type="text" name="soNha" id="soNha" class="form-control" value="${kh.soNha}">
+            </div>
+            <div class="col-3">
+                <label>Quan</label>
+                <input type="text" name="phuongXa" id="phuongXa" class="form-control" value="${kh.phuongXa}">
+            </div>
+            <div class="col-3">
+                <label>Xa</label>
+                <input type="text" name="quanHuyen" id="quanHuyen" class="form-control" value="${kh.quanHuyen}">
+            </div>
+            <div class="col-3">
+                <label>Quoc Gia</label>
+                <input type="text" name="tinhThanhPho" id="tinhThanhPho" class="form-control" value="${kh.tinhThanhPho}">
+            </div>
             <div class="col-3">
                 <label>Diem Tich Luy</label>
                 <input type="text" name="diemTichLuy" id="diemTichLuy" class="form-control" value="${kh.diemTichLuy}">

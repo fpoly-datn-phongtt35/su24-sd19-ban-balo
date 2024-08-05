@@ -5,7 +5,6 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-import java.util.List;
 
 @Builder
 @Setter
@@ -19,6 +18,9 @@ public class KhachHang {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdKhachHang")
     private Integer idKhachHang;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "IdUserKH", referencedColumnName = "IdUserKH")
+    private User user;
     @Column(name = "MaKhachHang")
     private String maKhachHang;
     @Column(name = "TenKhachHang")
@@ -29,7 +31,7 @@ public class KhachHang {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date ngaySinh;
     @Column(name = "GioiTinh")
-    private Integer gioiTinh;   // nam 1, nữ 0,
+    private Integer gioiTinh;
     @Column(name = "SDT")
     private String sdt;
     @Column(name = "CCCD")
@@ -37,8 +39,14 @@ public class KhachHang {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "HangKhachHang", referencedColumnName = "IdHangKhachHang")
     private HangKhachHang hangKhachHang;
-    @OneToMany(mappedBy = "khachHang",fetch = FetchType.EAGER)
-    private List<DiaChi> diaChiList;
+    @Column(name = "SoNha")
+    private String soNha;
+    @Column(name = "PhuongXa")
+    private String phuongXa;
+    @Column(name = "QuanHuyen")
+    private String quanHuyen;
+    @Column(name = "TinhThanhPho")
+    private String tinhThanhPho;
     @Column(name = "DiemTichLuy")
     private Integer diemTichLuy;
     @Column(name = "NgayTao")
@@ -50,4 +58,7 @@ public class KhachHang {
     @Column(name = "TrangThai")
     private Integer trangThai;
 
+    public void setHangKhachHang(HangKhachHang hangKhachHang) {
+        this.hangKhachHang = hangKhachHang;
+    }
 }

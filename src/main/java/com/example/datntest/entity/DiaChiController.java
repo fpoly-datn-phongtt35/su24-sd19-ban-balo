@@ -1,4 +1,4 @@
-package com.example.datntest.controller;
+package com.example.datntest.entity;
 
 
 import com.example.demo.models.DiaChi;

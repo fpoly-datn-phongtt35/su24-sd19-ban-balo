@@ -1,15 +1,15 @@
 package com.example.datntest.service;
 
-import com.example.datntest.entity.Users;
+import com.example.datntest.entity.User;
 
 import java.util.Optional;
 
 public interface UserService {
-    Optional<Users> getAccount(Integer idUsers);
+    Optional<User> getAccount(Integer idKhachHang);
 
-    Users addAccount(Users users);
+    User findBytaiKhoanAndmatKhau(String taiKhoan, String matKhau);
 
-    Users findAccountByEmail(String email);
+    User addAccount(User user);
 
-    Users findByEmailAndPassword(String email, String passWord);
+    User findAccountBysdt(String sdt);
 }

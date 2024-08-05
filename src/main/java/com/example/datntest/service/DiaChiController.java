@@ -1,9 +1,8 @@
-package com.example.datntest.controller;
+package com.example.datntest.service;
 
 
 import com.example.demo.models.DiaChi;
 import com.example.demo.services.DiaChiService;
-import com.example.demo.services.KhachHangService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

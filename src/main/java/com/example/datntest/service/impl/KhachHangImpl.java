@@ -9,8 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+import java.util.UUID;
 
 @Service
 public class KhachHangImpl implements KhachHangService {
@@ -23,8 +22,8 @@ public class KhachHangImpl implements KhachHangService {
     }
 
     @Override
-    public KhachHang add(KhachHang khachHang) {
-        return khachHangRepository.saveAndFlush(khachHang);
+    public void add(KhachHang khachHang) {
+        khachHangRepository.save(khachHang);
     }
 
     @Override
@@ -32,14 +31,9 @@ public class KhachHangImpl implements KhachHangService {
         return khachHangRepository.findById(idKhachHang).orElse(null);
     }
 
-
+    @Override
     public KhachHang delete(Integer idKhachHang) {
         khachHangRepository.deleteById(idKhachHang);
         return null;
-    }
-
-    @Override
-    public Page<KhachHang> searchByTenKhachHang(String tenKhachHang, Pageable pageable) {
-        return khachHangRepository.searchByTenKhachHang("%" + tenKhachHang + "%", pageable);
     }
 }
