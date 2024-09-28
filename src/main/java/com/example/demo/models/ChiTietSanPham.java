@@ -1,15 +1,16 @@
 package com.example.demo.models;
 
+import com.example.demo.models.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.text.DecimalFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -46,7 +47,10 @@ public class ChiTietSanPham {
     @NotNull(message = "* Mời chọn màu sắc")
     MauSac mauSac;
 
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "IdTrongLuong")
+    @NotNull(message = "* Mời chọn Trong Lượng")
+    TrongLuong trongLuong;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdKichCo")
@@ -106,6 +110,7 @@ public class ChiTietSanPham {
 
     public void loadFromViewModel(QLSanPham vm) {
         this.setChatLieu(vm.getChatLieu());
+        this.setTrongLuong(vm.getTrongLuong());
         this.setGiaBan(vm.getGiaBan());
         this.setKichCo(vm.getKichCo());
         this.setSanPham(vm.getSanPham());

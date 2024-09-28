@@ -6,10 +6,12 @@ import com.example.demo.models.*;
 import com.example.demo.repositories.BanHangOnLinerepository;
 import com.example.demo.services.BanHangOnlineService;
 import com.example.demo.services.ChiTietSanPhamService;
+import com.example.demo.services.GioHangChiTietService;
 import com.example.demo.viewmodels.TongtienvsTongspchon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -160,7 +162,7 @@ public class BanHangOnlineServiceImpl implements BanHangOnlineService {
                                                     String idMauSac,
                                                     String idThuongHieu,
                                                     String idKichCo,
-                                                    String idCoAo,
+                                                    String idTrongLuong,
                                                     String tenSP,
                                                     BigDecimal tienMin,
                                                     BigDecimal tienMax) {
@@ -169,7 +171,7 @@ public class BanHangOnlineServiceImpl implements BanHangOnlineService {
                 idMauSac,
                 idThuongHieu,
                 idKichCo,
-                idCoAo,
+                idTrongLuong,
                 tenSP,
                 tienMin,
                 tienMax);

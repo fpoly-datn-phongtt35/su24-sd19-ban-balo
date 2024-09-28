@@ -50,12 +50,10 @@
     <div class="nav-header">
         <div class="brand-logo">
             <a href="/hoa-don/hien-thi">
-                <b class="logo-abbr"><img src="../../../images/logo.png" alt=""> </b>
-                <span class="logo-compact"><img src="../../../images/logo-compact.png" alt=""></span>
+                <b class="logo-abbr"><img src="../../../images/Thanh01.png"  alt=""> </b>
+                <span class="logo-compact"><img src="../../../images/Thanh01.png" alt=""></span>
                 <span class="brand-title" style="color:white;font-family:verdana">
-<%--                        <img src="../../../images/logo-text.png" width="45" height="45" alt="">--%>
-                    <img src="../../../images/logochinh.jpg" width="70" height="50" alt="">
-<%--                            <img src="../../../images/Win.png" width="60" height="60" alt="">--%>
+                    <img src="../../../images/Thanh01.png" width="45" height="45" alt="">
                  KING SHOP
                     </span>
             </a>
@@ -92,12 +90,6 @@
                                     <li>
                                         <a href="/doi-mat-khau"><i class="icon-key"></i> <span>Đổi mật khẩu</span></a>
                                     </li>
-                                    <li>
-                                        <a href="javascript:void()">
-                                            <i class="icon-envelope-open"></i> <span>Inbox</span>
-                                            <div class="badge gradient-3 badge-pill gradient-1">1</div>
-                                        </a>
-                                    </li>
 
                                     <hr class="my-2">
                                     <li><a href="/logout"
@@ -123,18 +115,18 @@
         <div class="nk-nav-scroll">
             <ul class="metismenu" id="menu">
                 <li>
-<%--                    <a href="/ban-hang/hien-thi" aria-expanded="false">--%>
-<%--                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"--%>
-<%--                             class="bi bi-bag" viewBox="0 0 16 16">--%>
-<%--                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>--%>
-<%--                        </svg>--%>
-<%--                        <span class="nav-text">Bán hàng</span>--%>
-<%--                    </a>--%>
+                    <a href="/ban-hang/hien-thi" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-bag" viewBox="0 0 16 16">
+                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                        </svg>
+                        <span class="nav-text">Bán hàng</span>
+                    </a>
                 </li>
                 <li>
-<%--                    <a href="/hoa-don/hien-thi" aria-expanded="false">--%>
-<%--                        <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Hoá đơn</span>--%>
-<%--                    </a>--%>
+                    <a href="/hoa-don/hien-thi" aria-expanded="false">
+                        <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Hoá đơn</span>
+                    </a>
                 </li>
                 <li>
                     <a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -162,9 +154,9 @@
                 <a href="/phieu-giam-gia/hien-thi" aria-expanded="false">
                     <i class="icon-grid menu-icon"></i><span class="nav-text">  Phiếu Giảm Giá</span>
                 </a>
-<%--                <a  href="/thong-ke/hien-thi" aria-expanded="false">--%>
-<%--                    <i class="icon-grid menu-icon"></i><span class="nav-text">  Thống Kê</span>--%>
-<%--                </a>--%>
+                <a  href="/thong-ke/hien-thi" aria-expanded="false">
+                    <i class="icon-grid menu-icon"></i><span class="nav-text">  Thống Kê</span>
+                </a>
 
             </ul>
         </div>

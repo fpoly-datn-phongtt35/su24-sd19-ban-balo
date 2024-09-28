@@ -115,10 +115,10 @@
                                     <%--            Tìm kiếm               --%>
                                 <div class="row">
                                     <div class="col-4 btn-group" role="group" aria-label="Basic example">
-                                        <a class="btn btn-secondary"
-                                           data-bs-toggle="modal"
-                                           data-bs-target="#QRScan" style="float: right; height: 45px;color: black">Scan
-                                            QR</a>
+<%--                                        <a class="btn btn-secondary"--%>
+<%--                                           data-bs-toggle="modal"--%>
+<%--                                           data-bs-target="#QRScan" style="float: right; height: 45px;color: black">Scan--%>
+<%--                                            QR</a>--%>
                                         <a href="/ban-hang/modal-san-pham"
                                            class="btn btn-secondary"
                                            data-bs-toggle="modal"
@@ -259,7 +259,7 @@
                                                         </c:if>
                                                         <c:forEach items="${listKhachHang}" var="kh">
                                                             <option value="${kh.id}">${kh.hoTen}
-<%--                                                                - ${kh.soDienThoai}--%>
+                                                                - ${kh.soDienThoai} - ${kh.email}
                                                             </option>
                                                         </c:forEach>
                                                     </form:select>

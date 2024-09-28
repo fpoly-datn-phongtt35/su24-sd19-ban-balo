@@ -2,6 +2,8 @@ package com.example.demo.services.impl;
 
 import com.example.demo.models.ChucVu;
 import com.example.demo.repositories.ChucVuRepository;
+import com.example.demo.repositories.ChucVuRepository;
+import com.example.demo.services.ChucVuService;
 import com.example.demo.services.ChucVuService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

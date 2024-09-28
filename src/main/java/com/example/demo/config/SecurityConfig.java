@@ -1,9 +1,10 @@
 package com.example.demo.config;
 
-import com.example.demo.repsitory.KhachHangRepository;
-import com.example.demo.repsitory.NhanVienRepository;
+import com.example.demo.repositories.KhachHangRepository;
+import com.example.demo.repositories.NhanVienRepository;
 import com.example.demo.security.MySimpleUrlAuthenticationSuccessHandler;
 import com.example.demo.security.UserInfoService;
+
 import com.example.demo.security.oauth2.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,8 +64,8 @@ public class SecurityConfig {
 
                 // chi admin
                 .requestMatchers("/chi-tiet-san-pham/**", "/ban-hang/**",
-                        "/hoa-don/**","/khach-hang/**","/nhan-vien/**","/chuc-vu/**",
-                        "/san-pham/**","/chat-lieu/**","/co-ao/**","/mau-sac/**","/kich-co/**","/thuong-hieu",
+                        "/hoa-don/**","/khach-hang/**","/nhan-vien/**",
+                        "/san-pham/**","/chat-lieu/**","/trong-luong/**","/mau-sac/**","/kich-co/**","/thuong-hieu",
                         "/phieu-giam-gia/**","/thong-ke/**",
                         "/home1").hasAuthority("ADMIN")
 

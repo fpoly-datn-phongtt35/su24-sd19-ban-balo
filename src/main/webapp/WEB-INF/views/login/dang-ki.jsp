@@ -43,6 +43,7 @@
                                      style="background: rgb(255, 255, 255);"></div>
                             </div>
                             <h4 style="color: #10ae05;margin: 10px;text-align: center">${thongBaoThanhCong}</h4>
+                            <h4 style="color: #10ae05;margin: 10px;text-align: center">${thongBaoThanhCong}</h4>
                         </div>
                         <div class="col-12" style="text-align: center;margin-top: 20px">
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">

@@ -173,7 +173,7 @@
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
-                <li><a href="#"><i class="fa fa-envelope-o"></i> kingshop@gmail.com</a></li>
+                <li><a href="#"><i class="fa fa-envelope-o"></i> kingshopfpt@gmail.com</a></li>
             </ul>
             <ul class="header-links pull-right">
                 <c:if test="${idkhachhang=='1'}">
@@ -239,8 +239,7 @@
                 <!-- LOGO -->
                 <div class="col-md-3">
                     <div class="header-logo">
-                        <h2 class="logo" style="margin: 20px;color: black;font-family: 'Arial'">Windzy
-                            Store</h2>
+                        <h2 class="logo" style="margin: 20px;color: black;font-family: 'Arial'">KING SHOP</h2>
                     </div>
                 </div>
                 <!-- /LOGO -->
@@ -659,78 +658,50 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Để mang đến sự thuận tiện và trải nghiệm tốt nhất cho khách hàng, Windzy Store có những chính sách
-                    phù hợp khi khách hàng có nhu cầu đổi hàng sản phẩm(hiện tại cửa hàng chúng tôi chỉ cho đổi hàng, và chưa thể trả hàng).
-                    Chúng tôi luôn mong muốn mang lại cho khách hàng những sản phẩm và chất lượng phục vụ tốt nhất.
+                    Điều khoản mua hàng tại KING SHOP bao gồm các quy định về quy trình mua sắm, thanh toán,
+                    vận chuyển và chính sách đổi trả nhằm đảm bảo quyền lợi khách hàng. Tìm hiểu chi tiết về các
+                    điều khoản mua hàng để có trải nghiệm mua sắm trực tuyến an toàn và tiện lợi tại KING SHOP.
                     <br>
                     Việc đổi hàng sản phẩm đi kèm một số điều kiện cụ thể, Quý khách vui lòng tham khảo thông tin chi
                     tiết bên dưới :
                     <br>
-                    <b> 1. Điều kiện đổi sản phẩm:</b>
                     <br>
                     <br>
-                    - Sản phẩm không trùng khớp về màu sắc, mẫu mã, size theo đơn hàng thì sẽ không được hỗ trợ đổi hàng
+                    <b> 1. Chính Sách Bán Hàng:</b>
                     <br>
-                    - Lỗi kỹ thuật do nhà sản xuất.
-                    <br>
-                    - Sản phẩm đổi hàng phải còn mới, nguyên vẹn, không bị dính nước, không có dấu hiệu rơi vỡ
-                    <br>
-                    - Sản phẩm phải còn đầy đủ tem, nhãn mác, thẻ bảo hành và hoá đơn mua hàng.
-                    <br>
-                    - Sản phẩm đổi hàng còn trong thời hạn cho phép đổi hàng.
-                    <br>
-                    <b>Áp dụng đối với sản phẩm mua hàng online qua website và trực tiếp tại Windzy Store,
-                        chúng tôi không hỗ trợ cho những đơn hàng mua tại địa điểm khác.</b>
+                    - Tìm hiểu các quy định về chính sách bán hàng của KING SHOP, đảm bảo quyền lợi khách hàng và
+                    cung cấp trải nghiệm mua sắm tốt nhất
                     <br>
                     <br>
-                    <b>2. Thời hạn đổi sản phẩm:</b>
+                    <b>2. Chính Sách Bảo Hành:</b>
+                    <br>
+                    - Chi tiết về chính sách bảo hành sản phẩm, giúp khách hàng yên tâm khi mua sắm với
+                    cam kết bảo hành dài hạn từ KING SHOP.
                     <br>
                     <br>
-                    - Thời hạn đổi sản phẩm: 7 ngày đối với khách hàng mua online và 7 ngày đối với khách hàng mua trực
-                    tiếp tại cửa hàng kể từ ngày khách nhận được hàng.
+                    <b>3. Chính Sách Đổi Trả Và Hoàn Tiền</b>
                     <br>
-                    - Nếu vượt quá thời gian quy định trên thì chúng tôi sẽ không nhận đổi sản phẩm với bất kì lý do
-                    nào.
+                    - Tìm hiểu quy trình và điều kiện đổi trả hàng hóa cũng như hoàn tiền khi khách hàng không hài lòng với sản phẩm.
                     <br>
                     <br>
-                    <b>3. Thời hạn thực hiện đổi lại sản phẩm cho khách hàng</b>
+                    <b> 4. Chính Sách Bảo Mật Thanh Toán</b>
+                    <br>
+                    - Cam kết bảo mật thông tin thanh toán của khách hàng, đảm bảo các giao dịch trực tuyến an toàn tuyệt đối.
                     <br>
                     <br>
-                    - Đối với khách hàng tạo phiếu đổi hàng online trên website cửa hàng:
+                    <b> 5. Dịch Vụ Giao Hàng Siêu Tốc 2H</b>
                     <br>
-                    Ngay sau khi nhận được phiếu đổi hàng của Quý khách hàng, chúng tôi sẽ liên lạc với quý khách hàng và
-                    sẽ hẹn khách có thể mang máy đến trực tiếp tại cửa hàng để nhân viên quán có thể kiểm tra và đưa ra hướng giải quyết tốt nhất
-                    <br>
-                    - Đối với khách hàng đến đổi hàng trực tiếp tại cửa hàng:
-                    <br>
-                    Khách hàng đem sản phẩm cần đổi đến trực tiếp tại cửa hàng trên hóa đơn, nhân viên cửa hàng sẽ kiểm
-                    tra tình trạng sản phẩm và đưa ra hướng giải quyết ngay tại của hàng. Nhân viên tại cửa hàng sẽ tư
-                    vấn cụ thể để khách hàng chọn lựa phương án tốt nhất.
-                    <br>
-                    <br>
-                    <b> 4. Hình thức đổi sản phẩm:</b>
-                    <br>
-                    <br>
-                    - Sản phẩm chỉ được đổi một lần duy nhất và
-                    quý khách vui lòng đến trực tiếp cửa hàng WIndzy Store ghi trên hoá đơn mua hàng.
-                    Khi đi khách hàng vui lòng mang đủ hộp và phụ kiện của sản phẩm cùng với hóa đơn mua hàng của sản phẩm đó.
-                    <br>
-                    <b> 5. Lý do đổi hàng:</b>
-                    <br>
-                    <br>
-                    <p><<b>- Các lỗi do:</b> Lỗi thiết kế khi sản phẩm không đúng với thiết kế ban đầu về mẫu mã ,kích thước, sai lệch màu sắc, thủng hoặc rách,...v.v
-
+                    <p>Dịch vụ giao hàng siêu tốc 2 giờ trong nội thành Hà Nội, đảm bảo khách hàng nhận được sản
+                        phẩm nhanh chóng và thuận tiện.
                     </p> <br>
-                    <b> Ví dụ: Sản phẩm áo phông sai so với thiết kế thực tế(sai kích thước, sai màu sắc...) có thể đổi sang 1 sản phẩm tương tự và có thể sang màu khác như đen, vàng nếu khách hàng muốn đổi,
+                    <b> Ví dụ: Sản phẩm Balo sai so với thiết kế thực tế(sai kích thước, sai màu sắc...) có thể đổi sang 1 sản phẩm tương tự và có thể sang màu khác như đen, vàng nếu khách hàng muốn đổi,
                         hoặc nếu màu tương tự hết chúng tôi xin phép khách hàng có thể đổi sang màu đang có sẵn trong của hàng</b>
                     <br>
 
-<br>
-<%--                    <b><a href="/ban-hang-online/chinh-sach-doi-tra" style="color: #00A2FF"><em><u>Chi tiết xem tại đây</u></em></a></b>--%>
-
+                    <br>
                     <br>
                     <hr>
-                    <b style="color: red"> Lưu ý: Windzy Store khuyến khích Quý khách hàng nên chụp ảnh sản phẩm trước khi đổi hàng hóa, việc lưu
+                    <b style="color: red"> Lưu ý: KingShop khuyến khích Quý khách hàng nên chụp ảnh sản phẩm trước khi đổi hàng hóa, việc lưu
                         giữ sản phẩm sẽ giúp khách hàng làm bằng chứng nếu có những vấn đề phát sinh trong quá trình đổi
                         hàng.
                     </b>
@@ -756,7 +727,7 @@ color: white;border-radius: 5% 5% 5% 5%"
     <h2 style="color: white;font-size: 20px;margin-top: 20px">
 
 
-        Chỉ chấp nhận tổng <br><= 25.000.000
+        Chỉ chấp nhận tổng <br><= 10.000.000
 
     </h2>
 </div>

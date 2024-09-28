@@ -2,6 +2,8 @@ package com.example.demo.services.impl;
 
 import com.example.demo.models.ThuongHieu;
 import com.example.demo.repositories.ThuongHieuRepository;
+import com.example.demo.repositories.ThuongHieuRepository;
+import com.example.demo.services.ThuongHieuService;
 import com.example.demo.services.ThuongHieuService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

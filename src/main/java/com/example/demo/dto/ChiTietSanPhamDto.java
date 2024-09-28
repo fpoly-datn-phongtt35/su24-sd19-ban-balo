@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -17,6 +18,7 @@ public class ChiTietSanPhamDto {
     private String maQr;
     private SanPham sanPham;
     private MauSac mauSac;
+    private TrongLuong trongLuong;
     private KichCo kichCo;
     private ChatLieu chatLieu;
     private ThuongHieu thuongHieu;

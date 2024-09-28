@@ -2,14 +2,12 @@ package com.example.demo.security.oauth2;
 
 import com.example.demo.models.KhachHang;
 import com.example.demo.repositories.KhachHangRepository;
-import com.example.demo.repsitory.KhachHangRepository;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-
 import java.util.*;
 
 @Data

@@ -68,7 +68,7 @@ public interface BanHangOnlineService {
                                              String idMauSac,
                                              String idThuongHieu,
                                              String idKichCo,
-                                             String idCoAo,
+                                             String idTrongLuong,
                                              String tenSP,
                                              BigDecimal tienMin,
                                              BigDecimal tienMax);

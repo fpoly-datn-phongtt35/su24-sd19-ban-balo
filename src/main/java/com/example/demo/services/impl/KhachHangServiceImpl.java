@@ -44,17 +44,17 @@ public class KhachHangServiceImpl implements KhachHangService {
     }
 
     @Override
-    public KhachHang add(KhachHang coAo) {
-        return khachHangRepository.save(coAo);
+    public KhachHang add(KhachHang trongLuong) {
+        return khachHangRepository.save(trongLuong);
     }
 
     @Override
-    public KhachHang update(UUID id,KhachHang coAo) {
+    public KhachHang update(UUID id,KhachHang trongLuong) {
         if (id != null) {
-            KhachHang coAoUpdate = khachHangRepository.findById(id).orElse(null);
-            if (coAoUpdate != null) {
-                BeanUtils.copyProperties(coAo, coAoUpdate);
-                khachHangRepository.save(coAoUpdate);
+            KhachHang trongLuongUpdate = khachHangRepository.findById(id).orElse(null);
+            if (trongLuongUpdate != null) {
+                BeanUtils.copyProperties(trongLuong, trongLuongUpdate);
+                khachHangRepository.save(trongLuongUpdate);
             }
         }
         return null;

@@ -316,10 +316,10 @@
                         </div>
                     </div>
                 </form:form>
-                <button class="btn btn-secondary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#QRScan"
-                        style="float: right; height: 45px;color: black">Scan QR</button>
+<%--                <button class="btn btn-secondary"--%>
+<%--                        data-bs-toggle="modal"--%>
+<%--                        data-bs-target="#QRScan"--%>
+<%--                        style="float: right; height: 45px;color: black">Scan QR</button>--%>
             </div>
         </div>
     </div>
@@ -329,11 +329,11 @@
         <div class="modal-content">
             <div class="modal-body" style="color: black;text-align: center">
                 <div class="container">
-                    <h1>Scan QR Codes</h1>
-                    <div class="section">
-                        <div id="my-qr-reader">
-                        </div>
-                    </div>
+<%--                    <h1>Scan QR Codes</h1>--%>
+<%--                    <div class="section">--%>
+<%--                        <div id="my-qr-reader">--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                 </div>
             </div>
             <div class="modal-footer">

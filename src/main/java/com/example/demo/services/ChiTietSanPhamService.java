@@ -65,7 +65,7 @@ public interface ChiTietSanPhamService {
 
     Page<ChiTietSanPham> searchCTSP(String keyword, Pageable pageable);
 
-
+    List<TrongLuong> search2CA(String keyword);
 
     List<KichCo> search2KC(String size);
 
@@ -83,12 +83,13 @@ public interface ChiTietSanPhamService {
 
     List<ChiTietSanPham> listCTSPSuDung();
 
-    //13.11.2023
 
+    List<TrongLuong> listLG22(Integer trangThai);
     List<ThuongHieu> listDeGiay22(Integer trangThai);
     List<MauSac> listMauSac22(Integer trangThai);
     List<ChatLieu> listChatLieu22(Integer trangThai);
     List<KichCo> listKichCo22(Integer trangThai);
+    List<TrongLuong> search22LG(String keyword, Integer trangThai);
     List<ThuongHieu> search22DG(String keyword, Integer trangThai);
     List<MauSac> search22MS(String keyword, Integer trangThai);
     List<ChatLieu> search22CL(String keyword, Integer trangThai);
@@ -101,6 +102,6 @@ public interface ChiTietSanPhamService {
 
     List<ChiTietSanPhamCustom> listCTSPKhuyenMai (UUID idSanPham);
 
-    ChiTietSanPham findFirstBySanPhamAndChatLieuAndCoAoAndMauSacAndThuongHieuAndKichCo(
+    ChiTietSanPham findFirstBySanPhamAndChatLieuAndTrongLuongAndMauSacAndThuongHieuAndKichCo(
             ChiTietSanPham ctsp);
 }

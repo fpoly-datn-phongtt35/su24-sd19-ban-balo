@@ -18,10 +18,8 @@ import java.io.ByteArrayOutputStream;
 import java.sql.Date;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.UUID;
+
+import java.util.*;
 
 @Service
 public class HoaDonSericeImpl implements HoaDonSerice {
@@ -216,20 +214,19 @@ public class HoaDonSericeImpl implements HoaDonSerice {
 
 
             //Các nội dung của html
-            String image = "https://i.pinimg.com/736x/75/86/3e/75863e61a86fb57f5e3701c68e9770db.jpg";
-            htmlContentBuilder.append("<img src=\"" + image +  "\" alt=\"Mô tả hình ảnh\" width=\"150px\">");
-//            htmlContentBuilder.append("<img src="/src/main/webapp/images/wind.jpg">);
+//            String image = "https://i.pinimg.com/736x/75/86/3e/75863e61a86fb57f5e3701c68e9770db.jpg";
+//            htmlContentBuilder.append("<img src=\"" + image +  "\" alt=\"Mô tả hình ảnh\" width=\"150px\">");
 
             String htmlString = htmlContentBuilder.toString();
 
-            htmlContentBuilder.append("<h1  style=\"font-family: 'Courier New', Courier, monospace;position: absolute;top: 60px;left:60px;\">").append("Windzy Store").append("</h1>");
+//            htmlContentBuilder.append("<h1  style=\"font-family: 'Courier New', Courier, monospace;position: absolute;top: 60px;left:60px;\">").append("King Shop").append("</h1>");
 
             NumberFormat numberFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
             // Thêm thông tin đơn hàng
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-            htmlContentBuilder.append("<h3  style=\"font-family: 'Courier New', Courier, monospace;position: absolute;top: 130px;left:60px;\">").append("Thông tin đơn hàng").append("</h3>");
+//            htmlContentBuilder.append("<h3  style=\"font-family: 'Courier New', Courier, monospace;position: absolute;top: 130px;left:60px;\">").append("Thông tin đơn hàng").append("</h3>");
             htmlContentBuilder.append("<p style=\"font-family: 'Courier New', Courier, monospace;\">Mã đơn hàng: ").append(hoaDon.getMa()).append("</p>");
             htmlContentBuilder.append("<p style=\"font-family: 'Courier New', Courier, monospace;\">Ngày mua: ").append(dateFormat.format(hoaDon.getNgayTao())).append("</p>");
             htmlContentBuilder.append("<p style=\"font-family: 'Courier New', Courier, monospace;\">Ngày nhận: ").append(dateFormat.format(hoaDon.getNgayNhan())).append("</p>");
@@ -260,7 +257,7 @@ public class HoaDonSericeImpl implements HoaDonSerice {
                 htmlContentBuilder.append("<tr  style=\"font-family: 'Courier New', Courier, monospace;\">");
                 htmlContentBuilder.append("<td>").append(hoaDonChiTiet.getIdCTSP().getSanPham().getTen())
                         .append(" (").append(hoaDonChiTiet.getIdCTSP().getMauSac().getTen())
-                        .append("/").append(hoaDonChiTiet.getIdCTSP().getCoAo().getTen())
+                        .append("/").append(hoaDonChiTiet.getIdCTSP().getTrongLuong().getTen())
                         .append("/").append(hoaDonChiTiet.getIdCTSP().getChatLieu().getTen())
                         .append("/").append(hoaDonChiTiet.getIdCTSP().getKichCo().getTen())
                         .append("/").append(hoaDonChiTiet.getIdCTSP().getThuongHieu().getTen())
@@ -276,7 +273,7 @@ public class HoaDonSericeImpl implements HoaDonSerice {
             // Thêm tổng tiền và các thông tin khác của hóa đơn nếu cần
             htmlContentBuilder.append("<p style=\"font-family: 'Courier New', Courier, monospace;\">Phí Ship: ").append(formattedPhiShip).append("</p>");
             htmlContentBuilder.append("<p style=\"font-family: 'Courier New', Courier, monospace;\">Tổng giá trị đơn hàng: ").append(formattedTongTienDon).append("</p>");
-            htmlContentBuilder.append("<h3  style=\"font-family: 'Courier New', Courier, monospace;\">Xin chân thành cảm ơn sự ủng hộ của bạn!</h3>");
+            htmlContentBuilder.append("<h3  style=\"font-family: 'Courier New', Courier, monospace;\">Xin chân thành cảm ơn bạn đã ủng hộ KingShop.</h3>");
             htmlContentBuilder.append("</body></html>");
             // Gọi phương thức tạo file PDF từ nội dung HTML, sử dụng thư viện iText
             byte[] pdfBytes = createPdfFromHtml(htmlContentBuilder);

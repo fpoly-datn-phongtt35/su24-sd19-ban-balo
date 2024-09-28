@@ -86,6 +86,7 @@
                                                      style="text-align: left;word-wrap: break-word;">
                                                     <h3 class="product-name"><a>${ht.sanPham.ten}</a></h3>
                                                     <p >${ht.mauSac.ten} - ${ht.kichCo.ten}</p>
+
                                                     <h3 class="product-price">
                                                         <fmt:formatNumber value="${ht.giaBan}" type="number"/>VND
                                                     </h3>

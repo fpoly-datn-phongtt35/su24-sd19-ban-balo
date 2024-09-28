@@ -1,13 +1,13 @@
 package com.example.demo.models;
 
 
+import com.example.demo.models.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.UUID;
@@ -41,6 +41,10 @@ public class QLSanPham {
     @NotNull(message = "* Mời chọn màu sắc")
     MauSac mauSac;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "IdTrongLuong")
+    @NotNull(message = "* Mời chọn cỡ áo")
+    TrongLuong trongLuong;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdKichCo")
@@ -100,6 +104,7 @@ public class QLSanPham {
 
     public void loadFromDomainModel(ChiTietSanPham domain) {
         this.setChatLieu(domain.getChatLieu());
+        this.setTrongLuong(domain.getTrongLuong());
         this.setGiaBan(domain.getGiaBan());
         this.setKichCo(domain.getKichCo());
         this.setSanPham(domain.getSanPham());

@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -48,7 +49,8 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (final GrantedAuthority grantedAuthority : authorities) {
             if (grantedAuthority.getAuthority().equals("ADMIN")) {
-                return "/hoa-don/hien-thi";
+//                return "/hoa-don/hien-thi";
+                return "/chi-tiet-san-pham/hien-thi";
             }
         }
         for (GrantedAuthority grantedAuthority2 : authorities) {

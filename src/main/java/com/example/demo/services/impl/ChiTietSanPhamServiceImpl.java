@@ -120,6 +120,12 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
         repo.deleteById(id);
     }
 
+    @Override
+    public boolean isChiTietSanPhamExists(ChiTietSanPham sp) {
+        return repo.existsBySanPhamAndChatLieuAndTrongLuongAndMauSacAndThuongHieuAndKichCo(
+                sp.getSanPham(), sp.getChatLieu(), sp.getTrongLuong(), sp.getMauSac(), sp.getThuongHieu(), sp.getKichCo()
+        );
+    }
 
 
     @Override
@@ -173,7 +179,7 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
         return repo.getListCTSPSuDung();
     }
 
-    public List<CoAo> listLG22(Integer trangThai) {
+    public List<TrongLuong> listLG22(Integer trangThai) {
         return repo.listLG22(trangThai);
     }
 
@@ -198,7 +204,7 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     }
 
     @Override
-    public List<CoAo> search22LG(String keyword, Integer trangThai) {
+    public List<TrongLuong> search22LG(String keyword, Integer trangThai) {
         return repo.search22LG(keyword, trangThai);
     }
 
@@ -241,9 +247,9 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     }
 
     @Override
-    public ChiTietSanPham findFirstBySanPhamAndChatLieuAndCoAoAndMauSacAndThuongHieuAndKichCo(ChiTietSanPham sp) {
-        return repo.findFirstBySanPhamAndChatLieuAndCoAoAndMauSacAndThuongHieuAndKichCo(
-                sp.getSanPham(), sp.getChatLieu(), sp.getCoAo(), sp.getMauSac(), sp.getThuongHieu(), sp.getKichCo()
+    public ChiTietSanPham findFirstBySanPhamAndChatLieuAndTrongLuongAndMauSacAndThuongHieuAndKichCo(ChiTietSanPham sp) {
+        return repo.findFirstBySanPhamAndChatLieuAndTrongLuongAndMauSacAndThuongHieuAndKichCo(
+                sp.getSanPham(), sp.getChatLieu(), sp.getTrongLuong(), sp.getMauSac(), sp.getThuongHieu(), sp.getKichCo()
         );
     }
 
@@ -253,8 +259,8 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     }
 
     @Override
-    public Page<ChiTietSanPham> searchCA(UUID idCA, Pageable pageable) {
-        return repo.searchByCA(idCA, pageable);
+    public Page<ChiTietSanPham> searchCA(UUID idTL, Pageable pageable) {
+        return repo.searchByCA(idTL, pageable);
     }
 
     @Override
@@ -268,7 +274,7 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
     }
 
     @Override
-    public List<CoAo> search2CA(String keyword) {
+    public List<TrongLuong> search2CA(String keyword) {
         return repo.search(keyword);
     }
 

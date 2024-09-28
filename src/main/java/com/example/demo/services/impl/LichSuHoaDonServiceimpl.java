@@ -1,6 +1,7 @@
 package com.example.demo.services.impl;
 
 import com.example.demo.models.LichSuHoaDon;
+import com.example.demo.repositories.KichCoRepository;
 import com.example.demo.repositories.LichSuHoaDonRepository;
 import com.example.demo.services.LichSuHoaDonService;
 import lombok.RequiredArgsConstructor;

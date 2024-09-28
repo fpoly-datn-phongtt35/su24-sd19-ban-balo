@@ -2,10 +2,13 @@ package com.example.demo.services;
 
 
 import com.example.demo.dto.SanPhamCustom;
+import com.example.demo.dto.SanPhamDto;
 import com.example.demo.models.ChiTietSanPham;
+import com.example.demo.models.NhanVien;
 import com.example.demo.models.SanPham;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.UUID;
@@ -34,7 +37,7 @@ public interface SanPhamService {
 
     public ChiTietSanPham updateCTSP(UUID id, ChiTietSanPham chiTietSanPham);
 
-    List<ChiTietSanPham> loc(UUID idSanPham, UUID idChatLieu, UUID idCoAo, UUID idKichCo, UUID idMauSac, UUID idThuongHieu);
+    List<ChiTietSanPham> loc(UUID idSanPham, UUID idChatLieu, UUID idTrongLuong, UUID idKichCo, UUID idMauSac, UUID idThuongHieu);
 
     ChiTietSanPham scan(String ma);
 

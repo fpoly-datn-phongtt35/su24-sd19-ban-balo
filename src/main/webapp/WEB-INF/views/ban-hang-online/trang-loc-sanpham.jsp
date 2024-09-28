@@ -165,6 +165,9 @@
         .cart-dropdown a:hover {
             background-color: #0056b3;
         }
+        .fa-shopping-cart {
+            color: black;
+        }
 
         header {
             position: fixed;
@@ -188,7 +191,7 @@
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
-                <li><a href="#"><i class="fa fa-envelope-o"></i> kingshop@gmail.com</a></li>
+                <li><a href="#"><i class="fa fa-envelope-o"></i> kingshopfpt@gmail.com</a></li>
             </ul>
             <ul class="header-links pull-right">
                 <c:if test="${idkhachhang=='1'}">
@@ -285,109 +288,98 @@
                 <!-- ACCOUNT -->
                 <div class="col-md-3 clearfix">
                     <div class="header-ctn">
-                        <!-- Wishlist -->
-                        <%--                        <div>--%>
-                        <%--                            <a href="#">--%>
-                        <%--                                <i class="fa fa-heart-o"></i>--%>
-                        <%--                                <span>Your Wishlist</span>--%>
-                        <%--                                <div class="qty">2</div>--%>
-                        <%--                            </a>--%>
-                        <%--                        </div>--%>
-                        <!-- /Wishlist -->
-
                         <!-- Cart -->
 
 
-<%--                        <div class="dropdown" id="giohangtrangchu">--%>
-<%--                            <c:if test="${idkhachhang!='1'}">--%>
-<%--                                <c:if test="${listghct.size()>0}">--%>
-<%--                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">--%>
-<%--                                        <i class="fa fa-shopping-cart"></i>--%>
-<%--                                        <span>Giỏ hàng</span>--%>
-<%--                                        <div class="qty">${banhangonline.ListghctTheoidgh(banhangonline.ListghTheoidkh(idkhachhang).get(0).getId()).size()}</div>--%>
-<%--                                    </a>--%>
-<%--                                    <div class="cart-dropdown" style="width:  13cm">--%>
-<%--                                        <div class="cart-list">--%>
+                        <div class="dropdown" id="giohangtrangchu">
+                            <c:if test="${idkhachhang!='1'}">
+                                <c:if test="${listghct.size()>0}">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>Giỏ hàng</span>
+                                        <div class="qty">${banhangonline.ListghctTheoidgh(banhangonline.ListghTheoidkh(idkhachhang).get(0).getId()).size()}</div>
+                                    </a>
+                                    <div class="cart-dropdown" style="width:  13cm">
+                                        <div class="cart-list">
+                                            <c:forEach items="${listghct}" var="ht" varStatus="stt">
+                                                <br><hr>
+                                                <div style="border: 1px ;height: 2cm">
+                                                    <div style="width: 80%;float: right">
+                                                        <label style="font-weight: bold">Sản
+                                                            phẩm:</label>${ht.chiTietSanPham.sanPham.ten}-
+                                                            ${ht.chiTietSanPham.mauSac.ten}-${ht.chiTietSanPham.kichCo.ten}.
 
-<%--                                            <c:forEach items="${listghct}" var="ht" varStatus="stt">--%>
-<%--                                                <br><hr>--%>
-<%--                                                <div style="border: 1px ;height: 2cm">--%>
-<%--                                                    <div style="width: 80%;float: right">--%>
-<%--                                                        <label style="font-weight: bold">Sản--%>
-<%--                                                            phẩm:</label>${ht.chiTietSanPham.sanPham.ten}---%>
-<%--                                                            ${ht.chiTietSanPham.mauSac.ten}-${ht.chiTietSanPham.kichCo.ten}.--%>
+                                                        <br>
+                                                        <label style="font-weight: bold">Số lượng:</label> ${ht.soLuong}<br>
 
-<%--                                                        <br>--%>
-<%--                                                        <label style="font-weight: bold">Số lượng:</label> ${ht.soLuong}<br>--%>
+                                                        <label style="font-weight: bold">Đơn
+                                                            giá:</label>
+                                                        <script>
+                                                            var giaBan = ${ht.donGia};
+                                                            document.write(giaBan.toLocaleString('vi-VN'));
+                                                        </script>
+                                                        VND
 
-<%--                                                        <label style="font-weight: bold">Đơn--%>
-<%--                                                            giá:</label>--%>
-<%--                                                        <script>--%>
-<%--                                                            var giaBan = ${ht.donGia};--%>
-<%--                                                            document.write(giaBan.toLocaleString('vi-VN'));--%>
-<%--                                                        </script>--%>
-<%--                                                        VND--%>
-
-<%--                                                    </div>--%>
-<%--                                                    <div style="width: 18%;">--%>
-<%--                                                        <input type="checkbox" name="checkidghTT" value="${ht.id}"--%>
-<%--                                                               onclick="chonsanphamgiohangTT('${stt.index}','${ht.id}','${ht.gioHang.id}');"  ${ht.tinhTrang==0 ?"checked":""}>--%>
-
-
-<%--                                                        <img src="../../../uploads/${ht.chiTietSanPham.hinhAnh.tenAnh}"--%>
-<%--                                                             width="50" height="50"--%>
-<%--                                                             style="border-radius:50% 50% 50% 50%;border: 1px solid black">--%>
-<%--                                                    </div>--%>
-
-<%--                                                </div>--%>
-<%--                                            </c:forEach>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="cart-summary">--%>
-<%--                                            <small> ${banhangonline.TongtienvsTongspchon(listghct.get(0).gioHang.id).gettongsanphamchon()}--%>
-<%--                                                Sản phẩm được chọn</small>--%>
-<%--                                            <br><label>Tổng:</label><label id="tongtienghtt">${banhangonline.TongtienvsTongspchon(listghct.get(0).gioHang.id).gettongtien()}</label><label>đ</label>--%>
-
-<%--                                        </div>--%>
-<%--                                        <div class="cart-btns">--%>
-<%--                                            <a href="/ban-hang-online/xem-gio-hang">Xem giỏ hàng</a>--%>
-<%--                                            <a href="#">Chọn hết--%>
-<%--                                                <input type="checkbox" name="checktongTT"--%>
-<%--                                                       onclick="chonhetgiohangtongTRANGCHU('${listghct.get(0).gioHang.id}');"  ${tttong==0 ?"checked":""}>--%>
-<%--                                            </a>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </c:if>--%>
-<%--                                <c:if test="${listghct.size()<=0}">--%>
-<%--                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">--%>
-<%--                                        <i class="fa fa-shopping-cart"></i>--%>
-<%--                                        <span>Giỏ hàng</span>--%>
-<%--                                        <div class="qty">0</div>--%>
-<%--                                    </a>--%>
-<%--                                    <div class="cart-dropdown" style="width: 500px;">--%>
-<%--                                        <div class="cart-summary">--%>
-<%--                                            <small> 0 Sản phẩm được chọn</small>--%>
-<%--                                            <h5>Tổng:0 đ</h5>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="cart-btns">--%>
-<%--                                            <a href="/ban-hang-online/xem-gio-hang">Xem giỏ hàng</a>--%>
-<%--                                            <a href="#">Chọn hết--%>
-<%--                                            </a>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </c:if>--%>
-<%--                            </c:if>--%>
-<%--                            <c:if test="${idkhachhang=='1'}">--%>
-
-<%--                                <a class="dropdown-toggle" aria-expanded="true" href="/login">--%>
-<%--                                    <i class="fa fa-shopping-cart"></i>--%>
-<%--                                    <span>Giỏ hàng</span>--%>
-<%--                                    <div class="qty">0</div>--%>
-<%--                                </a>--%>
+                                                    </div>
+                                                    <div style="width: 18%;">
+                                                        <input type="checkbox" name="checkidghTT" value="${ht.id}"
+                                                               onclick="chonsanphamgiohangTT('${stt.index}','${ht.id}','${ht.gioHang.id}');"  ${ht.tinhTrang==0 ?"checked":""}>
 
 
-<%--                            </c:if>--%>
+                                                        <img src="../../../uploads/${ht.chiTietSanPham.hinhAnh.tenAnh}"
+                                                             width="50" height="50"
+                                                             style="border-radius:50% 50% 50% 50%;border: 1px solid black">
+                                                    </div>
 
-<%--                        </div>--%>
+                                                </div>
+                                            </c:forEach>
+                                        </div>
+                                        <div class="cart-summary">
+                                            <small> ${banhangonline.TongtienvsTongspchon(listghct.get(0).gioHang.id).gettongsanphamchon()}
+                                                Sản phẩm được chọn</small>
+                                            <br><label>Tổng:</label><label id="tongtienghtt">${banhangonline.TongtienvsTongspchon(listghct.get(0).gioHang.id).gettongtien()}</label><label>đ</label>
+
+                                        </div>
+                                        <div class="cart-btns">
+                                            <a href="/ban-hang-online/xem-gio-hang">Xem giỏ hàng</a>
+                                            <a href="#">Chọn hết
+                                                <input type="checkbox" name="checktongTT"
+                                                       onclick="chonhetgiohangtongTRANGCHU('${listghct.get(0).gioHang.id}');"  ${tttong==0 ?"checked":""}>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </c:if>
+                                <c:if test="${listghct.size()<=0}">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>Giỏ hàng</span>
+                                        <div class="qty">0</div>
+                                    </a>
+                                    <div class="cart-dropdown" style="width: 500px;">
+                                        <div class="cart-summary">
+                                            <small> 0 Sản phẩm được chọn</small>
+                                            <h5>Tổng:0 đ</h5>
+                                        </div>
+                                        <div class="cart-btns">
+                                            <a href="/ban-hang-online/xem-gio-hang">Xem giỏ hàng</a>
+                                            <a href="#">Chọn hết
+                                            </a>
+                                        </div>
+                                    </div>
+                                </c:if>
+                            </c:if>
+                            <c:if test="${idkhachhang=='1'}">
+
+                                <a class="dropdown-toggle" aria-expanded="true" href="/login">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>Giỏ hàng</span>
+                                    <div class="qty">0</div>
+                                </a>
+
+
+                            </c:if>
+
+                        </div>
 
                         <!-- /Cart -->
 
@@ -615,26 +607,23 @@
             <div class="row">
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
-                        <h3 class="footer-title">About Us</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut.</p>
+                        <h3 class="footer-title">LIÊN HỆ</h3>
+                        <p>Mộc hoàn giáo, xã Vân Côn, huyện Hoài Đức, Hà Nội</p>
                         <ul class="footer-links">
-                            <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-                            <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-                            <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>0866823674</a></li>
+                            <li><a href="#"><i class="fa fa-envelope-o"></i>thanhnvph30477@fpt.edu.vn</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
-                        <h3 class="footer-title">Categories</h3>
+                        <h3 class="footer-title">TOP XU HƯỚNG</h3>
                         <ul class="footer-links">
-                            <li><a href="#">Hot deals</a></li>
-                            <li><a href="#">T-shirt</a></li>
-                            <li><a href="#">Bannet</a></li>
-                            <li><a href="#">Ei-raiden</a></li>
-                            <li><a href="#">Accessories</a></li>
+                            <li><a href="#">Balo Quà Tặng</a></li>
+                            <li><a href="#">Hot Brand</a></li>
+                            <li><a href="#">Balo/ Túi SỨC CHỨA LỚN</a></li>
+                            <li><a href="#">Chuyên Balo Quảng Cáo</a></li>
                         </ul>
                     </div>
                 </div>
@@ -643,26 +632,24 @@
 
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
-                        <h3 class="footer-title">Information</h3>
+                        <h3 class="footer-title">VỀ CHÚNG TÔI</h3>
                         <ul class="footer-links">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Orders and Returns</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Giới thiệu KingShop</a></li>
+                            <li><a href="#">Đánh giá từ Khách hàng</a></li>
+                            <li><a href="#">Hướng Dẫn Mua Hàng</a></li>
+                            <li><a href="#">Nội quy cửa hàng</a></li>
+                            <li><a href="#">Chất lượng phục vụ</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
-                        <h3 class="footer-title">Service</h3>
+                        <h3 class="footer-title">CÂU HỎI THƯỜNG GẶP</h3>
                         <ul class="footer-links">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">View Cart</a></li>
-                            <li><a href="#">Wishlist</a></li>
-                            <li><a href="#">Track My Order</a></li>
-                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Sản phẩm cần đổi hết hàng?</a></li>
+                            <li><a href="#">Sản phẩm nhận được không giống với hình ảnh trên website?</a></li>
+                            <li><a href="#">...</a></li>
                         </ul>
                     </div>
                 </div>
@@ -673,36 +660,11 @@
     </div>
     <!-- /top footer -->
 
-    <!-- bottom footer -->
-    <div id="bottom-footer" class="section">
-        <div class="container">
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <ul class="footer-payments">
-                        <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
-                        <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
-                    </ul>
-                    <span class="copyright">
-								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i
-                            class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                                                                target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							</span>
-                </div>
-            </div>
-            <!-- /row -->
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /bottom footer -->
+
 </footer>
 <!-- /FOOTER -->
+
+
 
 <div style="position: fixed;
 top: 50%;left: 50%;transform: translate(-50%,-50%);
@@ -722,6 +684,7 @@ color: white;border-radius: 5% 5% 5% 5%"
         var a4 = encodeURIComponent(document.getElementById("mauds1").value);
         var a5 = encodeURIComponent(document.getElementById("ramds1").value);
         var a6 = encodeURIComponent(document.getElementById("sands1").value);
+
         var a7 = encodeURIComponent(document.getElementById("value1").value);
         var a8 = encodeURIComponent(document.getElementById("value2").value);
         if(document.getElementById("value1").value.trim()==='' || document.getElementById("value2").value.trim()===''){

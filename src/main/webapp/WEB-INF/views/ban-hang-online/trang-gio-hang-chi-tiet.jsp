@@ -162,7 +162,7 @@
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
-                <li><a href="#"><i class="fa fa-envelope-o"></i> kingshop@gmail.com</a></li>
+                <li><a href="#"><i class="fa fa-envelope-o"></i> kingshopfpt@gmail.com</a></li>
             </ul>
             <ul class="header-links pull-right">
                 <c:if test="${idkhachhang=='1'}">
@@ -231,8 +231,7 @@
                 <!-- LOGO -->
                 <div class="col-md-3">
                     <div class="header-logo">
-                        <h2 class="logo" style="margin: 20px;color: black;font-family: 'Arial'">Windzy
-                            Store</h2>
+                        <h2 class="logo" style="margin: 20px;color: black;font-family: 'Arial'">KING SHOP</h2>
                     </div>
                 </div>
                 <!-- /LOGO -->
@@ -283,7 +282,7 @@
                                 <c:if test="${listghct.size()>0}">
                                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                         <i class="fa fa-shopping-cart"></i>
-                                        <span>Giỏ hàng</span>
+                                        <span >Giỏ hàng</span>
                                         <div class="qty">${banhangonline.ListghctTheoidgh(banhangonline.ListghTheoidkh(idkhachhang).get(0).getId()).size()}</div>
                                     </a>
                                     <div class="cart-dropdown" style="width:  13cm">
@@ -550,7 +549,7 @@ color: white;border-radius: 5% 5% 5% 5%"
     <h2 style="color: white;font-size: 20px;margin-top: 20px">
 
 
-        Chỉ chấp nhận tổng <br><= 25.000.000
+        Chỉ chấp nhận tổng <br><= 10.000.000
 
     </h2>
 </div>
@@ -802,8 +801,8 @@ color: white;border-radius: 5% 5% 5% 5%"
     function check75tieu(tongtien) {
         var chuoiSoNguyen = tongtien;
         var soNguyen = parseInt(chuoiSoNguyen, 10);
-     if(soNguyen>25000000){
-         // alert(" Chỉ thanh toán với đơn hàng tối đa 25.000.000 vnd")
+     if(soNguyen>10000000){
+         // alert(" Chỉ thanh toán với đơn hàng tối đa 10.000.000 vnd")
          document.getElementById('tbmuahang').style.display = '';
          setTimeout(function () {
              document.getElementById('tbmuahang').style.display = 'none';

@@ -54,14 +54,14 @@
         </div>
     </div>
 </c:if>
-<section class="vh-100" style="background-color: #bfdbf8;">
+<section class="vh-100">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-xl-10">
                 <div class="card" style="border-radius: 1rem;">
                     <div class="row g-0">
                         <div class="col-md-6 col-lg-5 d-none d-md-block">
-                            <img src="../../images/logochinh.jpg"
+                            <img src="../../images/Thanh01.png"
                                  alt="login form"  style="width: 400px;height: 350px;margin-top:150px;margin-left: 35px" />
                         </div>
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
@@ -106,12 +106,7 @@
                                         <a type="button" class="btn btn-outline-dark btn-lg btn-block"
                                            style="font-size: larger; font-weight: bold" href="/dang-ky-tai-khoan">Đăng ký
                                             tài khoản</a>
-                                            <%--                                        <button type="button"--%>
-                                            <%--                                                data-bs-toggle="modal" class="btn btn-info"--%>
-                                            <%--                                                data-bs-target="#dangKy" style="color: #393f81;">Đăng kí tài khoản--%>
-                                            <%--                                        </button>--%>
                                     </p>
-                                    <a href="/oauth2/authorization/google" class="btn btn-outline-dark btn-lg btn-block" style="font-weight: bold;"><svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 488 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/></svg>   Google</a>
                                 </form:form>
                             </div>
                         </div>

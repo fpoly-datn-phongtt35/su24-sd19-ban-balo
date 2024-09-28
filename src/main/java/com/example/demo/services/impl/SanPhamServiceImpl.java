@@ -2,6 +2,7 @@ package com.example.demo.services.impl;
 
 
 import com.example.demo.dto.SanPhamCustom;
+import com.example.demo.dto.SanPhamDto;
 import com.example.demo.models.ChiTietSanPham;
 import com.example.demo.models.SanPham;
 import com.example.demo.repositories.ChiTietSanPhamRepo;
@@ -91,8 +92,8 @@ public class SanPhamServiceImpl implements SanPhamService {
     }
 
     @Override
-    public List<ChiTietSanPham> loc(UUID idSanPham, UUID idChatLieu, UUID uuid, UUID idKichCo, UUID idMauSac, UUID idThuongHieu) {
-        return chiTietSanPhamRepository.loc(idSanPham, idChatLieu, uuid, idKichCo, idMauSac, idThuongHieu);
+    public List<ChiTietSanPham> loc(UUID idSanPham, UUID idChatLieu, UUID idTrongLuong, UUID idKichCo, UUID idMauSac, UUID idThuongHieu) {
+        return chiTietSanPhamRepository.loc(idSanPham, idChatLieu, idTrongLuong, idKichCo, idMauSac, idThuongHieu);
     }
 
     @Override
@@ -113,6 +114,27 @@ public class SanPhamServiceImpl implements SanPhamService {
     @Override
     public List<SanPhamCustom> search1(String ten) {
         return sanPhamRepository.search1(ten);
+    }
+
+//    @Override
+//    public Page<SanPhamCustom> soLuong(Pageable pageable) {
+//        return sanPhamRepository.soLuong(pageable);
+//    }
+
+
+    @Override
+    public Page<SanPhamCustom> locTT(int trangThai, Pageable pageable) {
+        return sanPhamRepository.findAllByTrangThai(trangThai,pageable);
+    }
+
+    @Override
+    public boolean existSanPhamByTen(String ten) {
+        return sanPhamRepository.existsSanPhamByTen(ten);
+    }
+
+    @Override
+    public Page<SanPham> getAll1(Pageable pageable) {
+        return sanPhamRepository.getAll1(pageable);
     }
 
 

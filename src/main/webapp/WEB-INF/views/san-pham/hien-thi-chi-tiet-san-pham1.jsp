@@ -102,10 +102,10 @@
                              <form>
                                  <div class="row mt-3 ms-5 mb-3">
                                      <div class="col-3">
-                                         <form:form modelAttribute="lg" action="/chi-tiet-san-pham/search-by-coao">
+                                         <form:form modelAttribute="lg" action="/chi-tiet-san-pham/search-by-trongluong">
                                          </form:form>
                                          <div class="form-group" >
-                                             <form:form modelAttribute="lg" action="/chi-tiet-san-pham/search-by-coao">
+                                             <form:form modelAttribute="lg" action="/chi-tiet-san-pham/search-by-trongluong">
                                                  <label class="form-label">Trọng Lượng: </label>
                                                  <form:select type="text" path="idTL" onchange="submit()" class="form-control" style="border-radius: 10px;border:0.5px solid #AAAAAA">
                                                      <form:option value="">Tất cả</form:option>
